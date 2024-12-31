@@ -11,6 +11,12 @@ const Hero = () => {
           src="/hero-background.png"
           alt="Hero"
         />
+        <Image
+          fill
+          className="object-cover object-center w-full"
+          src="/hero-bg-mobile.png"
+          alt="Hero"
+        />
       </div>
     </div>
   )
