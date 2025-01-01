@@ -1,22 +1,20 @@
-import Image from 'next/image'
 import React from 'react'
+import HeroTitle from './HeroTitle'
+import Button from '../../shared/Button'
+import { ArrowRight } from 'lucide-react'
 
 const Hero = () => {
   return (
-    <div className="relative w-full">
-      <div className="container relative h-[600px]">
-        <Image
-          fill
-          className="object-cover object-center w-full"
-          src="/hero-background.png"
-          alt="Hero"
-        />
-        <Image
-          fill
-          className="object-cover object-center w-full"
-          src="/hero-bg-mobile.png"
-          alt="Hero"
-        />
+    <div className="relative mt-16 w-full bg-[url('/hero-bg-mobile.png')] md:bg-[url('/hero-background.png')] h-[600px] md:h-[800px] bg-cover bg-center bg-no-repeat">
+      <div className="relative bg-cover  ">
+        <div className="container z-10">
+          <div className="pt-10 md:pt-[200px]">
+            <HeroTitle />
+            <Button icon={<ArrowRight />} className="mt-8">
+              Explore More
+            </Button>
+          </div>
+        </div>
       </div>
     </div>
   )
