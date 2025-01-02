@@ -3,7 +3,7 @@ import { MobileMenu } from '@/app/_components/MobileMenu'
 
 const Header = () => {
   return (
-    <div className="fixed top-0 left-0 z-50 w-full">
+    <div className="fixed bg-others-white/20 backdrop-blur-md top-0 left-0 z-50 w-full">
       <div className="container flex h-16 items-center justify-between  ">
         <Image
           width={60}

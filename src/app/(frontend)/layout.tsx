@@ -1,5 +1,9 @@
 import '../globals.css'
 import Header from '@/app/_components/Header'
+import { cn } from '@/lib/utils'
+import { Inter } from 'next/font/google'
+
+const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Next.js',
@@ -9,7 +13,7 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>
+      <body className={cn(inter.className, 'subpixel-antialiased bg-others-white')}>
         <Header />
         {children}
       </body>
