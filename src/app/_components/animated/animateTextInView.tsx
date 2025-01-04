@@ -51,7 +51,7 @@ const AnimateTextInView: FC<{
       viewport={{ once: true, margin: '-100px' }}
     >
       {lines.map((line, i) => (
-        <div key={i} className="relative inline-block overflow-hidden pb-1">
+        <div key={i} className="relative overflow-hidden md:inline-block md:pb-1">
           <motion.span variants={lineVariants} className="inline-block">
             {line.text}
           </motion.span>

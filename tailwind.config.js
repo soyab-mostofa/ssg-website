@@ -58,14 +58,14 @@ export default {
       md: '768px',
       lg: '1024px',
       xl: '1240px',
-      '2xl': '1536px',
+      '2xl': '1440px',
     },
     extend: {
       container: {
         center: true,
         padding: {
           DEFAULT: '1rem',
-          md: '7.5rem',
+          xl: '7.5rem',
         },
         screens: {
           md: '1240px',

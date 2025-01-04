@@ -35,7 +35,7 @@ const SectionLayout = ({
           <div
             className={`flex w-full max-w-[${headingWidth}] flex-col items-start gap-2 md:gap-8`}
           >
-            <SectionChip>{chip}</SectionChip>
+            <SectionChip dark={dark}>{chip}</SectionChip>
             {/* <SplitLines
               className="text-3xl font-bold md:text-5xl"
               text="A Legacy of Impact and Innovation"

@@ -1,5 +1,5 @@
 'use client'
-
+import Hamburger from 'hamburger-react'
 import {
   Facebook,
   Instagram,
@@ -12,6 +12,7 @@ import Link from 'next/link'
 import { useState, useRef } from 'react'
 import Button from '../shared/Button'
 import { AnimatePresence, motion, Variants } from 'motion/react'
+import Image from 'next/image'
 
 const data = [
   { title: 'Home', link: '/' },
@@ -106,10 +107,12 @@ export default function Menu() {
     <div className="menu-container container relative inset-0 flex w-full">
       <div className="menu-bar flex h-16 w-full items-center justify-between">
         <div className="menu-logo text-grayscale-black-900">
-          <Link href="/">Shin Shin Group</Link>
+          <Link href="/">
+            <Image src="/logo.png" alt="logo" width={40} height={30} />
+          </Link>
         </div>
-        <div className="menu-open" onClick={toggleMenu}>
-          <p className="menu-button">Menu</p>
+        <div className="menu-open z-50">
+          <Hamburger toggled={isMenuOpen} toggle={toggleMenu} />
         </div>
       </div>
       <AnimatePresence>
@@ -120,19 +123,8 @@ export default function Menu() {
             initial="hidden"
             animate="visible"
             exit="hidden"
-            className="menu-overlay fixed inset-0 z-50 flex flex-col justify-between bg-others-white"
+            className="menu-overlay fixed inset-0 top-16 z-40 flex flex-col justify-between bg-others-white"
           >
-            <div className="menu-overlay-bar container flex items-center justify-between py-4">
-              <div className="menu-logo">
-                <Link href="/">Shin Shin Group</Link>
-              </div>
-              <div className="menu-close">
-                <div className="menu-close-icon" onClick={toggleMenu}>
-                  <SquareMenuIcon size={24} />
-                </div>
-              </div>
-            </div>
-
             <div className="menu-copy container flex justify-between space-x-4 text-5xl">
               <motion.div
                 variants={containerVariants}

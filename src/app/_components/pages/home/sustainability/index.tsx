@@ -26,7 +26,7 @@ const SustainabilitySection = () => {
       subBottom="Lorem ipsum dolor sit amet consectetur. Mattis arcu lectus morbi a ut massa eget mauris. Dis facilisi gravida neque elementum auctor felis neque facilisis."
       chip="Sustainability"
       headingWidth="687px"
-      className="bg-primary-blue900 relative py-28"
+      className="bg-primary-blue900 relative overflow-hidden py-28"
     >
       <div ref={containerRef}>
         <Carousel
@@ -36,7 +36,7 @@ const SustainabilitySection = () => {
           }}
           className="z-50 w-full overflow-x-hidden"
         >
-          <CarouselContent className="px-4 md:ml-[calc((100vw-768px)/2)] md:px-0 md:pe-4 lg:ml-[calc((100vw-1000px)/2)]">
+          <CarouselContent className="px-4 md:px-0 md:pe-4 lg:ml-[calc((100vw-1220px)/2)]">
             {data.map((url, index) => (
               <CarouselItem key={index} className="flex basis-full flex-col sm:basis-[480px]">
                 <motion.div

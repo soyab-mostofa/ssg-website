@@ -21,7 +21,7 @@ const HeroTitle = () => {
   }, [])
 
   return (
-    <div className="mx-auto flex min-h-fit max-w-[335px] flex-col items-center justify-center gap-4 md:mx-0 md:min-h-[252px] md:max-w-[687px] md:gap-6">
+    <div className="mx-auto flex min-h-[300px] max-w-[335px] flex-col items-center justify-center gap-4 md:mx-0 md:min-h-[252px] md:max-w-[687px] md:gap-6">
       {isLoading ? (
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="space-x-2">
