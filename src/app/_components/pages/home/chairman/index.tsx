@@ -7,6 +7,7 @@ import { NumberTicker } from '@/components/ui/number-ticker'
 import DesktopQuote from '@/app/_components/animated/DesktopQuote'
 import AnimatedQuote from '@/app/_components/animated/AnimatedQuote'
 import { motion } from 'motion/react'
+import AnimateTextInView from '@/app/_components/animated/animateTextInView'
 
 const ChairmansThoughts = () => {
   return (
@@ -19,38 +20,65 @@ const ChairmansThoughts = () => {
             <div className="relative mb-16 mt-12 md:hidden">
               <AnimatedQuote paragraph="Continuous improvement is not just our goal, it's in our DNA. We strive to surpass our achievements every day, empowering our people and prioritizing eco-friendly RMG production to become the top global apparel and textile supplier." />
             </div>
-            <div className="h-fit md:basis-1/2 md:max-w-[380px]">
+            <div className="h-fit md:max-w-[380px] md:basis-1/2">
               <motion.div
                 initial={{ width: '0%' }}
                 whileInView={{
                   width: '100%',
                   transition: {
-                    duration: 0.5,
+                    duration: 1,
                     easings: 'linear',
+                    easing: [0.65, 0.02, 0.23, 1],
                     type: 'spring',
-                    damping: 30,
+                    damping: 50,
+                    stiffness: 100,
                   },
                 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, ease: 'easeOut' }}
-                className="h-[436px] relative"
+                className="relative h-[436px]"
               >
                 <Image
                   src="/chairman.png"
                   alt="Chairman's Thought"
-                  className="object-center object-cover"
+                  className="object-cover object-center"
                   fill
                   sizes="(max-width: 768px) 100vw, 380px"
                 />
               </motion.div>
-              <div className="flex flex-col gap-1">
-                <p className="mt-3 text-xl inline-block md:text-3xl font-bold">
+              {/* <motion.div
+                initial={{ y: '-100%' }}
+                whileInView={{
+                  y: '0%',
+                  transition: {
+                    duration: 1,
+                    easings: 'easeOut',
+                    easing: [0.65, 0.02, 0.23, 1],
+                    type: 'spring',
+                    damping: 100,
+                    stiffness: 300,
+                    delay: 0.5,
+                  },
+                }}
+                viewport={{ once: true, margin: '-200px' }}
+                transition={{ duration: 0.8, ease: 'easeOut', staggerChildren: 0.5 }}
+                className="flex flex-col gap-1 overflow-hidden"
+              >
+                <motion.p className="mt-3 whitespace-nowrap text-xl inline-block md:text-3xl font-bold">
                   Mohammad Sohel Sadat
-                </p>
-                <p className="text-lg inline-block text-grayscale-black-400 md:text-2xl">
+                </motion.p>
+                <motion.p className="text-lg whitespace-nowrap inline-block text-grayscale-black-400 md:text-2xl">
                   Chairman, Shin Shin Group
-                </p>
-              </div>
+                </motion.p>
+              </motion.div> */}
+              <AnimateTextInView
+                text="Mohammad Sohel Sadat"
+                className="flex pt-4 text-2xl font-bold text-grayscale-black-400 md:text-3xl"
+              />
+              <AnimateTextInView
+                text="Chairman, Shin Shin Group"
+                className="flex text-xl text-grayscale-black-400 md:text-2xl"
+              />
             </div>
             <MetricsList />
           </div>
@@ -64,26 +92,26 @@ function MetricsList() {
   return (
     <ul className="flex flex-col md:basis-1/2">
       <div className="flex flex-col md:flex-row md:divide-x-2">
-        <li className="text-grayscale-black-400/20 pb-4 md:border-b-0 md:pb-6 md:pr-6">
+        <li className="pb-4 text-grayscale-black-400/20 md:border-b-0 md:pb-6 md:pr-6">
           <div className="mb-5 flex items-center gap-4">
-            <p className="text-5xl text-primary-blue-500 font-bold">
+            <p className="text-5xl font-bold text-primary-blue-500">
               <NumberTicker value={10} />k
             </p>
-            <p className="text-lg font-medium w-24 text-primary-blue-500">Total Workforce</p>
+            <p className="w-24 text-lg font-medium text-primary-blue-500">Total Workforce</p>
           </div>
           <p className="text-grayscale-black-400">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci a neque ipsa tempore
             perspiciatis nostrum ad reprehenderit sint dolorum amet?
           </p>
         </li>
-        <li className="text-grayscale-black-400/20 py-4 md:border-b-0 md:pb-6 md:pl-6 md:pt-0">
+        <li className="py-4 text-grayscale-black-400/20 md:border-b-0 md:pb-6 md:pl-6 md:pt-0">
           <div className="mb-5 flex items-center gap-4">
-            <p className="text-5xl text-primary-blue-500 font-bold">
+            <p className="text-5xl font-bold text-primary-blue-500">
               <NumberTicker value={130} />k
             </p>
-            <p className="text-lg font-medium w-24 text-primary-blue-500">Total Workforce</p>
+            <p className="w-24 text-lg font-medium text-primary-blue-500">Total Workforce</p>
           </div>
-          <p className="text-grayscale-black-400 text-base">
+          <p className="text-base text-grayscale-black-400">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci a neque ipsa tempore
             perspiciatis nostrum ad reprehenderit sint dolorum amet?
           </p>
@@ -91,26 +119,26 @@ function MetricsList() {
       </div>
       <Separator className="hidden md:block" />
       <div className="flex flex-col md:flex-row md:divide-x-2">
-        <li className="text-grayscale-black-400/20 pb-4 md:border-b-0 md:pr-6">
+        <li className="pb-4 text-grayscale-black-400/20 md:border-b-0 md:pr-6">
           <div className="mb-5 mt-6 flex items-center gap-4">
-            <p className="text-5xl text-primary-blue-500 font-bold">
+            <p className="text-5xl font-bold text-primary-blue-500">
               <NumberTicker value={10} />k
             </p>
-            <p className="text-lg font-medium w-24 text-primary-blue-500">Total Workforce</p>
+            <p className="w-24 text-lg font-medium text-primary-blue-500">Total Workforce</p>
           </div>
-          <p className="text-grayscale-black-400 text-base">
+          <p className="text-base text-grayscale-black-400">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci a neque ipsa tempore
             perspiciatis nostrum ad reprehenderit sint dolorum amet?
           </p>
         </li>
-        <li className="text-grayscale-black-400/20 pb-4 md:border-b-0 md:pl-6">
+        <li className="pb-4 text-grayscale-black-400/20 md:border-b-0 md:pl-6">
           <div className="mb-5 mt-6 flex items-center gap-4">
-            <p className="text-5xl text-primary-blue-500 font-bold">
+            <p className="text-5xl font-bold text-primary-blue-500">
               <NumberTicker value={10} />k
             </p>
-            <p className="text-lg font-medium w-24 text-primary-blue-500">Total Workforce</p>
+            <p className="w-24 text-lg font-medium text-primary-blue-500">Total Workforce</p>
           </div>
-          <p className="text-grayscale-black-400 text-base">
+          <p className="text-base text-grayscale-black-400">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci a neque ipsa tempore
             perspiciatis nostrum ad reprehenderit sint dolorum amet?
           </p>

@@ -2,11 +2,11 @@
 import { motion, Variants } from 'motion/react'
 import { FC, useRef } from 'react'
 import { useTextLines } from '@/lib/useTextLines'
-const AnimatedText: FC<{
+const AnimateTextInView: FC<{
   text: string
   className?: string
   delay?: number
-}> = ({ text, className = '', delay = 0.5 }) => {
+}> = ({ text, className = '', delay = 0.1 }) => {
   const containerRef = useRef(null)
   const lines = useTextLines({
     text,
@@ -17,7 +17,7 @@ const AnimatedText: FC<{
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: 0.4,
+        staggerChildren: 0.2,
         delayChildren: delay,
       },
     },
@@ -46,12 +46,12 @@ const AnimatedText: FC<{
       ref={containerRef}
       variants={containerVariants}
       initial="hidden"
-      animate="visible"
+      whileInView="visible"
       className={className}
-      viewport={{ once: true, margin: '-250px' }}
+      viewport={{ once: true, margin: '-100px' }}
     >
       {lines.map((line, i) => (
-        <div key={i} className="overflow-hidden relative pb-1">
+        <div key={i} className="relative inline-block overflow-hidden pb-1">
           <motion.span variants={lineVariants} className="inline-block">
             {line.text}
           </motion.span>
@@ -60,4 +60,4 @@ const AnimatedText: FC<{
     </motion.div>
   )
 }
-export default AnimatedText
+export default AnimateTextInView

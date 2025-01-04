@@ -57,15 +57,18 @@ export default {
       sm: '640px',
       md: '768px',
       lg: '1024px',
-      xl: '1280px',
+      xl: '1240px',
       '2xl': '1536px',
     },
     extend: {
       container: {
         center: true,
-        padding: '7.5rem',
+        padding: {
+          DEFAULT: '1rem',
+          md: '7.5rem',
+        },
         screens: {
-          md: '1280px',
+          md: '1240px',
         },
       },
       borderRadius: {

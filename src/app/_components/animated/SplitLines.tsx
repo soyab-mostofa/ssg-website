@@ -1,66 +1,23 @@
 'use client'
-import React, { useEffect, useRef, useState } from 'react'
+import { useRef } from 'react'
 import { motion } from 'motion/react'
 import { cn } from '@/lib/utils'
+import { useTextLines } from '@/lib/useTextLines'
 
 interface TextRevealProps {
   text: string
   className?: string
   center?: boolean
+  dark?: boolean
 }
 
-const TextFadeUp = ({ text, className, center }: TextRevealProps) => {
+const TextFadeUp = ({ text, className, center, dark = false }: TextRevealProps) => {
   const containerRef = useRef<HTMLDivElement>(null)
-  const [lines, setLines] = useState<string[]>([])
-
-  useEffect(() => {
-    if (!containerRef.current) return
-
-    // Function to split text into lines
-    const splitIntoLines = () => {
-      const container = containerRef.current
-      if (!container) return
-
-      // Create a temporary element to measure text
-      const tempDiv = document.createElement('div')
-      tempDiv.style.position = 'absolute'
-      tempDiv.style.visibility = 'hidden'
-      tempDiv.style.width = `${container.offsetWidth}px`
-      tempDiv.style.fontSize = window.getComputedStyle(container).fontSize
-      tempDiv.style.fontFamily = window.getComputedStyle(container).fontFamily
-      tempDiv.style.whiteSpace = 'normal'
-      document.body.appendChild(tempDiv)
-
-      // Split text into words
-      const words = text.split(' ')
-      const lines: string[] = []
-      let currentLine = ''
-
-      words.forEach((word) => {
-        tempDiv.textContent = `${currentLine} ${word}`.trim()
-        if (tempDiv.offsetHeight > parseInt(window.getComputedStyle(tempDiv).lineHeight)) {
-          lines.push(currentLine.trim())
-          currentLine = word
-        } else {
-          currentLine = `${currentLine} ${word}`.trim()
-        }
-      })
-      lines.push(currentLine.trim())
-
-      document.body.removeChild(tempDiv)
-      setLines(lines)
-    }
-
-    splitIntoLines()
-
-    // Recalculate on resize
-    const handleResize = () => {
-      splitIntoLines()
-    }
-
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
-  }, [text])
+  const phrases = useTextLines({
+    text,
+    containerRef,
+  })
+  console.log(phrases)
 
   const container = {
     hidden: { opacity: 1 },
@@ -94,13 +51,19 @@ const TextFadeUp = ({ text, className, center }: TextRevealProps) => {
       whileInView="visible"
       viewport={{ once: true, margin: '-100px' }}
     >
-      {lines.map((line, index) => (
+      {phrases.map((line, index) => (
         <div
           key={index}
-          className={cn('overflow-hidden', center && 'flex flex-wrap justify-center md:block')}
+          className={cn(
+            'overflow-hidden',
+            center && 'flex flex-wrap justify-center md:inline-block',
+          )}
         >
-          <motion.div variants={lineAnimation} className="leading-relaxed">
-            {line}
+          <motion.div
+            variants={lineAnimation}
+            className={cn('ml-1 leading-relaxed', { 'text-primary-blue-200': dark })}
+          >
+            {line.text}
           </motion.div>
         </div>
       ))}
