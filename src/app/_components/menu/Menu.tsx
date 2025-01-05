@@ -1,13 +1,6 @@
 'use client'
 import Hamburger from 'hamburger-react'
-import {
-  Facebook,
-  Instagram,
-  Linkedin,
-  SquareMenuIcon,
-  TabletSmartphoneIcon,
-  Twitter,
-} from 'lucide-react'
+import { Facebook, Instagram, Linkedin, TabletSmartphoneIcon, Twitter } from 'lucide-react'
 import Link from 'next/link'
 import { useState, useRef } from 'react'
 import Button from '../shared/Button'
