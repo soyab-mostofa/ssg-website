@@ -36,9 +36,12 @@ const SustainabilitySection = () => {
           }}
           className="z-50 w-full overflow-x-hidden"
         >
-          <CarouselContent className="px-4 md:px-0 md:pe-4 lg:ml-[calc((100vw-1220px)/2)]">
+          <CarouselContent className="xl:ml-[calc((100vw-1240px)/2)]">
             {data.map((url, index) => (
-              <CarouselItem key={index} className="flex basis-full flex-col sm:basis-[480px]">
+              <CarouselItem
+                key={index}
+                className="relative ml-4 flex w-full basis-full flex-col pr-4 sm:basis-[480px] xl:mr-0"
+              >
                 <motion.div
                   initial={{ width: '0%', height: '100%', opacity: 0 }}
                   animate={

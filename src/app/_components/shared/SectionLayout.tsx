@@ -13,6 +13,7 @@ interface SectionProps {
   subLeft?: string
   subBottom?: string
   headingWidth?: string
+  grayBG?: boolean
 }
 
 const SectionLayout = ({
@@ -23,9 +24,16 @@ const SectionLayout = ({
   children,
   headingWidth = '584px',
   dark,
+  grayBG,
 }: SectionProps) => {
   return (
-    <section className={cn('py-16 md:py-24', { 'relative bg-primary-blue-900': dark })}>
+    <section
+      className={cn(
+        'py-16 md:py-24',
+        { 'relative bg-primary-blue-900': dark },
+        { 'bg-grayscale-black-100': grayBG },
+      )}
+    >
       <div className="container">
         <div
           className={cn('mb-10 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-10', {
