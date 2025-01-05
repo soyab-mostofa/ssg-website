@@ -2,6 +2,7 @@
 import { motion, Variants } from 'motion/react'
 import { FC, useRef } from 'react'
 import { useTextLines } from '@/lib/useTextLines'
+
 const AnimateTextInView: FC<{
   text: string
   className?: string
@@ -17,7 +18,7 @@ const AnimateTextInView: FC<{
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: 0.2,
+        staggerChildren: 0.12, // Reduced for smoother sequence
         delayChildren: delay,
       },
     },
@@ -32,14 +33,18 @@ const AnimateTextInView: FC<{
       y: 0,
       opacity: 1,
       transition: {
-        type: 'spring',
-        stiffness: 50,
-        damping: 15,
-        duration: 0.5,
-        ease: [0.215, 0.61, 0.355, 1], // This approximates 'power1.out'
+        duration: 1.2, // Increased duration for smoother motion
+        ease: [0.25, 0.1, 0.25, 1], // Custom cubic-bezier easing
+        opacity: {
+          duration: 0.8,
+          ease: [0.215, 0.61, 0.355, 1],
+        },
       },
     },
   }
+
+  // Add spaces back to text and handle whitespace properly
+  const processedText = text.replace(/\s+/g, ' ').trim()
 
   return (
     <motion.div
@@ -47,12 +52,12 @@ const AnimateTextInView: FC<{
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
-      className={className}
+      className={`whitespace-pre-wrap ${className}`}
       viewport={{ once: true, margin: '-100px' }}
     >
       {lines.map((line, i) => (
-        <div key={i} className="relative overflow-hidden md:inline-block md:pb-1">
-          <motion.span variants={lineVariants} className="inline-block">
+        <div key={i} className="relative overflow-hidden md:mr-1 md:inline-block md:pb-1">
+          <motion.span variants={lineVariants} className="inline-block whitespace-pre-wrap">
             {line.text}
           </motion.span>
         </div>
@@ -60,4 +65,5 @@ const AnimateTextInView: FC<{
     </motion.div>
   )
 }
+
 export default AnimateTextInView

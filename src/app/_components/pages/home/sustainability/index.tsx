@@ -26,7 +26,7 @@ const SustainabilitySection = () => {
       subBottom="Lorem ipsum dolor sit amet consectetur. Mattis arcu lectus morbi a ut massa eget mauris. Dis facilisi gravida neque elementum auctor felis neque facilisis."
       chip="Sustainability"
       headingWidth="687px"
-      className="bg-primary-blue900 relative overflow-hidden py-28"
+      className="relative overflow-hidden py-28"
     >
       <div ref={containerRef}>
         <Carousel

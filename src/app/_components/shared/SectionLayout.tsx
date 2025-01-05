@@ -64,7 +64,9 @@ const SectionLayout = ({
           </div>
           {subLeft && (
             <SplitLines
-              className="self-end text-base font-normal text-grayscale-black-400 md:text-xl"
+              className={cn('self-end text-base font-normal text-grayscale-black-400 md:text-xl', {
+                'text-grayscale-black-100': dark,
+              })}
               text={subLeft}
             />
           )}

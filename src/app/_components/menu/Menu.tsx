@@ -2,10 +2,11 @@
 import Hamburger from 'hamburger-react'
 import { Facebook, Instagram, Linkedin, TabletSmartphoneIcon, Twitter } from 'lucide-react'
 import Link from 'next/link'
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import Button from '../shared/Button'
 import { AnimatePresence, motion, Variants } from 'motion/react'
 import Image from 'next/image'
+import { usePathname } from 'next/navigation'
 
 const data = [
   { title: 'Home', link: '/' },
@@ -89,12 +90,17 @@ const contactVariants = {
 }
 
 export default function Menu() {
+  const pathName = usePathname()
   const containerRef = useRef<HTMLDivElement | null>(null)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
   }
+
+  useEffect(() => {
+    setIsMenuOpen(false)
+  }, [pathName])
 
   return (
     <div className="menu-container container relative inset-0 flex w-full">
