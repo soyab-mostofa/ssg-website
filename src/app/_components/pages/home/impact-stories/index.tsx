@@ -91,11 +91,11 @@ export default function ImpactStories() {
         }}
         className="w-full pb-16 sm:pb-20 xl:pb-[35px]"
       >
-        <CarouselContent className="mb-10 ml-0 mr-2 h-48 sm:h-60 md:h-80 lg:h-96 xl:ml-[calc((100vw-1240px)/2)] xl:h-[600px]">
+        <CarouselContent className="mb-10 ml-0 mr-2 h-60 sm:h-60 md:h-80 lg:h-96 xl:ml-[calc((100vw-1240px)/2)] xl:h-[600px]">
           {stories.map((story, index) => (
             <CarouselItem
               key={story.title}
-              className="h-full basis-[200px] overflow-hidden pl-4 pr-2 sm:basis-[300px] md:basis-[400px] lg:basis-[600xp] xl:basis-[995px] xl:pr-0"
+              className="h-full basis-[300px] overflow-hidden pl-4 pr-2 sm:basis-[400px] md:basis-[500px] lg:basis-[600xp] xl:basis-[995px] xl:pr-0"
             >
               <StoryCard story={story} index={index} />
             </CarouselItem>

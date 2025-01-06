@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
-import TextFadeUp from '../../animated/SplitLines'
 import AnimatedText from '@/app/(frontend)/about/AnimatedText'
+import HeadingFadeUp from '../../animated/HeadingFadeUp'
 
 const AboutHeader = ({ heading, sub }: { heading: string[]; sub?: string }) => {
   return (
@@ -19,7 +19,7 @@ const AboutHeader = ({ heading, sub }: { heading: string[]; sub?: string }) => {
           ))}
         </div>
         <div className="h-auto max-w-full text-base sm:h-[40px] sm:text-lg md:h-[50px] md:max-w-[805px]">
-          {sub && <TextFadeUp text={sub} />}
+          {sub && <HeadingFadeUp text={sub} />}
         </div>
       </div>
       <Image

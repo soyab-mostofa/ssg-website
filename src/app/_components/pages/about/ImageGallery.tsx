@@ -27,7 +27,7 @@ const AwardsGallery = () => {
 
   return (
     <div className="bg-gray-100 px-4 py-8">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 sm:grid-cols-2">
+      <div className="container grid grid-cols-1 gap-6 sm:grid-cols-2">
         {galleryItems.map((item, index) => (
           <div key={index} className="bg-white flex flex-col overflow-hidden">
             <img src={item.image} alt={item.title} className="h-[351px] w-full object-cover" />

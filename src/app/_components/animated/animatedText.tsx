@@ -2,6 +2,7 @@
 import { motion, Variants } from 'motion/react'
 import { FC, useRef } from 'react'
 import { useTextLines } from '@/lib/useTextLines'
+
 const AnimatedText: FC<{
   text: string
   className?: string
@@ -51,7 +52,7 @@ const AnimatedText: FC<{
       viewport={{ once: true, margin: '-250px' }}
     >
       {lines.map((line, i) => (
-        <div key={i} className="overflow-hidden relative pb-1">
+        <div key={i} className="relative overflow-hidden pb-1">
           <motion.span variants={lineVariants} className="inline-block">
             {line.text}
           </motion.span>

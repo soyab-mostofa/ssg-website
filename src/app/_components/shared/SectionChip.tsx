@@ -21,7 +21,7 @@ const SectionChip = ({
         { 'bg-primary-blue-700 text-others-white': dark },
       )}
     >
-      <span className="block h-1 w-1 rounded-[2px] bg-secondary-red-500 leading-6 md:h-2 md:w-2" />
+      <span className="block h-2 w-2 rounded-[2px] bg-secondary-red-500 leading-6 md:h-2 md:w-2" />
       {children}
     </div>
   )

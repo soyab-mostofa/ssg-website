@@ -55,7 +55,7 @@ const AnimatedText = ({
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className={`overflow-hidden ${className}`}
+      className={`-mt-2 overflow-hidden pb-2 ${className}`}
     >
       {text.split('').map((char, index) => {
         if (char === ' ') {
