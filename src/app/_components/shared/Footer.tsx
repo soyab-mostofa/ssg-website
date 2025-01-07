@@ -13,20 +13,20 @@ export default function Footer() {
               src="/logo-dark.png"
               alt="Shin Shin Group"
               width={120}
-              height={120}
+              height={100}
               className="mb-8"
             />
-            <address className="text-gray-300 mb-4 not-italic">
+            <address className="mb-4 not-italic text-others-white/70">
               House # 93, Road # 13, Sector # 10, Uttara
               <br />
               Model Town, Dhaka-1230, Bangladesh.
             </address>
-            <p className="text-gray-300">info@shinshingroup.com</p>
+            <p className="text-others-white/70">info@shinshingroup.com</p>
           </div>
 
           {/* Mission Statement */}
           <div className="lg:col-span-8">
-            <p className="mb-12 text-xl leading-relaxed">
+            <p className="mb-12 text-lg leading-relaxed">
               As denim enthusiasts, we&apos;re on a mission to revolutionize the industry to make
               denim the ultimate choice!
             </p>
@@ -40,7 +40,7 @@ export default function Footer() {
                   <li>
                     <Link
                       href="/"
-                      className="text-gray-300 transition-colors hover:text-others-white"
+                      className="text-others-white/70 transition-colors hover:text-others-white"
                     >
                       Home
                     </Link>
@@ -48,7 +48,7 @@ export default function Footer() {
                   <li>
                     <Link
                       href="/about"
-                      className="text-gray-300 transition-colors hover:text-others-white"
+                      className="text-others-white/70 transition-colors hover:text-others-white"
                     >
                       About Us
                     </Link>
@@ -56,7 +56,7 @@ export default function Footer() {
                   <li>
                     <Link
                       href="/sustainability"
-                      className="text-gray-300 transition-colors hover:text-others-white"
+                      className="text-others-white/70 transition-colors hover:text-others-white"
                     >
                       Sustainability
                     </Link>
@@ -71,7 +71,7 @@ export default function Footer() {
                   <li>
                     <Link
                       href="/facilities"
-                      className="text-gray-300 transition-colors hover:text-others-white"
+                      className="text-others-white/70 transition-colors hover:text-others-white"
                     >
                       Our Facilities
                     </Link>
@@ -79,7 +79,7 @@ export default function Footer() {
                   <li>
                     <Link
                       href="/career"
-                      className="text-gray-300 transition-colors hover:text-others-white"
+                      className="text-others-white/70 transition-colors hover:text-others-white"
                     >
                       Career
                     </Link>
@@ -87,7 +87,7 @@ export default function Footer() {
                   <li>
                     <Link
                       href="/contact"
-                      className="text-gray-300 transition-colors hover:text-others-white"
+                      className="text-others-white/70 transition-colors hover:text-others-white"
                     >
                       Contact Us
                     </Link>
@@ -102,7 +102,7 @@ export default function Footer() {
                   <li>
                     <Link
                       href="#"
-                      className="text-gray-300 inline-flex items-center gap-2 transition-colors hover:text-others-white"
+                      className="inline-flex items-center gap-2 text-others-white/70 transition-colors hover:text-others-white"
                     >
                       <Facebook size={20} />
                       Facebook
@@ -111,7 +111,7 @@ export default function Footer() {
                   <li>
                     <Link
                       href="#"
-                      className="text-gray-300 inline-flex items-center gap-2 transition-colors hover:text-others-white"
+                      className="inline-flex items-center gap-2 text-others-white/70 transition-colors hover:text-others-white"
                     >
                       <Linkedin size={20} />
                       LinkedIn
@@ -120,7 +120,7 @@ export default function Footer() {
                   <li>
                     <Link
                       href="#"
-                      className="text-gray-300 inline-flex items-center gap-2 transition-colors hover:text-others-white"
+                      className="inline-flex items-center gap-2 text-others-white/70 transition-colors hover:text-others-white"
                     >
                       <Youtube size={20} />
                       YouTube

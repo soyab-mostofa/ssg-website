@@ -28,9 +28,10 @@ export const overlayVariants: Variants = {
   visible: {
     clipPath: 'polygon(0 0, 100% 0%, 100% 100%, 0% 100%)',
     transition: {
+      duration: 0.8,
       type: 'spring',
-      stiffness: 50,
-      damping: 15,
+      stiffness: 100,
+      damping: 20,
       mass: 1.5,
     },
   },
@@ -97,48 +98,46 @@ interface MenuLinkProps {
 
 export const MenuLink = ({ href, children, isActive }: MenuLinkProps) => {
   return (
-    <Link href={href} className="group relative">
-      <span
-        className={cn(
-          'text-lg transition-colors duration-200',
-          isActive
-            ? 'text-grayscale-black-900'
-            : 'text-grayscale-black-400 hover:text-grayscale-black-600',
-        )}
-      >
-        {children}
-      </span>
-      {isActive && (
-        <motion.div
-          layoutId="activeMenuItem"
-          className="absolute -bottom-1 left-0 h-0.5 w-full bg-primary"
-          initial={false}
-          animate={{ opacity: 1 }}
+    <Link href={href} className="group relative overflow-hidden rounded-lg px-2 py-1">
+      <span className="relative z-10 text-lg">
+        <motion.span
+          className={cn(
+            'relative inline-block',
+            isActive ? 'text-secondary-red-500' : 'text-grayscale-black-400',
+          )}
+          animate={{
+            color: isActive ? '#EF4444' : '#9CA3AF',
+          }}
+          transition={{
+            duration: 0.2,
+          }}
+        >
+          {children}
+        </motion.span>
+        <motion.span
+          className="absolute bottom-0 left-0 h-[2px] w-full bg-secondary-red-500"
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: isActive ? 1 : 0 }}
+          exit={{ scaleX: 0 }}
           transition={{
             type: 'spring',
-            stiffness: 380,
-            damping: 30,
+            stiffness: 100,
+            damping: 20,
+          }}
+          style={{
+            originX: 0,
+            transformOrigin: 'left',
           }}
         />
-      )}
-      <motion.div
-        className="absolute -bottom-1 left-0 h-0.5 w-full bg-grayscale-black-300"
-        initial={{ scaleX: 0 }}
-        animate={{ scaleX: isActive ? 0 : 0 }}
-        whileHover={{ scaleX: isActive ? 0 : 1 }}
-        transition={{ duration: 0.2 }}
-      />
+      </span>
     </Link>
   )
 }
-
-// Menu.tsx
 
 const menuData: MenuData[] = [
   { title: 'Home', link: '/' },
   { title: 'About', link: '/about' },
   { title: 'Sustainability', link: '/sustainability' },
-  { title: 'Contact', link: '/contact' },
   { title: 'Our facilities', link: '/facility' },
   { title: 'Careers', link: '/career' },
 ]
@@ -172,7 +171,7 @@ export default function Menu() {
         </div>
 
         {/* Desktop Menu */}
-        <nav className="hidden gap-10 sm:inline-flex">
+        <nav className="hidden gap-8 sm:inline-flex">
           {menuData.map((item) => (
             <MenuLink key={item.link} href={item.link} isActive={pathName === item.link}>
               {item.title}
@@ -181,7 +180,12 @@ export default function Menu() {
         </nav>
 
         <div className="hidden sm:inline-block">
-          <Button>Contact Us</Button>
+          <Link
+            href="/contact"
+            className="flex w-full flex-row items-center justify-center gap-2 rounded-[12px] bg-secondary-red-500 px-4 py-3 text-sm text-others-white md:w-fit"
+          >
+            Contact Us
+          </Link>
         </div>
 
         {/* Mobile Menu Toggle */}

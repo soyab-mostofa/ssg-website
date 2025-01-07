@@ -46,7 +46,7 @@ export default function SustainabilityAccordion() {
           <div key={item.title} className="border-white/10 border-b last:border-none">
             <button
               onClick={() => toggleAccordion(index)}
-              className="flex w-full items-center justify-between py-4 text-left text-2xl font-semibold"
+              className="relative z-50 flex w-full items-center justify-between py-4 text-left text-2xl font-semibold"
             >
               {item.title}
               <motion.div
@@ -117,13 +117,13 @@ export default function SustainabilityAccordion() {
         src="/pattern-corner.png"
         alt="pattern"
         aria-hidden
-        className="absolute right-0 top-0 opacity-5"
+        className="absolute right-[-91px] top-[-109px] z-0 scale-50 opacity-5 md:right-0 md:top-0 md:scale-100"
       />
       <img
         src="/pattern-corner.png"
         alt="pattern"
         aria-hidden
-        className="absolute bottom-0 left-0 rotate-180 opacity-5"
+        className="absolute bottom-[-90px] left-[-92px] z-0 rotate-180 scale-50 opacity-5 md:scale-100"
       />
     </div>
   )
