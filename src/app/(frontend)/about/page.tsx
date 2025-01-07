@@ -5,6 +5,7 @@ import AboutHeader from '@/app/_components/pages/about/AboutHeader'
 import OurValues from '@/app/_components/pages/about/OurValues'
 import InteractiveTimeline from '@/app/_components/pages/about/InteractiveTimeline'
 import OurAwards from '@/app/_components/pages/about/AwardsGallery'
+import { TimelineDemo } from '@/components/Timeline'
 
 const Page = () => {
   return (
@@ -16,6 +17,7 @@ const Page = () => {
       <FoundingStory />
       <OurValues />
       <InteractiveTimeline />
+      <TimelineDemo />
       <OurAwards />
     </section>
   )

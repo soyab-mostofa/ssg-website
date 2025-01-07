@@ -43,6 +43,7 @@ const InteractiveTimeline = () => {
     <SectionLayout
       heading="Our Journey"
       chip="timeline"
+      className="hidden sm:block"
       subLeft="Shin Shin Group, established in 2007, has grown into a leading apparel conglomerate with 8,727 employees across five factories in Bangladesh. The group achieved."
     >
       <motion.div

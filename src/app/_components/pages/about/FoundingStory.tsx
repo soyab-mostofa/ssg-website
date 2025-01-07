@@ -9,7 +9,7 @@ const FoundingStory = () => {
     <section className="container overflow-x-hidden py-8 md:py-16 lg:py-24">
       <SectionChip>Founding Story</SectionChip>
 
-      <div className="mt-8 grid gap-8 lg:grid-cols-2">
+      <div className="mt-8 grid gap-4 lg:grid-cols-2 lg:gap-8">
         {/* Left Column */}
         <div className="flex flex-col space-y-6">
           <div className="space-y-4">
