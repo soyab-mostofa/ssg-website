@@ -26,7 +26,7 @@ export default function Footer() {
 
           {/* Mission Statement */}
           <div className="lg:col-span-8">
-            <p className="mb-12 text-lg leading-relaxed">
+            <p className="mb-12 text-lg leading-relaxed text-others-white/70">
               As denim enthusiasts, we&apos;re on a mission to revolutionize the industry to make
               denim the ultimate choice!
             </p>
