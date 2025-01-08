@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import { MapContainer, TileLayer, Marker, Tooltip } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
@@ -8,6 +10,10 @@ const skater = new Icon({
   iconSize: [50, 50],
 })
 const DhakaMap = () => {
+  if (typeof window !== 'undefined') {
+    return
+  }
+
   // Dhaka coordinates
   return (
     <div className="h-96 w-full overflow-hidden rounded-lg shadow-lg">

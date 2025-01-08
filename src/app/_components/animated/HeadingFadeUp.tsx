@@ -17,7 +17,6 @@ const HeadingFadeUp = ({ text, className, center, dark = false }: TextRevealProp
     text,
     containerRef,
   })
-  console.log(phrases)
 
   const container = {
     hidden: { opacity: 1 },
