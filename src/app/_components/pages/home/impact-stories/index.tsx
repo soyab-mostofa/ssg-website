@@ -69,8 +69,8 @@ StoryCard.displayName = 'StoryCard'
 
 const CarouselControls = memo(() => (
   <div className="bottom-4 left-0 right-0 flex items-center justify-center gap-4 sm:gap-8">
-    <CarouselPrevious className="text-red-500 hover:bg-white hover:text-red-600 !static h-8 w-8 border-0 bg-[#fde8e9] sm:h-10 sm:w-10 xl:mt-4" />
-    <CarouselNext className="bg-red-500 text-white hover:bg-red-600 hover:text-white !static h-8 w-8 border-0 sm:h-10 sm:w-10 xl:mt-4" />
+    <CarouselPrevious className="!static h-8 w-8 rounded-[10px] border-0 bg-[#fde8e9] text-secondary-red-500 hover:bg-others-white hover:text-secondary-red-600 sm:h-10 sm:w-10 xl:mt-4" />
+    <CarouselNext className="!static h-8 w-8 rounded-[10px] border-0 bg-secondary-red-500 text-others-white hover:bg-secondary-red-600 hover:text-others-white sm:h-10 sm:w-10 xl:mt-4" />
   </div>
 ))
 
@@ -89,7 +89,7 @@ export default function ImpactStories() {
           align: 'start',
           containScroll: 'keepSnaps',
         }}
-        className="w-full pb-16 sm:pb-20 xl:pb-[35px]"
+        className="w-full"
       >
         <CarouselContent className="mb-10 ml-0 mr-2 h-60 sm:h-60 md:h-80 lg:h-96 xl:ml-[calc((100vw-1240px)/2)] xl:h-[600px]">
           {stories.map((story, index) => (

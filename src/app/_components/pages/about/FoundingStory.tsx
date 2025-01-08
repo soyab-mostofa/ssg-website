@@ -32,7 +32,7 @@ const FoundingStory = () => {
           </div>
 
           {/* Image Gallery */}
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div className="grid grid-cols-2 gap-4">
             <div className="relative aspect-[1.27/1] w-full overflow-hidden rounded-xl">
               <Image
                 src="/founding-story-1.png"
@@ -72,7 +72,7 @@ const FoundingStory = () => {
           <div className="w-fit rounded-sm bg-secondary-red-600 p-3 text-others-white">
             <RocketIcon fill="white" size={24} />
           </div>
-          <p className="pb-2 pt-3 text-2xl font-semibold">Our Mission</p>
+          <p className="pb-2 pt-3 text-xl font-semibold sm:text-2xl">Our Mission</p>
           <p className="text-base">
             To revolutionize the global apparel industry by delivering sustainable, innovative, and
             high-quality solutions that empower people, protect the planet, and create lasting value
@@ -83,7 +83,7 @@ const FoundingStory = () => {
           <div className="w-fit rounded-sm bg-secondary-red-600 p-3 text-others-white">
             <RocketIcon fill="white" size={24} />
           </div>
-          <p className="pb-2 pt-3 text-2xl font-semibold">Our Mission</p>
+          <p className="pb-2 pt-3 text-xl font-semibold sm:text-2xl">Our Mission</p>
           <p className="text-base">
             To revolutionize the global apparel industry by delivering sustainable, innovative, and
             high-quality solutions that empower people, protect the planet, and create lasting value

@@ -16,8 +16,8 @@ const ChairmansThoughts = () => {
         <div className="top-8">
           <SectionChip>CHAIRMAN&apos;S THOUGHTS</SectionChip>
           <DesktopQuote paragraph="Continuous improvement is not just our goal, it's in our DNA. We strive to surpass our achievements every day, empowering our people and prioritizing eco-friendly RMG production to become the top global apparel and textile supplier." />
-          <div className="flex flex-col justify-between gap-8 md:flex-row">
-            <div className="relative mb-16 mt-12 md:hidden">
+          <div className="flex flex-col justify-between sm:gap-8 md:flex-row">
+            <div className="relative mb-4 mt-12 md:mb-16 md:hidden">
               <AnimatedQuote paragraph="Continuous improvement is not just our goal, it's in our DNA. We strive to surpass our achievements every day, empowering our people and prioritizing eco-friendly RMG production to become the top global apparel and textile supplier." />
             </div>
             <div className="h-fit md:max-w-[380px] md:basis-1/2">
@@ -77,7 +77,7 @@ const ChairmansThoughts = () => {
               />
               <AnimateTextInView
                 text="Chairman, Shin Shin Group"
-                className="flex text-xl text-grayscale-black-400 md:text-2xl"
+                className="mb-8 flex text-xl text-grayscale-black-400 md:mb-0 md:text-2xl"
               />
             </div>
             <MetricsList />

@@ -48,6 +48,7 @@ const page = () => {
         chip="Facilities"
         heading="Our Facilities at a Glance"
         headingWidth="481px"
+        className="md:pb-0"
       >
         <div className="flex flex-col gap-4">
           {factories.map((factory, index) => {
@@ -55,8 +56,8 @@ const page = () => {
               <section
                 key={index}
                 className={cn(
-                  'container mb-24',
-                  { 'mt-14': index == 0 },
+                  'container mb-8 md:mb-24',
+                  { 'sm:mt-14': index == 0 },
                   { 'mb-0': index === factories.length - 1 },
                 )}
               >
@@ -84,7 +85,9 @@ const page = () => {
                   {/* Content container */}
                   <div className="space-y-6 md:basis-1/2">
                     <div className="space-y-4">
-                      <h1 className="text-4xl font-bold tracking-tight">{factory.name}</h1>
+                      <h1 className="mt-4 text-2xl font-bold tracking-tight sm:mt-0 md:text-4xl">
+                        {factory.name}
+                      </h1>
                       <p className="text-base text-muted-foreground">
                         Lorem ipsum dolor sit amet consectetur. Egestas proin dolor in gravida
                         lectus in nisi egestas. Donec lobortis nisl justo enim laoreet nec sed id.
@@ -125,9 +128,13 @@ const page = () => {
                   </div>
                 </div>
                 <Separator
-                  className={cn('h-px w-full bg-grayscale-black-200 md:mt-24', {
-                    'sm:hidden': index % 2 != 0,
-                  })}
+                  className={cn(
+                    'mt-8 hidden h-px w-full bg-grayscale-black-200 md:mt-24 md:inline-block',
+                    {
+                      hidden: index % 2 != 0,
+                      'md:hidden': index % 2 !== 0,
+                    },
+                  )}
                 />
               </section>
             )

@@ -12,7 +12,7 @@ export default function Footer() {
             <Image
               src="/logo-dark.png"
               alt="Shin Shin Group"
-              width={120}
+              width={100}
               height={100}
               className="mb-8"
             />

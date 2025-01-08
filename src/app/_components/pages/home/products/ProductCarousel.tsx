@@ -189,7 +189,7 @@ export function ProductCarousel() {
                       {product.title}
                     </motion.h3>
                     <motion.p
-                      className="text-grayscale400 text-sub-heading-01"
+                      className="text-xl text-grayscale-black-400"
                       variants={ANIMATION_VARIANTS.text}
                     >
                       {product.description}
@@ -205,8 +205,8 @@ export function ProductCarousel() {
         {CATEGORIES.map((_, index) => (
           <button
             key={index}
-            className={`mx-1 h-3 w-3 rounded-full ${
-              index === selectedIndex ? 'bg-primary' : 'bg-gray-300'
+            className={`mx-1 h-2 w-2 rounded-full md:h-3 md:w-3 ${
+              index === selectedIndex ? 'bg-secondary-red-500' : 'bg-grayscale-black-300'
             }`}
             onClick={() => emblaApi?.scrollTo(index)}
           />

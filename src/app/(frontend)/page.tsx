@@ -1,4 +1,5 @@
 import ChairmansThoughts from '../_components/pages/home/chairman'
+import CustomersSection from '../_components/pages/home/Customers'
 import Hero from '../_components/pages/home/hero/Hero'
 import ImpactStories from '../_components/pages/home/impact-stories'
 import ProductSection from '../_components/pages/home/products'
@@ -14,6 +15,7 @@ const Page = () => {
       <SustainabilitySection />
       <ProductSection />
       <ImpactStories />
+      <CustomersSection />
     </div>
   )
 }

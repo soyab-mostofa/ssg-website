@@ -1,6 +1,6 @@
 'use client'
-import React from 'react'
-import { motion } from 'motion/react'
+import React, { useMemo } from 'react'
+import { motion, useReducedMotion } from 'motion/react'
 import { cn } from '@/lib/utils'
 
 interface WordRevealProps {
@@ -9,28 +9,34 @@ interface WordRevealProps {
 }
 
 const WordReveal = ({ text, className }: WordRevealProps) => {
-  // Split text into words, preserving spaces and punctuation
-  const words = text.split(/(\s+)/).filter(Boolean)
+  // Respect user's reduced motion preferences
+  const shouldReduceMotion = useReducedMotion()
+
+  // Memoize word splitting to avoid unnecessary recalculations
+  const words = useMemo(() => {
+    return text.split(/(\s+)/).filter(Boolean)
+  }, [text])
 
   const container = {
-    hidden: { opacity: 1 },
-    visible: {
+    hidden: { opacity: 0 },
+    visible: (custom: boolean) => ({
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.1,
+        staggerChildren: custom ? 0 : 0.08,
+        delayChildren: custom ? 0 : 0.15,
+        when: 'beforeChildren',
       },
-    },
+    }),
   }
 
   const wordAnimation = {
-    hidden: { y: '100%', opacity: 1 },
+    hidden: { y: '100%', opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
       transition: {
-        duration: 0.3,
-        ease: [0.215, 0.61, 0.355, 1], // Custom easing similar to power1.out
+        duration: shouldReduceMotion ? 0 : 0.5,
+        ease: [0.33, 1, 0.68, 1], // Custom cubic-bezier easing for smoother motion
       },
     },
   }
@@ -41,17 +47,22 @@ const WordReveal = ({ text, className }: WordRevealProps) => {
       variants={container}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: '-100px' }}
+      viewport={{
+        once: true,
+        margin: '-10%',
+        amount: 0.3, // Trigger animation when 30% of component is visible
+      }}
+      custom={shouldReduceMotion}
     >
       {words.map((word, index) => {
-        // Check if the word is just whitespace
-        if (word.trim() === '') {
-          // return null
-          return <span key={index}>&nbsp;</span>
+        const isWhitespace = word.trim() === ''
+
+        if (isWhitespace) {
+          return <span key={`space-${index}`} aria-hidden="true" className="w-[0.25em]" />
         }
 
         return (
-          <div key={index} className="overflow-hidden">
+          <div key={`word-${index}`} className="overflow-hidden" style={{ margin: '0 0.1em' }}>
             <motion.span variants={wordAnimation} className="inline-block">
               {word}
             </motion.span>
@@ -62,4 +73,5 @@ const WordReveal = ({ text, className }: WordRevealProps) => {
   )
 }
 
-export default WordReveal
+// Prevent unnecessary re-renders
+export default React.memo(WordReveal)

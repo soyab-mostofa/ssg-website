@@ -56,13 +56,13 @@ export default function ApplicationForm() {
               className="text-3xl font-medium"
               delay={0.2}
             />
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-7">
               <div className="space-y-2">
                 <Input
                   id="name"
                   placeholder="Enter your full name"
                   required
-                  className="w-full border-0 border-b focus-visible:ring-0"
+                  className="w-full border-0 border-b px-0 focus-visible:ring-0"
                 />
               </div>
               <div className="space-y-2">
@@ -71,7 +71,7 @@ export default function ApplicationForm() {
                   type="email"
                   placeholder="Enter your email address"
                   required
-                  className="w-full border-0 border-b focus-visible:ring-0"
+                  className="w-full border-0 border-b px-0 focus-visible:ring-0"
                 />
               </div>
               <div className="space-y-2">
@@ -80,7 +80,7 @@ export default function ApplicationForm() {
                   type="tel"
                   placeholder="Enter your phone number"
                   required
-                  className="w-full border-0 border-b focus-visible:ring-0"
+                  className="w-full border-0 border-b px-0 focus-visible:ring-0"
                 />
               </div>
               <div className="space-y-2">

@@ -52,11 +52,11 @@ const page = () => {
         dark
         subLeft="Conserving  natural resources like water is imperative to our vision as a sustainable clothing manufacturer. So, our approach is to reduce, reuse, and recycle. In 2020 alone, we have saved 24.31% of water, reducing 5% of wastewater!"
       >
-        <div className="gap container flex gap-4 md:gap-8">
+        <div className="container flex flex-wrap justify-between">
           {data.map((item, index) => (
             <div
               key={index}
-              className="w relative aspect-square h-[200] w-full overflow-x-scroll rounded-lg md:h-[420px] md:w-[420px]"
+              className="relative aspect-square w-full rounded-lg sm:w-[calc(33.33%-.75rem)]"
             >
               <Image
                 src={item.url}

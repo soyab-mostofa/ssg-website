@@ -183,7 +183,7 @@ export default function Menu() {
       <div className="menu-bar flex h-14 w-full items-center justify-between sm:h-24">
         <div className="menu-logo text-grayscale-black-900">
           <Link href="/">
-            <Image src="/logo.png" alt="logo" width={32} height={24} className="sm:h-8 sm:w-10" />
+            <Image src="/logo.png" alt="logo" width={40} height={40} className="sm:h-10 sm:w-10" />
           </Link>
         </div>
 

@@ -26,18 +26,20 @@ const AwardsGallery = () => {
   ]
 
   return (
-    <div className="bg-gray-100 px-4 py-8">
-      <div className="container grid grid-cols-1 gap-6 sm:grid-cols-2">
-        {galleryItems.map((item, index) => (
-          <div key={index} className="bg-white flex flex-col overflow-hidden">
-            <img src={item.image} alt={item.title} className="h-[351px] w-full object-cover" />
-            <div className="py-3">
-              <h3 className="mb-2 text-lg font-semibold">{item.title}</h3>
-              <p className="text-gray-600 text-sm">{item.description}</p>
-            </div>
+    <div className="container grid grid-cols-1 gap-6 sm:grid-cols-2">
+      {galleryItems.map((item, index) => (
+        <div key={index} className="flex flex-col overflow-hidden">
+          <img
+            src={item.image}
+            alt={item.title}
+            className="h-[351px] w-full rounded-lg object-cover"
+          />
+          <div className="py-3">
+            <h3 className="mb-2 text-lg font-semibold">{item.title}</h3>
+            <p className="text-gray-600 text-sm">{item.description}</p>
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
     </div>
   )
 }
