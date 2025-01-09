@@ -79,13 +79,13 @@ const SustainabilitySection = () => {
         src="/pattern-corner.png"
         alt="pattern"
         aria-hidden
-        className="absolute right-0 top-0 opacity-5"
+        className="absolute right-[-91px] top-[-109px] z-0 scale-50 opacity-5 md:right-0 md:top-0 md:scale-100"
       />
       <img
         src="/pattern-corner.png"
         alt="pattern"
         aria-hidden
-        className="absolute bottom-0 left-0 rotate-180 opacity-5"
+        className="absolute bottom-[-90px] left-[-92px] z-0 rotate-180 scale-50 opacity-5 md:scale-100"
       />
     </SectionLayout>
   )

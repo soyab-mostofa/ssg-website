@@ -11,7 +11,7 @@ interface AccordionItem {
   image: string
 }
 
-const items: AccordionItem[] = [
+export const sustainabilityItems: AccordionItem[] = [
   {
     title: 'Water',
     content:
@@ -42,7 +42,7 @@ export default function SustainabilityAccordion() {
   return (
     <div className="relative mt-16 space-y-4 bg-primary-blue-900 pb-16 pt-16 text-others-white sm:mt-24 sm:pb-24 sm:pt-24">
       <div className="container">
-        {items.map((item, index) => (
+        {sustainabilityItems.map((item, index) => (
           <div key={item.title} className="border-white/10 border-b last:border-none">
             <button
               onClick={() => toggleAccordion(index)}
