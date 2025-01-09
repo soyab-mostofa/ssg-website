@@ -2,18 +2,15 @@
 import { AnimatePresence, motion, Variants } from 'motion/react'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import Hamburger from 'hamburger-react'
-import { Facebook, Instagram, Linkedin, Twitter } from 'lucide-react'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
-import Button from '@/app/_components/shared/Button'
+
 export interface MenuData {
   title: string
   link: string
 }
-
-// variants.ts
 
 export const overlayVariants: Variants = {
   hidden: {
@@ -30,9 +27,9 @@ export const overlayVariants: Variants = {
     transition: {
       duration: 0.8,
       type: 'spring',
-      stiffness: 100,
+      stiffness: 300,
       damping: 20,
-      mass: 1.5,
+      mass: 1,
     },
   },
 }
@@ -42,8 +39,8 @@ export const containerVariants: Variants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.3,
+      staggerChildren: 0.1,
+      delayChildren: 0.5,
     },
   },
 }
@@ -88,17 +85,20 @@ export const contactVariants: Variants = {
   },
 }
 
-// MenuLink.tsx
-
 interface MenuLinkProps {
   href: string
   children: React.ReactNode
   isActive: boolean
+  onClick?: () => void
 }
 
-export const MenuLink = ({ href, children, isActive }: MenuLinkProps) => {
+export const MenuLink = ({ href, children, isActive, onClick }: MenuLinkProps) => {
   return (
-    <Link href={href} className="group relative overflow-hidden rounded-lg px-2 py-1">
+    <Link
+      href={href}
+      className="group relative overflow-hidden rounded-lg px-2 py-1"
+      onClick={onClick}
+    >
       <span className="relative z-10 text-lg">
         <motion.span
           className={cn(
@@ -134,6 +134,66 @@ export const MenuLink = ({ href, children, isActive }: MenuLinkProps) => {
   )
 }
 
+const modalVariants: Variants = {
+  hidden: {
+    y: '-100vh',
+  },
+  visible: {
+    y: 0,
+    transition: {
+      type: 'tween',
+      duration: 0.3,
+    },
+  },
+  exit: {
+    y: '-100vh',
+    transition: {
+      type: 'tween',
+      duration: 0.3,
+      delay: 0.5,
+    },
+  },
+}
+
+const linkItemVariants: Variants = {
+  hidden: { opacity: 0, y: '50%' },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: 'easeOut',
+    },
+  },
+  exit: {
+    opacity: 0,
+    y: '50%',
+    transition: {
+      duration: 0.2,
+      ease: 'easeOut',
+    },
+  },
+}
+
+const navLinksVariants: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.3,
+    },
+  },
+  exit: {
+    opacity: 0,
+    transition: {
+      staggerChildren: 0.05,
+      staggerDirection: -1,
+      duration: 0.2,
+      ease: 'easeOut',
+    },
+  },
+}
+
 const menuData: MenuData[] = [
   { title: 'Home', link: '/' },
   { title: 'About', link: '/about' },
@@ -142,20 +202,16 @@ const menuData: MenuData[] = [
   { title: 'Careers', link: '/career' },
 ]
 
-const socialIcons = [Facebook, Instagram, Twitter, Linkedin]
-
-export interface MenuData {
-  title: string
-  link: string
-}
-
 export default function Menu() {
   const pathName = usePathname()
-  const containerRef = useRef<HTMLDivElement | null>(null)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
+  }
+
+  const handleLinkClick = () => {
+    setIsMenuOpen(false)
   }
 
   useEffect(() => {
@@ -190,7 +246,12 @@ export default function Menu() {
         {/* Desktop Menu */}
         <nav className="hidden gap-8 sm:inline-flex">
           {menuData.map((item) => (
-            <MenuLink key={item.link} href={item.link} isActive={pathName === item.link}>
+            <MenuLink
+              key={item.link}
+              href={item.link}
+              isActive={pathName === item.link}
+              onClick={handleLinkClick}
+            >
               {item.title}
             </MenuLink>
           ))}
@@ -212,77 +273,41 @@ export default function Menu() {
       </div>
 
       {/* Mobile Menu Overlay */}
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {isMenuOpen && (
           <motion.div
-            ref={containerRef}
-            variants={overlayVariants}
+            className="bg-gray-900 fixed inset-0 flex items-center justify-center"
+            variants={modalVariants}
             initial="hidden"
             animate="visible"
-            exit="hidden"
-            className="absolute inset-0 top-14 z-40 flex h-[calc(100vh-3.5rem)] flex-col bg-others-white px-4"
+            exit="exit"
           >
-            <div className="flex h-full flex-col justify-between py-8">
-              <motion.nav
-                variants={containerVariants}
-                initial="hidden"
-                animate="visible"
-                exit="hidden"
-                className="flex flex-col space-y-6"
-              >
-                {menuData.map((item) => (
-                  <motion.div key={item.link} variants={itemVariants} className="overflow-hidden">
-                    <Link
-                      href={item.link}
-                      className={cn(
-                        'text-xl font-semibold',
-                        pathName === item.link
-                          ? 'text-grayscale-black-900'
-                          : 'text-grayscale-black-400',
-                      )}
-                    >
-                      {item.title}
-                    </Link>
-                  </motion.div>
-                ))}
-              </motion.nav>
-
-              <div className="space-y-8">
-                {/* Social Icons */}
-                <motion.div
-                  variants={socialVariants}
-                  initial="hidden"
-                  animate="visible"
-                  className="flex items-center gap-6"
-                >
-                  {socialIcons.map((Icon, index) => (
-                    <motion.a
+            <motion.div
+              className="bg-gray-900 relative w-full"
+              variants={navLinksVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+            >
+              <div className="flex h-full flex-col items-center justify-center gap-8">
+                {menuData.map((link, index) => (
+                  <Link href={link.link} key={index} onClick={handleLinkClick}>
+                    <motion.span
                       key={index}
-                      href="/"
-                      variants={itemVariants}
-                      className="text-grayscale-black-400 transition-colors hover:text-grayscale-black-900"
+                      className={cn(
+                        'hover:text-gray-300 cursor-pointer text-2xl font-light transition-colors',
+                        pathName === link.link
+                          ? 'text-secondary-red-500'
+                          : 'text-grayscale-black-800',
+                      )}
+                      variants={linkItemVariants}
                     >
-                      <Icon size={20} />
-                    </motion.a>
-                  ))}
-                </motion.div>
-
-                {/* Contact Info */}
-                <motion.div
-                  variants={contactVariants}
-                  initial="hidden"
-                  animate="visible"
-                  className="space-y-2 text-sm text-grayscale-black-400"
-                >
-                  <p>Shin Shin Group</p>
-                  <p>info@shinshingroup.com</p>
-                </motion.div>
-
-                <Link href="/contact">
-                  <Button className="mt-4 w-full py-3 text-sm">Contact Us</Button>
-                </Link>
+                      {link.title}
+                    </motion.span>
+                  </Link>
+                ))}
               </div>
-            </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

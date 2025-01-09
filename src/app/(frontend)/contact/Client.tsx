@@ -13,6 +13,7 @@ const Client = () => {
       }),
     [],
   )
+  console.log('Client')
   return (
     <div>
       <AboutHeader
