@@ -1,3 +1,5 @@
+import AnimateTextInView from '@/app/_components/animated/animateTextInView'
+import TextFadeUp from '@/app/_components/animated/TextFadeUp'
 import AboutHeader from '@/app/_components/pages/about/AboutHeader'
 import SectionLayout from '@/app/_components/shared/SectionLayout'
 import { Separator } from '@/components/ui/separator'
@@ -85,13 +87,14 @@ const page = () => {
                   {/* Content container */}
                   <div className="space-y-6 md:basis-1/2">
                     <div className="space-y-4">
-                      <h1 className="mt-4 text-2xl font-bold tracking-tight sm:mt-0 md:text-4xl">
-                        {factory.name}
-                      </h1>
-                      <p className="text-base text-muted-foreground">
-                        Lorem ipsum dolor sit amet consectetur. Egestas proin dolor in gravida
-                        lectus in nisi egestas. Donec lobortis nisl justo enim laoreet nec sed id.
-                      </p>
+                      <AnimateTextInView
+                        className="text-2xl font-bold tracking-tight sm:mt-0 md:text-4xl"
+                        text={factory.name}
+                      />
+                      <TextFadeUp
+                        className="text-muted-foreground"
+                        text="Lorem ipsum dolor sit amet consectetur. Egestas proin dolor in gravida lectus in nisi egestas. Donec lobortis nisl justo enim laoreet nec sed id."
+                      />
                     </div>
 
                     <div className="space-y-4">

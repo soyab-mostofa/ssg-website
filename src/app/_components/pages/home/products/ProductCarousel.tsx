@@ -148,7 +148,7 @@ export function ProductCarousel() {
               className="min-w-0 flex-[0_0_100%] pr-4 sm:flex-[0_0_50%] md:flex-[0_0_33.33%] lg:flex-[0_0_25%]"
             >
               <div className="relative ml-4 w-full pr-4 xl:mr-0">
-                <Card className="flex h-full w-full flex-col border-0">
+                <Card className="flex h-full w-full flex-col border-0 shadow-none">
                   <motion.div
                     className="relative ms-auto h-[300px] w-full p-0 sm:h-[400px]"
                     initial={{ width: '0%', opacity: 0 }}
@@ -189,7 +189,7 @@ export function ProductCarousel() {
                       {product.title}
                     </motion.h3>
                     <motion.p
-                      className="text-grayscale400 text-sub-heading-01"
+                      className="text-base text-grayscale-black-400"
                       variants={ANIMATION_VARIANTS.text}
                     >
                       {product.description}
@@ -206,7 +206,7 @@ export function ProductCarousel() {
           <button
             key={index}
             className={`mx-1 h-3 w-3 rounded-full ${
-              index === selectedIndex ? 'bg-primary' : 'bg-gray-300'
+              index === selectedIndex ? 'bg-secondary-red-500' : 'bg-grayscale-black-300'
             }`}
             onClick={() => emblaApi?.scrollTo(index)}
           />
