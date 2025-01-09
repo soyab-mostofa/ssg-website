@@ -1,3 +1,4 @@
+'use client'
 import AnimateTextInView from '@/app/_components/animated/animateTextInView'
 import TextFadeUp from '@/app/_components/animated/TextFadeUp'
 import AboutHeader from '@/app/_components/pages/about/AboutHeader'
@@ -6,6 +7,7 @@ import { Separator } from '@/components/ui/separator'
 import { cn } from '@/lib/utils'
 import { MapPin, Factory, Box } from 'lucide-react'
 import Image from 'next/image'
+import { motion } from 'motion/react'
 
 const factories = [
   {
@@ -69,9 +71,12 @@ const page = () => {
                   })}
                 >
                   {/* Image container */}
-                  <div
+                  <motion.div
+                    initial={false}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true, margin: '-100px', amount: 0.5 }}
                     className={cn(
-                      'relative h-[400px] w-full overflow-hidden rounded-lg bg-muted md:basis-1/2',
+                      'relative h-[280px] w-full overflow-hidden rounded-lg bg-muted sm:h-[400px] md:basis-1/2',
                       { 'sm:mr-8': index % 2 === 0 },
                       { 'sm:ml-8': index % 2 !== 0 },
                     )}
@@ -82,19 +87,19 @@ const page = () => {
                       alt={factory.name}
                       className="inset-0 object-cover object-center"
                     />
-                  </div>
+                  </motion.div>
 
                   {/* Content container */}
                   <div className="space-y-6 md:basis-1/2">
                     <div className="space-y-4">
                       <AnimateTextInView
-                        className="text-2xl font-bold tracking-tight sm:mt-0 md:text-4xl"
+                        className="mt-4 w-full text-2xl font-bold tracking-tight sm:mt-0 md:text-4xl"
                         text={factory.name}
                       />
-                      <TextFadeUp
-                        className="text-muted-foreground"
-                        text="Lorem ipsum dolor sit amet consectetur. Egestas proin dolor in gravida lectus in nisi egestas. Donec lobortis nisl justo enim laoreet nec sed id."
-                      />
+                      <p className="text-muted-foreground">
+                        Lorem ipsum dolor sit amet consectetur. Egestas proin dolor in gravida
+                        lectus in nisi egestas. Donec lobortis nisl justo enim laoreet nec sed id.
+                      </p>
                     </div>
 
                     <div className="space-y-4">
