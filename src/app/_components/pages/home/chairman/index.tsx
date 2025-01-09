@@ -16,7 +16,7 @@ const ChairmansThoughts = () => {
         <div className="top-8">
           <SectionChip>CHAIRMAN&apos;S THOUGHTS</SectionChip>
           <DesktopQuote paragraph="Continuous improvement is not just our goal, it's in our DNA. We strive to surpass our achievements every day, empowering our people and prioritizing eco-friendly RMG production to become the top global apparel and textile supplier." />
-          <div className="flex flex-col justify-between sm:gap-8 md:flex-row">
+          <div className="flex flex-col justify-between md:flex-row md:gap-8">
             <div className="relative mb-4 mt-12 md:mb-16 md:hidden">
               <AnimatedQuote paragraph="Continuous improvement is not just our goal, it's in our DNA. We strive to surpass our achievements every day, empowering our people and prioritizing eco-friendly RMG production to become the top global apparel and textile supplier." />
             </div>
@@ -46,34 +46,9 @@ const ChairmansThoughts = () => {
                   sizes="(max-width: 768px) 100vw, 380px"
                 />
               </motion.div>
-              {/* <motion.div
-                initial={{ y: '-100%' }}
-                whileInView={{
-                  y: '0%',
-                  transition: {
-                    duration: 1,
-                    easings: 'easeOut',
-                    easing: [0.65, 0.02, 0.23, 1],
-                    type: 'spring',
-                    damping: 100,
-                    stiffness: 300,
-                    delay: 0.5,
-                  },
-                }}
-                viewport={{ once: true, margin: '-200px' }}
-                transition={{ duration: 0.8, ease: 'easeOut', staggerChildren: 0.5 }}
-                className="flex flex-col gap-1 overflow-hidden"
-              >
-                <motion.p className="mt-3 whitespace-nowrap text-xl inline-block md:text-3xl font-bold">
-                  Mohammad Sohel Sadat
-                </motion.p>
-                <motion.p className="text-lg whitespace-nowrap inline-block text-grayscale-black-400 md:text-2xl">
-                  Chairman, Shin Shin Group
-                </motion.p>
-              </motion.div> */}
               <AnimateTextInView
-                text="Mohammad Sohel Sadat"
-                className="flex pt-4 text-2xl font-bold text-grayscale-black-400 md:text-3xl"
+                text="  Mohammad Sohel Sadat"
+                className="mt-4 text-2xl font-bold text-grayscale-black-400 md:text-3xl"
               />
               <AnimateTextInView
                 text="Chairman, Shin Shin Group"

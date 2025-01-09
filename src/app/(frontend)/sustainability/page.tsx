@@ -8,6 +8,7 @@ import SustainableDevelopment from './SustainableDevelopment'
 import ImpactStories from '@/app/_components/pages/home/impact-stories'
 import { motion, AnimatePresence } from 'motion/react'
 import Image from 'next/image'
+import SustainabilityReport from './sustainability-report'
 
 const SustainabilityPage = () => {
   const [active, setActive] = useState<number>(0)
@@ -32,30 +33,41 @@ const SustainabilityPage = () => {
         className="py-0 pt-16 md:py-0 md:pt-24"
         subLeft={sustainabilityItems[active].content}
       >
-        <div className="relative mx-auto h-[500px] max-w-[1200px] overflow-hidden rounded-[8px] bg-cover">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={active}
-              className="absolute inset-0"
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.5, ease: 'easeInOut' }}
-            >
-              <Image
-                src={sustainabilityItems[active].image}
-                alt={sustainabilityItems[active].title}
-                fill
-                className="h-full w-full object-cover"
-                priority
-              />
-            </motion.div>
-          </AnimatePresence>
+        <div className="relative w-full">
+          {/* Responsive container with dynamic padding-top based on aspect ratio */}
+          <div className="relative w-full pb-[41.66%] sm:pb-[41.66%] md:pb-[41.66%] lg:pb-[41.66%]">
+            <div className="container absolute inset-0 mx-auto">
+              <div className="relative h-full w-full overflow-hidden rounded-lg bg-grayscale-black-100">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={active}
+                    className="absolute inset-0 rounded-lg"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -20 }}
+                    transition={{ duration: 0.5, ease: 'easeInOut' }}
+                  >
+                    <Image
+                      src={sustainabilityItems[active].image}
+                      alt={sustainabilityItems[active].title}
+                      fill
+                      sizes="(max-width: 640px) 100vw, 
+                         (max-width: 1024px) 90vw,
+                         80vw"
+                      className="object-cover"
+                      priority
+                    />
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+            </div>
+          </div>
         </div>
         <SustainabilityAccordion />
         <CarbonWipeout />
         <SustainableDevelopment />
         <ImpactStories />
+        <SustainabilityReport />
       </SectionLayout>
     </div>
   )

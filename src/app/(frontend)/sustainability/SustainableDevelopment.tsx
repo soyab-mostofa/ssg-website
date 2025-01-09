@@ -23,7 +23,7 @@ const SustainableDevelopment = () => {
             Pathway to Sustainable Development Goals
           </h3>
         </div>
-        <div className="grid grid-cols-4 gap-6 sm:gap-10">
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-10">
           {data.map((url, index) => {
             return (
               <div key={index} className="relative flex aspect-square items-center justify-center">
