@@ -14,6 +14,7 @@ export const GET = async () => {
       },
     },
   })
+  console.log(data)
 
   return Response.json(data)
 }

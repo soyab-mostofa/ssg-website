@@ -18,19 +18,15 @@ import {
 } from '@/components/ui/select'
 import Link from 'next/link'
 import SustainabilityReportSkeleton from './skeleton'
-import axios from 'axios'
-
-const fetchReports = async () => {
-  const { data } = await axios.get('/api/latest-reports')
-  return data as SustainabilityReportType[]
-}
+import { getReports } from '@/app/actions'
 
 export default function SustainabilityReport() {
   const [reports, setReports] = useState<SustainabilityReportType[]>([])
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await fetchReports()
+      const data = await getReports()
+      if (!data) return
       setReports(data)
     }
     fetchData()
@@ -42,14 +38,16 @@ export default function SustainabilityReport() {
 
   useEffect(() => {
     setIsLoading(false)
-  }, [])
+    setReports(reports)
+    console.log(reports)
+  }, [reports])
 
   if (isLoading) {
     return <SustainabilityReportSkeleton />
   }
 
   const file = reports.find((report) => Number(report.year) === year)?.reportFile as Media
-  if (file.url === null || file.url === '' || file.url === undefined) {
+  if (!file || file.url === null || file.url === '' || file.url === undefined) {
     return <SustainabilityReportSkeleton />
   }
 
