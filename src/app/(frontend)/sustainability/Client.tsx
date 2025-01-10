@@ -11,9 +11,8 @@ import Image from 'next/image'
 import SustainabilityReport from './sustainability-report'
 import { SustainabilityReport as SustainabilityReportType } from '@/payload-types'
 
-const SustainabilityPage = ({ reports }: { reports: SustainabilityReportType[] }) => {
+const SustainabilityPage = () => {
   const [active, setActive] = useState<number>(0)
-  console.log(reports)
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -69,7 +68,7 @@ const SustainabilityPage = ({ reports }: { reports: SustainabilityReportType[] }
         <CarbonWipeout />
         <SustainableDevelopment />
         <ImpactStories />
-        <SustainabilityReport reports={reports} />
+        <SustainabilityReport />
       </SectionLayout>
     </div>
   )

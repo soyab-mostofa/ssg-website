@@ -7,7 +7,12 @@ export const GET = async () => {
   })
 
   const data = await payload.find({
-    collection: 'users',
+    collection: 'sustainability-reports',
+    where: {
+      year: {
+        equals: 2023,
+      },
+    },
   })
 
   return Response.json(data)
