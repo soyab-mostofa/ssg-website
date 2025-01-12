@@ -101,14 +101,35 @@ export interface Media {
  */
 export interface SustainabilityReport {
   id: number;
+  /**
+   * The year of the sustainability report (e.g., 2023)
+   */
   year: string;
+  /**
+   * The title of the report (e.g., Sustainability Report)
+   */
   title: string;
+  /**
+   * Cover image for the report (Recommended aspect ratio: 6:8)
+   */
   coverImage: number | Media;
+  /**
+   * PDF file of the sustainability report
+   */
   reportFile: number | Media;
   status: 'draft' | 'published';
+  /**
+   * The date when this report was published
+   */
   publishedDate: string;
   meta?: {
+    /**
+     * Brief description of the report for SEO purposes
+     */
     description?: string | null;
+    /**
+     * Comma-separated keywords for SEO
+     */
     keywords?: string | null;
   };
   updatedAt: string;

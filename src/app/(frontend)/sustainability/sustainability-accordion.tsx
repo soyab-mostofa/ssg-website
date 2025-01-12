@@ -123,7 +123,7 @@ export default function SustainabilityAccordion() {
         src="/pattern-corner.png"
         alt="pattern"
         aria-hidden
-        className="absolute bottom-[-90px] left-[-92px] z-0 rotate-180 scale-50 opacity-5 md:scale-100"
+        className="absolute bottom-0 left-0 z-0 rotate-180 scale-50 opacity-5 md:bottom-[-90px] md:left-[-92px] md:scale-100"
       />
     </div>
   )

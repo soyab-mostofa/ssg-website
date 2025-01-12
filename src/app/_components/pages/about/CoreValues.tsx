@@ -1,56 +1,70 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Card } from '@/components/ui/card'
-import React from 'react'
+import { Sprout, Lightbulb, Shield, Users, Award, HandshakeIcon } from 'lucide-react'
+import React, { memo } from 'react'
+
+const ValueCard = memo(
+  ({ icon: Icon, title, description }: { icon: any; title: string; description: string }) => (
+    <Card className="p-6">
+      <div className="w-fit rounded-sm bg-secondary-red-600 p-3 text-primary-foreground">
+        <Icon size={24} />
+      </div>
+      <p className="pb-2 pt-3 text-xl font-semibold sm:text-2xl">{title}</p>
+      <p className="text-base text-muted-foreground">{description}</p>
+    </Card>
+  ),
+)
+
+ValueCard.displayName = 'ValueCard'
 
 const CoreValues = () => {
   const values = [
     {
       title: 'Sustainability',
       description: 'Committed to eco-friendly practices for a greener future.',
-      icon: '🌱', // Replace with an actual icon if needed
+      icon: Sprout,
     },
     {
       title: 'Innovation',
       description: 'Driving progress through cutting-edge solutions.',
-      icon: '💡', // Replace with an actual icon if needed
+      icon: Lightbulb,
     },
     {
       title: 'Integrity',
       description: 'Upholding transparency and ethical practices in all endeavors.',
-      icon: '🛡️', // Replace with an actual icon if needed
+      icon: Shield,
     },
     {
       title: 'Inclusivity',
       description: 'Fostering diversity and empowering marginalized communities.',
-      icon: '🤝', // Replace with an actual icon if needed
+      icon: Users,
     },
     {
       title: 'Quality',
       description: 'Delivering excellence through uncompromising standards.',
-      icon: '⭐', // Replace with an actual icon if needed
+      icon: Award,
     },
     {
       title: 'Collaboration',
       description: 'Building strong partnerships to achieve shared success.',
-      icon: '🤝', // Replace with an actual icon if needed
+      icon: HandshakeIcon,
     },
   ]
 
   return (
     <div className="container">
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {values.map((value, index) => (
-          <Card
-            key={index}
-            className="text-black flex flex-col items-start rounded-lg bg-others-white p-6 shadow-md"
-          >
-            <div className="mb-4 text-3xl">{value.icon}</div>
-            <h3 className="mb-2 text-2xl font-semibold">{value.title}</h3>
-            <p className="text-base">{value.description}</p>
-          </Card>
+        {values.map((value) => (
+          <ValueCard
+            key={value.title}
+            icon={value.icon}
+            title={value.title}
+            description={value.description}
+          />
         ))}
       </div>
     </div>
   )
 }
 
-export default CoreValues
+export default memo(CoreValues)

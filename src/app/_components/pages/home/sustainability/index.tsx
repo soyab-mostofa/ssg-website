@@ -25,8 +25,8 @@ const SustainabilitySection = () => {
       dark
       subBottom="Lorem ipsum dolor sit amet consectetur. Mattis arcu lectus morbi a ut massa eget mauris. Dis facilisi gravida neque elementum auctor felis neque facilisis."
       chip="Sustainability"
-      headingWidth="687px"
       className="relative overflow-hidden py-16 md:py-28"
+      rightButton="Our Sustainability Efforts"
     >
       <div ref={containerRef}>
         <Carousel
@@ -36,7 +36,7 @@ const SustainabilitySection = () => {
           }}
           className="z-50 w-full overflow-x-hidden"
         >
-          <CarouselContent className="xl:ml-[calc((100vw-1240px)/2)]">
+          <CarouselContent className="xl:ml-[calc((100vw-1270px)/2)]">
             {data.map((url, index) => (
               <CarouselItem
                 key={index}
@@ -85,7 +85,7 @@ const SustainabilitySection = () => {
         src="/pattern-corner.png"
         alt="pattern"
         aria-hidden
-        className="absolute bottom-[-90px] left-[-92px] z-0 rotate-180 scale-50 opacity-5 md:scale-100"
+        className="absolute bottom-[-90px] left-[-92px] z-0 rotate-180 scale-50 opacity-5 md:bottom-0 md:left-0 md:scale-100"
       />
     </SectionLayout>
   )

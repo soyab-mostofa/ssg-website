@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
 
 import { motion } from 'motion/react'
@@ -18,6 +17,7 @@ import AnimateTextInView from '@/app/_components/animated/animateTextInView'
 import Button from '@/app/_components/shared/Button'
 
 export default function ApplicationForm() {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [file, setFile] = useState<File | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
 
@@ -104,7 +104,7 @@ export default function ApplicationForm() {
                   <Label htmlFor="resume" className="block">
                     Upload Resume<span className="text-red-500 text-sm">*</span>
                   </Label>
-                  <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
+                  <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
                     <Input
                       id="resume"
                       type="file"
@@ -114,7 +114,7 @@ export default function ApplicationForm() {
                       placeholder="Upload resume"
                       onChange={(e) => setFile(e.target.files?.[0] || null)}
                     />
-                    <span className="text-sm text-grayscale-black-400">Max 5mb</span>
+                    <span className="text-sm text-grayscale-black-400">(Max 5mb)</span>
                   </div>
                 </div>
 

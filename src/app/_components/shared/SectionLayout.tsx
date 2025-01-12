@@ -3,6 +3,9 @@ import SectionChip from './SectionChip'
 import TextFadeUp from '../animated/TextFadeUp'
 import AnimateTextInView from '../animated/animateTextInView'
 import { cn } from '@/lib/utils'
+import Button from './Button'
+import Link from 'next/link'
+import { ArrowRight } from 'lucide-react'
 
 interface SectionProps {
   chip?: string
@@ -14,6 +17,7 @@ interface SectionProps {
   subBottom?: string
   headingWidth?: string
   grayBG?: boolean
+  rightButton?: string
 }
 
 const SectionLayout = ({
@@ -26,6 +30,7 @@ const SectionLayout = ({
   dark,
   grayBG,
   className,
+  rightButton,
 }: SectionProps) => {
   return (
     <section
@@ -39,7 +44,7 @@ const SectionLayout = ({
       <div className="container">
         <div
           className={cn('mb-10 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-10', {
-            'md:grid-cols-1': !subLeft,
+            'md:grid-cols-1': !subLeft && !rightButton,
           })}
         >
           <div
@@ -73,6 +78,13 @@ const SectionLayout = ({
               })}
               text={subLeft}
             />
+          )}
+          {rightButton && (
+            <Link className="inline-flex justify-end self-end" href="#">
+              <Button>
+                <ArrowRight /> {rightButton}
+              </Button>
+            </Link>
           )}
         </div>
       </div>

@@ -9,7 +9,6 @@ import ImpactStories from '@/app/_components/pages/home/impact-stories'
 import { motion, AnimatePresence } from 'motion/react'
 import Image from 'next/image'
 import SustainabilityReport from './sustainability-report'
-import { SustainabilityReport as SustainabilityReportType } from '@/payload-types'
 
 const SustainabilityPage = () => {
   const [active, setActive] = useState<number>(0)
@@ -34,7 +33,7 @@ const SustainabilityPage = () => {
         className="py-0 pt-16 md:py-0 md:pt-24"
         subLeft={sustainabilityItems[active].content}
       >
-        <div className="relative w-full">
+        <div className="relative mx-auto aspect-[2.4/1] max-w-[1240px]">
           {/* Responsive container with dynamic padding-top based on aspect ratio */}
           <div className="relative w-full pb-[41.66%] sm:pb-[41.66%] md:pb-[41.66%] lg:pb-[41.66%]">
             <div className="container absolute inset-0 mx-auto">
