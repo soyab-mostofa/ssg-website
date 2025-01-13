@@ -66,7 +66,7 @@ export const Timeline = ({ data, colors = {} }: TimelineProps) => {
       ref={containerRef}
       style={{ backgroundColor: mergedColors.background }}
     >
-      <div className="mx-auto max-w-7xl px-4 py-20 md:px-8 lg:px-10">
+      <div className="mx-auto -mb-20 max-w-7xl px-4 py-20 md:px-8 lg:px-10">
         <AnimateTextInView text="Timeline Journey" className="text-3xl font-bold md:text-5xl" />
         <p className="max-w-sm text-sm md:text-base" style={{ color: mergedColors.secondaryText }}>
           Track the progress through time
