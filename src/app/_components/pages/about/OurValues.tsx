@@ -23,7 +23,7 @@ const OurValues = () => {
         src="/pattern-corner.png"
         alt="pattern"
         aria-hidden
-        className="absolute bottom-[-90px] left-[-92px] z-0 rotate-180 scale-50 opacity-5 md:scale-100"
+        className="absolute bottom-[-90px] left-[-92px] z-0 rotate-180 scale-50 opacity-5 md:bottom-0 md:left-0 md:scale-100"
       />
     </SectionLayout>
   )

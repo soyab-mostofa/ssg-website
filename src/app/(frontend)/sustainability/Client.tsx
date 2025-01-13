@@ -9,6 +9,7 @@ import ImpactStories from '@/app/_components/pages/home/impact-stories'
 import { motion, AnimatePresence } from 'motion/react'
 import Image from 'next/image'
 import SustainabilityReport from './sustainability-report'
+import OurCertifications from './OurCertifications'
 
 const SustainabilityPage = () => {
   const [active, setActive] = useState<number>(0)
@@ -68,6 +69,7 @@ const SustainabilityPage = () => {
         <SustainableDevelopment />
         <ImpactStories />
         <SustainabilityReport />
+        <OurCertifications />
       </SectionLayout>
     </div>
   )

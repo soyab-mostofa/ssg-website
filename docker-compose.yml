@@ -1,68 +1,92 @@
-version: '3'
+# docker-compose.yml
+version: '3.8' # Updated to latest stable version
 
 services:
   payload:
-    image: node:22.12.0-alpine
+    container_name: shinshin-app
+    build:
+      context: .
+      target: deps
+      dockerfile: Dockerfile
     ports:
       - '3000:3000'
     volumes:
-      - .:/home/node/app
+      - .:/home/node/app:cached
       - node_modules:/home/node/app/node_modules
     working_dir: /home/node/app/
+    stdin_open: true
+    tty: true
     command: sh -c "corepack enable && corepack prepare pnpm@latest --activate && pnpm install && pnpm dev"
     depends_on:
-      # - mongo
-      - postgres
-      - minio
+      postgres:
+        condition: service_healthy
+      minio:
+        condition: service_started
     env_file:
       - .env
+    environment:
+      - NODE_ENV=development
+    restart: unless-stopped
 
   minio:
-    image: quay.io/minio/minio
+    container_name: minio
+    image: quay.io/minio/minio:latest # Specified latest tag
     command: server /data --console-address ":9090"
-    restart: always
+    restart: unless-stopped
     ports:
-      - 9000:9000
-      - 9090:9090
+      - '9000:9000'
+      - '9090:9090'
     volumes:
       - minio_storage:/data
     environment:
-      - MINIO_ROOT_USER=admin
-      - MINIO_ROOT_PASSWORD=Secure123$
+      MINIO_ROOT_USER: ${S3_ACCESS_KEY_ID}
+      MINIO_ROOT_PASSWORD: ${S3_SECRET_ACCESS_KEY}
+    healthcheck:
+      test: ['CMD', 'curl', '-f', 'http://localhost:9000/minio/health/live']
+      interval: 30s
+      timeout: 20s
+      retries: 3
 
   postgres:
-    restart: always
-    image: postgres:latest
+    container_name: postgres
+    image: postgres:16-alpine # Using specific version
     volumes:
       - pgdata:/var/lib/postgresql/data
     ports:
-      - '5432:5432'
+      - '5432:5432' # Exposed to host for external access
     environment:
-      - POSTGRES_DB=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=password
+      POSTGRES_DB: ${POSTGRES_DB:-postgres}
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-password}
+      POSTGRES_HOST_AUTH_METHOD: ${POSTGRES_HOST_AUTH_METHOD:-trust}
     healthcheck:
-      test: ['CMD-SHELL', 'pg_isready -d $$POSTGRES_DB -U $$POSTGRES_USER']
-      interval: 1s
+      test: ['CMD-SHELL', 'pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}']
+      interval: 5s
       timeout: 5s
-      retries: 10
+      retries: 5
+    restart: unless-stopped
 
   pgadmin:
-    image: dpage/pgadmin4
-    container_name: pgadmin4_container
-    restart: always
+    container_name: pgadmin
+    image: dpage/pgadmin4:latest
+    restart: unless-stopped
     ports:
       - '8888:80'
     environment:
-      PGADMIN_DEFAULT_EMAIL: soyabmostofa@gmail.com
-      PGADMIN_DEFAULT_PASSWORD: password
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-soyabmostofa@gmail.com}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-password}
     volumes:
       - pgadmin-data:/var/lib/pgadmin
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
+
 volumes:
-  # data:
   pgdata:
+    name: shinshin-pgdata
   node_modules:
-  minio_storage: {}
+    name: shinshin-node-modules
+  minio_storage:
+    name: shinshin-minio
   pgadmin-data:
+    name: shinshin-pgadmin

@@ -34,12 +34,18 @@ export default function Template({ children }: TemplateProps) {
     <div ref={scrollRef}>
       {/* Progress bar */}
       <motion.div
-        className="bg-blue-500 fixed left-0 right-0 top-0 z-50 h-1 origin-left"
+        className="fixed left-0 right-0 top-0 z-50 h-1 origin-left bg-primary-blue-900"
         style={{ scaleX }}
       />
 
       {/* Main content */}
-      <div className="relative">{children}</div>
+      <motion.div
+        className="relative"
+        initial={false}
+        animate={{ opacity: 1, transition: { duration: 0.5 } }}
+      >
+        {children}
+      </motion.div>
     </div>
   )
 }

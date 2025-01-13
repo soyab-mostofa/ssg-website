@@ -1,15 +1,22 @@
 'use client'
 import AnimateTextInView from '@/app/_components/animated/animateTextInView'
-import TextFadeUp from '@/app/_components/animated/TextFadeUp'
 import AboutHeader from '@/app/_components/pages/about/AboutHeader'
 import SectionLayout from '@/app/_components/shared/SectionLayout'
 import { Separator } from '@/components/ui/separator'
 import { cn } from '@/lib/utils'
-import { MapPin, Factory, Box } from 'lucide-react'
+import { MapPin, Factory, Box, LucideIcon } from 'lucide-react'
 import Image from 'next/image'
 import { motion } from 'motion/react'
 
-const factories = [
+interface Factory {
+  image: string
+  name: string
+  location: string
+  capacity: string
+  productType: string
+}
+
+const factories: Factory[] = [
   {
     image: '/shin-shin-apperal.png',
     name: 'Shin Shin Apparels Ltd.',
@@ -40,117 +47,183 @@ const factories = [
   },
 ]
 
-const page = () => {
+const imageVariants = {
+  hidden: {
+    scale: 1.2,
+    opacity: 0,
+  },
+  visible: {
+    scale: 1,
+    opacity: 1,
+    transition: {
+      duration: 0.8,
+      ease: 'easeOut',
+    },
+  },
+}
+
+const infoVariants = {
+  hidden: {
+    opacity: 0,
+    x: -20,
+  },
+  visible: (index: number) => ({
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.5,
+      ease: 'easeOut',
+      delay: index * 0.1,
+    },
+  }),
+}
+
+interface FactoryImageProps {
+  src: string
+  alt: string
+}
+
+const FactoryImage: React.FC<FactoryImageProps> = ({ src, alt }) => {
+  return (
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: '-100px', amount: 0.3 }}
+      variants={imageVariants}
+      className="relative h-full w-full"
+    >
+      <Image
+        fill
+        src={src}
+        alt={alt}
+        className="object-cover object-center"
+        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+        priority={false}
+        loading="lazy"
+        quality={85}
+      />
+    </motion.div>
+  )
+}
+
+interface FactoryInfoProps {
+  icon: LucideIcon
+  label: string
+  value: string
+  index: number
+}
+
+const FactoryInfo: React.FC<FactoryInfoProps> = ({ icon: Icon, label, value, index }) => (
+  <motion.div
+    className="flex items-center gap-2 sm:gap-3"
+    variants={infoVariants}
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true, margin: '-50px' }}
+    custom={index}
+  >
+    <div className="rounded-full bg-primary-blue-500 fill-primary-blue-100 p-1.5 sm:p-2">
+      <Icon color="white" className="h-5 w-5 sm:h-6 sm:w-6" />
+    </div>
+    <div>
+      <div className="text-sm font-medium sm:text-base">{label}</div>
+      <div className="text-xs text-muted-foreground sm:text-sm">{value}</div>
+    </div>
+  </motion.div>
+)
+
+const Page: React.FC = () => {
   return (
     <>
       <AboutHeader
         heading={['Our', 'Facilities']}
         sub="Shin Shin Group is one of the largest conglomerates in Bangladesh, exporting apparel worldwide. The group comprises five factories."
       />
-      <SectionLayout
-        subLeft="Lorem ipsum dolor sit amet consectetur. Tincidunt id justo ante tortor pellentesque euismod. Condimentum amet sagittis bibendum purus tellus mauris cursus."
-        chip="Facilities"
-        heading="Our Facilities at a Glance"
-        headingWidth="481px"
-        className="md:pb-0"
-      >
-        <div className="flex flex-col gap-4">
-          {factories.map((factory, index) => {
-            return (
+      <div className="px-4 sm:px-6 md:px-8">
+        <SectionLayout
+          subLeft="Lorem ipsum dolor sit amet consectetur. Tincidunt id justo ante tortor pellentesque euismod. Condimentum amet sagittis bibendum purus tellus mauris cursus."
+          chip="Facilities"
+          heading="Our Facilities at a Glance"
+          headingWidth="481px"
+          className="md:pb-0"
+        >
+          <div className="container flex flex-col gap-8 last:mb-16 sm:gap-12 md:gap-16">
+            {factories.map((factory, index) => (
               <section
                 key={index}
                 className={cn(
-                  'container mb-8 md:mb-24',
-                  { 'sm:mt-14': index == 0 },
+                  'w-full',
+                  { 'sm:mt-8': index === 0 },
                   { 'mb-0': index === factories.length - 1 },
                 )}
               >
                 <div
-                  className={cn('flex flex-col items-center sm:flex-row', {
-                    'sm:flex-row-reverse': index % 2 != 0,
+                  className={cn('flex flex-col gap-6 sm:gap-8', {
+                    'sm:flex-row': index % 2 === 0,
+                    'sm:flex-row-reverse': index % 2 !== 0,
                   })}
                 >
                   {/* Image container */}
                   <motion.div
-                    initial={false}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true, margin: '-100px', amount: 0.5 }}
                     className={cn(
-                      'relative h-[280px] w-full overflow-hidden rounded-lg bg-muted sm:h-[400px] md:basis-1/2',
-                      { 'sm:mr-8': index % 2 === 0 },
-                      { 'sm:ml-8': index % 2 !== 0 },
+                      'relative h-[200px] w-full overflow-hidden rounded-lg bg-muted sm:h-[300px] md:h-[400px]',
+                      'sm:basis-1/2',
+                      { 'sm:mr-6 md:mr-8': index % 2 === 0 },
+                      { 'sm:ml-6 md:ml-8': index % 2 !== 0 },
                     )}
                   >
-                    <Image
-                      fill
-                      src={factory.image}
-                      alt={factory.name}
-                      className="inset-0 object-cover object-center"
-                    />
+                    <FactoryImage src={factory.image} alt={factory.name} />
                   </motion.div>
 
                   {/* Content container */}
-                  <div className="space-y-6 md:basis-1/2">
-                    <div className="space-y-4">
+                  <div className="flex flex-col gap-4 sm:basis-1/2 sm:gap-6">
+                    <div className="space-y-3 sm:space-y-4">
                       <AnimateTextInView
-                        className="mt-4 w-full text-2xl font-bold tracking-tight sm:mt-0 md:text-4xl"
+                        className="text-xl font-bold tracking-tight sm:text-2xl md:text-4xl"
                         text={factory.name}
                       />
-                      <p className="text-muted-foreground">
-                        Lorem ipsum dolor sit amet consectetur. Egestas proin dolor in gravida
-                        lectus in nisi egestas. Donec lobortis nisl justo enim laoreet nec sed id.
-                      </p>
+                      <AnimateTextInView
+                        childClass="text-sm sm:text-base"
+                        className="text-muted-foreground"
+                        text="Lorem ipsum dolor sit amet consectetur. Egestas roin dolor in gravida
+                      lectus in nisi egestas. Donec lobortis nisl justo enim laoreet nec sed id."
+                      />
                     </div>
 
-                    <div className="space-y-4">
-                      <div className="flex items-center gap-3">
-                        <div className="rounded-full bg-primary-blue-500 fill-primary-blue-100 p-2">
-                          <MapPin color="white" className="z-10 h-6 w-6" />
-                        </div>
-                        <div>
-                          <div className="text-lg font-medium">Location</div>
-                          <div className="text-base text-muted-foreground">{factory.location}</div>
-                        </div>
-                      </div>
-
-                      <div className="flex items-center gap-3">
-                        <div className="rounded-full bg-primary-blue-500 fill-primary-blue-100 p-2">
-                          <Factory color="white" className="z-10 h-6 w-6" />
-                        </div>
-                        <div>
-                          <div className="font-medium">Capacity</div>
-                          <div className="text-muted-foreground">{factory.capacity}</div>
-                        </div>
-                      </div>
-
-                      <div className="flex items-center gap-3">
-                        <div className="rounded-full bg-primary-blue-500 fill-primary-blue-100 p-2">
-                          <Box color="white" className="z-10 h-6 w-6" />
-                        </div>
-                        <div>
-                          <div className="font-medium">Product Type</div>
-                          <div className="text-muted-foreground">{factory.productType}</div>
-                        </div>
-                      </div>
+                    <div className="flex flex-col gap-3 sm:gap-4">
+                      <FactoryInfo
+                        icon={MapPin}
+                        label="Location"
+                        value={factory.location}
+                        index={0}
+                      />
+                      <FactoryInfo
+                        icon={Factory}
+                        label="Capacity"
+                        value={factory.capacity}
+                        index={1}
+                      />
+                      <FactoryInfo
+                        icon={Box}
+                        label="Product Type"
+                        value={factory.productType}
+                        index={2}
+                      />
                     </div>
                   </div>
                 </div>
-                <Separator
-                  className={cn(
-                    'mt-8 hidden h-px w-full bg-grayscale-black-200 md:mt-24 md:inline-block',
-                    {
-                      hidden: index % 2 != 0,
-                      'md:hidden': index % 2 !== 0,
-                    },
-                  )}
-                />
+                {index !== factories.length - 1 && (
+                  <Separator
+                    className={cn('mt-8 h-px w-full bg-grayscale-black-200 sm:mt-12 md:mt-16')}
+                  />
+                )}
               </section>
-            )
-          })}
-        </div>
-      </SectionLayout>
+            ))}
+          </div>
+        </SectionLayout>
+      </div>
     </>
   )
 }
 
-export default page
+export default Page

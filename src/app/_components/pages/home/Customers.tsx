@@ -86,7 +86,7 @@ export default function CustomersSection() {
         <AnimatePresence>
           {!isOpen && (
             <motion.div
-              className="from-white via-white/70 to-transparent absolute inset-0 z-10 bg-gradient-to-t"
+              className="to-transparent absolute inset-0 z-10 bg-gradient-to-t from-others-white via-others-white/70"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}

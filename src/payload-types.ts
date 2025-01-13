@@ -14,15 +14,23 @@ export interface Config {
     users: User;
     media: Media;
     'sustainability-reports': SustainabilityReport;
+    'job-applications': JobApplication;
+    'job-listings': JobListing;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
-  collectionsJoins: {};
+  collectionsJoins: {
+    'job-listings': {
+      Applications: 'job-applications';
+    };
+  };
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     'sustainability-reports': SustainabilityReportsSelect<false> | SustainabilityReportsSelect<true>;
+    'job-applications': JobApplicationsSelect<false> | JobApplicationsSelect<true>;
+    'job-listings': JobListingsSelect<false> | JobListingsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -65,6 +73,7 @@ export interface UserAuthOperations {
  */
 export interface User {
   id: number;
+  role?: ('admin' | 'user') | null;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -138,6 +147,76 @@ export interface SustainabilityReport {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "job-applications".
+ */
+export interface JobApplication {
+  id: number;
+  fullName: string;
+  email: string;
+  phoneNumber: string;
+  position: number | JobListing;
+  resume: number | Media;
+  status?: ('pending' | 'reviewing' | 'shortlisted' | 'interview' | 'offered' | 'hired' | 'rejected') | null;
+  termsAccepted: boolean;
+  privacyPolicyAccepted: boolean;
+  /**
+   * Internal notes about the candidate
+   */
+  internalNotes?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "job-listings".
+ */
+export interface JobListing {
+  id: number;
+  jobTitle: string;
+  company: {
+    name: string;
+    /**
+     * Company prefix (e.g. @Jeans Plus)
+     */
+    prefix: string;
+  };
+  workType: 'onsite' | 'remote' | 'hybrid';
+  employmentType: 'fulltime' | 'parttime' | 'contract';
+  location: string;
+  description: string;
+  salary: {
+    amount: number;
+    period: 'month' | 'year';
+  };
+  applicationDeadline: string;
+  status?: ('active' | 'closed') | null;
+  Applications?: {
+    docs?: (number | JobApplication)[] | null;
+    hasNextPage?: boolean | null;
+  } | null;
+  /**
+   * Direct URL for the application form
+   */
+  applyUrl?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -154,6 +233,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'sustainability-reports';
         value: number | SustainabilityReport;
+      } | null)
+    | ({
+        relationTo: 'job-applications';
+        value: number | JobApplication;
+      } | null)
+    | ({
+        relationTo: 'job-listings';
+        value: number | JobListing;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -202,6 +289,7 @@ export interface PayloadMigration {
  * via the `definition` "users_select".
  */
 export interface UsersSelect<T extends boolean = true> {
+  role?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;
@@ -250,6 +338,52 @@ export interface SustainabilityReportsSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "job-applications_select".
+ */
+export interface JobApplicationsSelect<T extends boolean = true> {
+  fullName?: T;
+  email?: T;
+  phoneNumber?: T;
+  position?: T;
+  resume?: T;
+  status?: T;
+  termsAccepted?: T;
+  privacyPolicyAccepted?: T;
+  internalNotes?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "job-listings_select".
+ */
+export interface JobListingsSelect<T extends boolean = true> {
+  jobTitle?: T;
+  company?:
+    | T
+    | {
+        name?: T;
+        prefix?: T;
+      };
+  workType?: T;
+  employmentType?: T;
+  location?: T;
+  description?: T;
+  salary?:
+    | T
+    | {
+        amount?: T;
+        period?: T;
+      };
+  applicationDeadline?: T;
+  status?: T;
+  Applications?: T;
+  applyUrl?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

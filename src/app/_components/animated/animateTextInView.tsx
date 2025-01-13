@@ -2,12 +2,14 @@
 import { motion, Variants } from 'motion/react'
 import { FC, useRef } from 'react'
 import { useTextLines } from '@/lib/useTextLines'
+import { cn } from '@/lib/utils'
 
 const AnimateTextInView: FC<{
   text: string
   className?: string
   delay?: number
-}> = ({ text, className = '', delay = 0.1 }) => {
+  childClass?: string
+}> = ({ childClass, text, className = '', delay = 0.1 }) => {
   const containerRef = useRef(null)
   const lines = useTextLines({
     text,
@@ -56,7 +58,10 @@ const AnimateTextInView: FC<{
       viewport={{ once: true, margin: '-100px' }}
     >
       {lines.map((line, i) => (
-        <div key={i} className="relative overflow-hidden md:mr-1 md:inline-block md:pb-1">
+        <div
+          key={i}
+          className={cn('relative overflow-hidden md:mr-1 md:inline-block md:pb-1', childClass)}
+        >
           <motion.span variants={lineVariants} className="inline-block whitespace-pre-wrap">
             {line.text}
           </motion.span>

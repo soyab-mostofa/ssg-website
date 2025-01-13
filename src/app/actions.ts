@@ -1,6 +1,6 @@
 'use server'
 import { getPayload } from '@/lib/payload'
-import { SustainabilityReport } from '@/payload-types'
+import { JobListing, SustainabilityReport } from '@/payload-types'
 
 export const getReports = async () => {
   const payload = await getPayload()
@@ -16,4 +16,16 @@ export const getReports = async () => {
     throw new Error('No reports found')
   }
   return docs as SustainabilityReport[]
+}
+
+export const getOpenJobs = async () => {
+  const payload = await getPayload()
+  const { docs } = await payload.find({
+    collection: 'job-listings',
+    limit: 3,
+  })
+  if (!docs) {
+    throw new Error('No jobs found')
+  }
+  return docs as JobListing[]
 }

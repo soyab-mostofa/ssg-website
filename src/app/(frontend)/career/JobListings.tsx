@@ -6,55 +6,9 @@ import { Card, CardContent } from '@/components/ui/card'
 import AnimateTextInView from '@/app/_components/animated/animateTextInView'
 import SectionChip from '@/app/_components/shared/SectionChip'
 import Button from '@/app/_components/shared/Button'
+import { JobListing } from '@/payload-types'
 
-interface Job {
-  title: string
-  company: string
-  location: string
-  type: string
-  schedule: string
-  description: string
-  salary: string
-  deadline: string
-}
-
-const jobs: Job[] = [
-  {
-    title: 'Fashion Merchandiser',
-    company: '@Jeans Plus Ltd.',
-    location: 'Dhaka',
-    type: 'Onsite',
-    schedule: 'Fulltime',
-    description:
-      "At Jeans Plus Ltd., we don't just sell clothes; we sell experiences.If you're ready to lead trends and boost sales, apply now!",
-    salary: '৳60,000',
-    deadline: '18 Jan 2025',
-  },
-  {
-    title: 'Quality Assurance Officer',
-    company: '@Shin Shin Apparels Ltd.',
-    location: 'Dhaka',
-    type: 'Onsite',
-    schedule: 'Fulltime',
-    description:
-      "At Jeans Plus Ltd., we don't just sell clothes; we sell experiences.If you're ready to lead trends and boost sales, apply now!",
-    salary: '৳60,000',
-    deadline: '18 Jan 2025',
-  },
-  {
-    title: 'Textile Designer',
-    company: '@Vancot Ltd.',
-    location: 'Dhaka',
-    type: 'Onsite',
-    schedule: 'Fulltime',
-    description:
-      "At Jeans Plus Ltd., we don't just sell clothes; we sell experiences.If you're ready to lead trends and boost sales, apply now!",
-    salary: '৳60,000',
-    deadline: '18 Jan 2025',
-  },
-]
-
-export default function JobListings() {
+export default function JobListings({ jobs }: { jobs: JobListing[] }) {
   return (
     <section className="w-full bg-grayscale-black-100 py-12 md:py-16 lg:py-20">
       <div className="container px-4 md:px-6">
@@ -76,13 +30,15 @@ export default function JobListings() {
                 <Card className="h-full">
                   <CardContent className="space-y-4 p-6">
                     <div className="space-y-2">
-                      <h3 className="text-2xl font-bold">{job.title}</h3>
-                      <p className="text-sm font-medium text-primary-blue-500">{job.company}</p>
+                      <h3 className="text-2xl font-bold">{job.jobTitle}</h3>
+                      <p className="text-sm font-medium text-primary-blue-500">
+                        {job.company.name}
+                      </p>
                     </div>
                     <div className="flex flex-wrap gap-2 text-lg text-grayscale-black-400">
-                      <span>{job.type}</span>
+                      <span>{job.workType}</span>
                       <span>|</span>
-                      <span>{job.schedule}</span>
+                      <span>{new Date(job.updatedAt).toDateString()}</span>
                       <span>|</span>
                       <span>{job.location}</span>
                     </div>
@@ -92,10 +48,12 @@ export default function JobListings() {
                     </div>
                     <div className="flex items-center justify-between pt-4">
                       <div>
-                        <span className="text-lg font-bold">{job.salary}</span>
-                        <span className="text-gray-600 text-sm"> /Month</span>
+                        <span className="text-lg font-bold">{job.salary.amount}</span>
+                        <span className="text-gray-600 text-sm">/{job.salary.period}</span>
                       </div>
-                      <span className="text-sm text-[#1D1F2C]">{job.deadline}</span>
+                      <span className="text-sm text-[#1D1F2C]">
+                        {new Date(job.applicationDeadline).toDateString()}
+                      </span>
                     </div>
                     <div className="grid gap-3 md:grid-cols-2">
                       <Button className="bg-primary-blue-100 text-primary-blue-500 md:w-full">

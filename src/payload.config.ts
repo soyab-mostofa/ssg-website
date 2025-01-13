@@ -10,6 +10,8 @@ import { s3Storage, S3StorageOptions } from '@payloadcms/storage-s3'
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
 import SustainabilityReports from './collections/Report'
+import JobApplications from './collections/JobApplications'
+import JobListings from './collections/JobListing'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -46,7 +48,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, SustainabilityReports],
+  collections: [Users, Media, SustainabilityReports, JobApplications, JobListings],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
