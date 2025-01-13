@@ -5,10 +5,10 @@ import Button from '@/app/_components/shared/Button'
 
 const Hero = () => {
   return (
-    <div className="relative  md:pt-0 w-full bg-[url('/hero-bg-mobile.png')] md:bg-[url('/hero-background.png')]  bg-cover bg-center bg-no-repeat">
-      <div className="relative bg-cover  ">
+    <div className="relative w-full bg-[url('/hero-bg-mobile.png')] bg-cover bg-center bg-no-repeat md:bg-[url('/hero-background.webp')] md:pt-0">
+      <div className="relative bg-cover">
         <div className="container z-10">
-          <div className="pt-32 md:pt-[200px] pb-32 md:pb-60">
+          <div className="pb-32 pt-32 md:pb-60 md:pt-[200px]">
             <HeroTitle />
             <Button icon={<ArrowRight />} className="mt-8">
               Explore More
