@@ -38,9 +38,9 @@ const FoundingStory = () => {
                 src="/founding-story-1.png"
                 alt="Shin Shin Group facility view 1"
                 fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 className="object-cover object-center"
                 priority
+                suppressHydrationWarning
               />
             </div>
             <div className="relative aspect-[1.27/1] w-full overflow-hidden rounded-xl">
@@ -48,8 +48,8 @@ const FoundingStory = () => {
                 src="/founding-story-2.png"
                 alt="Shin Shin Group facility view 2"
                 fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 className="object-cover object-center"
+                suppressHydrationWarning
               />
             </div>
           </div>

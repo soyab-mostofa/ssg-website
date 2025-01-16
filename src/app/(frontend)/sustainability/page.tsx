@@ -3,7 +3,7 @@ import SustainabilityPage from './Client'
 
 const page = async () => {
   return (
-    <div>
+    <div suppressHydrationWarning>
       <SustainabilityPage />
     </div>
   )

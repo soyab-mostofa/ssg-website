@@ -72,13 +72,7 @@ const AnimatedImage: React.FC<{ src: string; alt: string; className?: string }> 
     viewport={{ once: true, margin: '-100px' }}
     variants={imageScale}
   >
-    <Image
-      src={src}
-      alt={alt}
-      className={className}
-      fill
-      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-    />
+    <Image src={src} alt={alt} className={className} fill />
   </motion.div>
 )
 

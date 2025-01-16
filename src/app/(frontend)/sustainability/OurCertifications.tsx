@@ -5,10 +5,11 @@ import Image from 'next/image'
 import { useState, useCallback } from 'react'
 import Button from '@/app/_components/shared/Button'
 import SectionLayout from '@/app/_components/shared/SectionLayout'
+import { cn } from '@/lib/utils'
 
 const CustomerLogo = memo(function CustomerLogo({ logo }: { logo: string }) {
   return (
-    <div className="relative mb-6 aspect-[241/285] w-full max-w-[241px]">
+    <div className="relative aspect-[241/285] w-full max-w-[241px] rounded-lg border border-primary-blue-200">
       <div className="flex aspect-[241/285] w-full max-w-[241px] justify-center">
         <Image src={logo} alt={'certifications'} className="h-auto max-w-full object-cover" fill />
       </div>
@@ -34,12 +35,12 @@ const OurCertifications = () => {
       <div className="relative">
         <motion.div
           initial={false}
-          animate={{ height: isOpen ? 'auto' : '300px' }}
+          animate={{ height: isOpen ? 'auto' : '900px' }}
           transition={{ duration: 0.3 }}
           className="overflow-hidden"
         >
-          <div className="container grid grid-cols-3 gap-4 md:grid-cols-5 lg:grid-cols-5">
-            {Array.from({ length: 15 }).map((_, i) => (
+          <div className="container grid grid-cols-3 gap-4 md:grid-cols-5 md:gap-8 lg:grid-cols-5">
+            {Array.from({ length: 23 }).map((_, i) => (
               <CustomerLogo key={i} logo={`/awards/awards-${i + 1}.png`} />
             ))}
           </div>
@@ -58,7 +59,7 @@ const OurCertifications = () => {
         </AnimatePresence>
       </div>
 
-      <div className="relative z-50 mt-8 flex justify-center pb-4">
+      <div className={cn('relative z-50 mt-8 flex justify-center pb-4', { '-mt-20': !isOpen })}>
         <Button onClick={toggleOpen}>{isOpen ? 'Show Less' : 'View All'}</Button>
       </div>
     </SectionLayout>

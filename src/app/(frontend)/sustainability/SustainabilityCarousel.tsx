@@ -30,9 +30,6 @@ const SustainabilityCarousel = () => {
             src={sustainabilityItems[active].image}
             alt={sustainabilityItems[active].title}
             fill
-            sizes="(max-width: 640px) 100vw, 
-                                 (max-width: 1024px) 90vw,
-                                 80vw"
             className="object-cover"
             priority
           />

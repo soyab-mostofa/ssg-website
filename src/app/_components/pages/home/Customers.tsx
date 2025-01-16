@@ -9,25 +9,11 @@ import WordReveal from '../../animated/WordReveal'
 import Button from '../../shared/Button'
 
 // Move customers data outside component to prevent recreation on rerenders
-const CUSTOMERS = [
-  { name: 'Nutmeg', logo: '/partners/nutmeg.png' },
-  { name: 'Target', logo: '/partners/target.png' },
-  { name: 'Pull & Bear', logo: '/partners/pull-and-bear.png' },
-  { name: 'Megalook', logo: '/partners/megalook.png' },
-  { name: 'Inditex', logo: '/partners/inditex.png' },
-  { name: 'Bestseller', logo: '/partners/bestseller.png' },
-  { name: 'Just Jeans', logo: '/partners/just-jeans.png' },
-  { name: 'EMA', logo: '/partners/ema.png' },
-  { name: 'Kmart', logo: '/partners/kmart.png' },
-  { name: 'Li & Fung', logo: '/partners/li-and-fung.png' },
-  { name: 'H&M', logo: '/partners/h-and-m.png' },
-  { name: "Sainsbury's", logo: '/partners/sainsburys.png' },
-] as const
 
 // Memoized customer logo component
 const CustomerLogo = memo(function CustomerLogo({ name, logo }: { name: string; logo: string }) {
   return (
-    <div className="mb-10 w-[calc(50%-20px)] md:w-[calc(25%-20px)]">
+    <div className="mb-10 w-[calc(50%-20px)] rounded-lg border border-primary-blue-200 md:w-[calc(25%-20px)]">
       <Image
         src={logo}
         alt={name}
@@ -77,8 +63,12 @@ export default function CustomersSection() {
           className="overflow-hidden"
         >
           <div className="flex flex-wrap items-center justify-between">
-            {CUSTOMERS.map((customer) => (
-              <CustomerLogo key={customer.name} name={customer.name} logo={customer.logo} />
+            {Array.from({ length: 29 }).map((_, i) => (
+              <CustomerLogo
+                key={`partner-${i + 1}`}
+                name={'partner name'}
+                logo={`/partners/partner-${i + 1}.png`}
+              />
             ))}
           </div>
         </motion.div>
