@@ -46,7 +46,7 @@ const AnimateTextInView: FC<{
   }
 
   // Add spaces back to text and handle whitespace properly
-  const processedText = text.replace(/\s+/g, ' ').trim()
+  // const processedText = text.replace(/\s+/g, ' ').trim()
 
   return (
     <motion.div

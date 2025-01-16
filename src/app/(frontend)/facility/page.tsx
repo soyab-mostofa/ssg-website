@@ -182,10 +182,9 @@ const Page: React.FC = () => {
                         text={factory.name}
                       />
                       <AnimateTextInView
-                        childClass="text-sm sm:text-base"
+                        childClass="text-sm sm:text-base md:pb-0 overflow-visible"
                         className="text-muted-foreground"
-                        text="Lorem ipsum dolor sit amet consectetur. Egestas roin dolor in gravida
-                      lectus in nisi egestas. Donec lobortis nisl justo enim laoreet nec sed id."
+                        text="Lorem ipsum dolor sit amet consectetur. Egestas roin dolor in gravida lectus in nisi egestas. Donec lobortis nisl justo enim laoreet nec sed id."
                       />
                     </div>
 
