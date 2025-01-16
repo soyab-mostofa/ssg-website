@@ -1,5 +1,4 @@
-# docker-compose.yml
-version: '3.8' # Updated to latest stable version
+version: '3.8'
 
 services:
   payload:
@@ -14,8 +13,6 @@ services:
       - .:/home/node/app:cached
       - node_modules:/home/node/app/node_modules
     working_dir: /home/node/app/
-    stdin_open: true
-    tty: true
     command: sh -c "corepack enable && corepack prepare pnpm@latest --activate && pnpm install && pnpm dev"
     depends_on:
       postgres:
@@ -26,13 +23,13 @@ services:
       - .env
     environment:
       - NODE_ENV=development
+      - NODE_OPTIONS="--max-old-space-size=1024"
     restart: unless-stopped
 
   minio:
     container_name: minio
-    image: quay.io/minio/minio:latest # Specified latest tag
+    image: quay.io/minio/minio:latest
     command: server /data --console-address ":9090"
-    restart: unless-stopped
     ports:
       - '9000:9000'
       - '9090:9090'
@@ -41,28 +38,42 @@ services:
     environment:
       MINIO_ROOT_USER: ${S3_ACCESS_KEY_ID}
       MINIO_ROOT_PASSWORD: ${S3_SECRET_ACCESS_KEY}
+    deploy:
+      resources:
+        limits:
+          memory: 256M
     healthcheck:
       test: ['CMD', 'curl', '-f', 'http://localhost:9000/minio/health/live']
-      interval: 30s
+      interval: 45s
       timeout: 20s
-      retries: 3
+      retries: 2
 
   postgres:
     container_name: postgres
-    image: postgres:16-alpine # Using specific version
+    image: postgres:16-alpine
     volumes:
       - pgdata:/var/lib/postgresql/data
     ports:
-      - '5432:5432' # Exposed to host for external access
+      - '5432:5432'
     environment:
       POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_SHARED_BUFFERS: 64MB
+      POSTGRES_EFFECTIVE_CACHE_SIZE: 192MB
+      POSTGRES_MAINTENANCE_WORK_MEM: 16MB
+      POSTGRES_WORK_MEM: 4MB
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+        reservations:
+          memory: 64M
     healthcheck:
       test: ['CMD-SHELL', 'pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}']
-      interval: 5s
+      interval: 10s
       timeout: 5s
-      retries: 5
+      retries: 3
     restart: unless-stopped
 
 volumes:
