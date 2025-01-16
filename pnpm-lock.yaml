@@ -11,9 +11,6 @@ importers:
       '@emotion/react':
         specifier: ^11.14.0
         version: 11.14.0(@types/react@19.0.0)(react@19.0.0)
-      '@gsap/react':
-        specifier: ^2.1.1
-        version: 2.1.1
       '@payloadcms/db-postgres':
         specifier: 3.16.0
         version: 3.16.0(@types/react@19.0.0)(payload@3.16.0(graphql@16.10.0)(monaco-editor@0.52.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2))(react@19.0.0)
@@ -71,9 +68,6 @@ importers:
       graphql:
         specifier: ^16.8.1
         version: 16.10.0
-      gsap:
-        specifier: ^3.12.5
-        version: 3.12.5
       hamburger-react:
         specifier: ^2.5.2
         version: 2.5.2(react@19.0.0)
@@ -976,9 +970,6 @@ packages:
 
   '@floating-ui/utils@0.2.9':
     resolution: {integrity: sha512-MDWhGtE+eHw5JW7lq4qhc5yRLS11ERl1c7Z6Xd0a58DozHES6EnNNwUWbMiG4J9Cgj053Bhk8zvlhFYKVhULwg==}
-
-  '@gsap/react@2.1.1':
-    resolution: {integrity: sha512-apGPRrmpqxvl1T6Io1KgT8tFU+IuACI6z4zmT7t8+PASserJeLVRFJdSNUFA2Xb/eVkZI1noE8LIrY/w/oJECw==}
 
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
@@ -3181,9 +3172,6 @@ packages:
   graphql@16.10.0:
     resolution: {integrity: sha512-AjqGKbDGUFRKIRCP9tCKiIGHyriz2oHEbPIbEtcSLSs4YjReZOIPQQWek4+6hjw62H9QShXHyaGivGiYVLeYFQ==}
     engines: {node: ^12.22.0 || ^14.16.0 || ^16.0.0 || >=17.0.0}
-
-  gsap@3.12.5:
-    resolution: {integrity: sha512-srBfnk4n+Oe/ZnMIOXt3gT605BX9x5+rh/prT2F1SsNJsU1XuMiP0E2aptW481OnonOGACZWBqseH5Z7csHxhQ==}
 
   hamburger-react@2.5.2:
     resolution: {integrity: sha512-xsv/I7wQX1RDaulDnvMVCXMMRXnkwnUnkE8seD5eNVZJ4nIrjtK5LLA20l5x/pJ+mPWOzlFxW32VJ86Gbo2Njw==}
@@ -6125,11 +6113,6 @@ snapshots:
 
   '@floating-ui/utils@0.2.9': {}
 
-  '@gsap/react@2.1.1':
-    dependencies:
-      gsap: 3.12.5
-      react: 19.0.0
-
   '@humanfs/core@0.19.1': {}
 
   '@humanfs/node@0.16.6':
@@ -8786,8 +8769,6 @@ snapshots:
       tslib: 2.8.1
 
   graphql@16.10.0: {}
-
-  gsap@3.12.5: {}
 
   hamburger-react@2.5.2(react@19.0.0):
     dependencies:
