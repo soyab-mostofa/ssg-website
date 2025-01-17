@@ -1,7 +1,10 @@
 'use client'
 
-import { ReactNode, useRef, useEffect } from 'react'
-import { motion, useScroll, useSpring } from 'motion/react'
+import { ReactNode, useRef, useEffect, useState } from 'react'
+import { motion, useScroll, useSpring, AnimatePresence } from 'motion/react'
+import LoadingAnimation from '../../components/LoadingAnimation'
+import Menu from '../_components/menu/Menu'
+import Footer from '../_components/shared/Footer'
 
 interface TemplateProps {
   children: ReactNode
@@ -10,6 +13,7 @@ interface TemplateProps {
 export default function Template({ children }: TemplateProps) {
   const scrollRef = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll()
+  const [isLoaded, setIsLoaded] = useState(false)
 
   // Smooth spring animation for scroll
   const scaleX = useSpring(scrollYProgress, {
@@ -31,21 +35,43 @@ export default function Template({ children }: TemplateProps) {
   }, [])
 
   return (
-    <div ref={scrollRef}>
-      {/* Progress bar */}
-      <motion.div
-        className="fixed left-0 right-0 top-0 z-50 h-1 origin-left bg-primary-blue-900"
-        style={{ scaleX }}
-      />
+    <LoadingAnimation onLoadingComplete={() => setIsLoaded(true)}>
+      <div ref={scrollRef}>
+        {/* Progress bar */}
+        <motion.div
+          className="fixed left-0 right-0 top-0 z-50 h-1 origin-left bg-primary-blue-900"
+          style={{ scaleX }}
+        />
 
-      {/* Main content */}
-      <motion.div
-        className="relative"
-        initial={false}
-        animate={{ opacity: 1, transition: { duration: 0.5 } }}
-      >
-        {children}
-      </motion.div>
-    </div>
+        {/* Main content with reveal animation */}
+        <AnimatePresence mode="wait">
+          {isLoaded ? (
+            <motion.div
+              className="relative"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                transition: {
+                  duration: 0.8,
+                  ease: [0.4, 0, 0.2, 1],
+                },
+              }}
+              exit={{ opacity: 0, y: 20 }}
+            >
+              <Menu />
+              {children}
+              <Footer />
+            </motion.div>
+          ) : (
+            <motion.div className="relative opacity-0" exit={{ opacity: 0 }}>
+              <Menu />
+              {children}
+              <Footer />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </LoadingAnimation>
   )
 }

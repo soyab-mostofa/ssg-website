@@ -89,7 +89,7 @@ export default function ApplicationForm() {
 
                 <div className="space-y-2">
                   <Select required>
-                    <SelectTrigger className="w-full border-0 border-b focus:ring-0">
+                    <SelectTrigger className="w-full rounded-none border-0 border-b focus:ring-0">
                       <SelectValue placeholder="Position Applying For" />
                     </SelectTrigger>
                     <SelectContent>

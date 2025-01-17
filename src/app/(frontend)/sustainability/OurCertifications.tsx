@@ -49,7 +49,7 @@ const OurCertifications = () => {
         <AnimatePresence>
           {!isOpen && (
             <motion.div
-              className="to-transparent absolute inset-0 z-10 bg-gradient-to-t from-others-white via-others-white/70"
+              className="to-transparent absolute inset-0 z-10 bg-gradient-to-t from-others-white via-others-white/30"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}

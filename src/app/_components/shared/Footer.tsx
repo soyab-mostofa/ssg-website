@@ -14,7 +14,7 @@ export default function Footer() {
               alt="Shin Shin Group"
               width={100}
               height={100}
-              className="mb-8"
+              className="mb-8 size-16 md:size-20"
             />
             <address className="mb-4 not-italic text-others-white/70">
               House # 93, Road # 13, Sector # 10, Uttara

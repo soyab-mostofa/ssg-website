@@ -5,8 +5,8 @@ import Image from 'next/image'
 import { useState, useCallback } from 'react'
 import TextFadeUp from '../../animated/TextFadeUp'
 import SectionChip from '../../shared/SectionChip'
-import WordReveal from '../../animated/WordReveal'
 import Button from '../../shared/Button'
+import AnimateTextInView from '../../animated/animateTextInView'
 
 // Move customers data outside component to prevent recreation on rerenders
 
@@ -39,7 +39,7 @@ export default function CustomersSection() {
       <div className="mb-10 flex flex-col justify-between gap-8 md:flex-row">
         <div className="flex basis-1/2 flex-col items-start gap-8">
           <SectionChip>OUR CUSTOMERS</SectionChip>
-          <WordReveal
+          <AnimateTextInView
             text="Trusted by Industry Leaders"
             className="text-3xl font-bold md:text-5xl"
           />
@@ -49,7 +49,7 @@ export default function CustomersSection() {
           <TextFadeUp
             className="text-base text-grayscale-black-400"
             text="Lorem ipsum dolor sit amet consectetur. Mattis arcu lectus morbi a ut massa eget mauris.
-            Dis facilisi gravida neque elementum auctor felis neque facilisis. Molestie lacus elit."
+            Dis facilisi gravida neque elementum auctor felis neque facilisis.Z"
           />
         </div>
       </div>
@@ -58,7 +58,7 @@ export default function CustomersSection() {
       <div className="relative">
         <motion.div
           initial={false}
-          animate={{ height: isOpen ? 'auto' : '300px' }}
+          animate={{ height: isOpen ? 'auto' : '430px' }}
           transition={{ duration: 0.3 }}
           className="overflow-hidden"
         >
@@ -76,7 +76,7 @@ export default function CustomersSection() {
         <AnimatePresence>
           {!isOpen && (
             <motion.div
-              className="to-transparent absolute inset-0 z-10 bg-gradient-to-t from-others-white via-others-white/70"
+              className="to-transparent absolute inset-0 z-10 bg-gradient-to-t from-others-white via-others-white/10"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}

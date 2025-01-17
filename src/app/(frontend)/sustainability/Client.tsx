@@ -1,5 +1,4 @@
 'use client'
-import AboutHeader from '@/app/_components/pages/about/AboutHeader'
 import SectionLayout from '@/app/_components/shared/SectionLayout'
 import React, { useState, useEffect } from 'react'
 import SustainabilityAccordion, { sustainabilityItems } from './sustainability-accordion'
@@ -10,6 +9,7 @@ import { motion, AnimatePresence } from 'motion/react'
 import Image from 'next/image'
 import SustainabilityReport from './sustainability-report'
 import OurCertifications from './OurCertifications'
+import PageHeader from '@/app/_components/pages/about/PageHeader'
 
 const SustainabilityPage = () => {
   const [active, setActive] = useState<number>(0)
@@ -24,7 +24,8 @@ const SustainabilityPage = () => {
 
   return (
     <div>
-      <AboutHeader
+      <PageHeader
+        bgImage="/headers/sustainability-header.webp"
         heading={['Our', 'Sustainability']}
         sub="Shin Shin Group is one of the largest conglomerates in Bangladesh, exporting apparel worldwide. The group comprises five factories."
       />

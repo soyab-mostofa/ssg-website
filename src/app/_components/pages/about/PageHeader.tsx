@@ -3,7 +3,15 @@ import React from 'react'
 import AnimatedText from '@/app/(frontend)/about/AnimatedText'
 import HeadingFadeUp from '../../animated/HeadingFadeUp'
 
-const AboutHeader = ({ heading, sub }: { heading: string[]; sub?: string }) => {
+const PageHeader = ({
+  heading,
+  sub,
+  bgImage,
+}: {
+  heading: string[]
+  sub?: string
+  bgImage?: string
+}) => {
   return (
     <div className="relative mx-auto h-[500px] w-full sm:h-[600px] md:h-[700px]">
       <div className="container relative z-10 flex h-full flex-col justify-end gap-4 pb-12 text-others-white sm:gap-5 sm:pb-16 md:gap-6 md:pb-24">
@@ -24,7 +32,7 @@ const AboutHeader = ({ heading, sub }: { heading: string[]; sub?: string }) => {
       </div>
       <Image
         fill
-        src="/about.png"
+        src={bgImage ? bgImage : '/headers/about-header.png'}
         alt="about"
         className="origin-center bg-center object-cover"
         priority
@@ -33,4 +41,4 @@ const AboutHeader = ({ heading, sub }: { heading: string[]; sub?: string }) => {
   )
 }
 
-export default AboutHeader
+export default PageHeader

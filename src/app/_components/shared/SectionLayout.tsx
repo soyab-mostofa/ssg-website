@@ -52,10 +52,6 @@ const SectionLayout = ({
             className={`flex w-full flex-col items-start gap-2 md:gap-8`}
           >
             <SectionChip dark={dark}>{chip}</SectionChip>
-            {/* <TextFadeUp
-              className="text-3xl font-bold md:text-5xl"
-              text="A Legacy of Impact and Innovation"
-            /> */}
             <AnimateTextInView
               className={cn('-mb-1 w-full pt-2 text-2xl font-bold md:text-5xl', {
                 'text-others-white': dark,

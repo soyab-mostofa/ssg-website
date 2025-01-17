@@ -1,12 +1,12 @@
 'use client'
 import AnimateTextInView from '@/app/_components/animated/animateTextInView'
-import AboutHeader from '@/app/_components/pages/about/AboutHeader'
 import SectionLayout from '@/app/_components/shared/SectionLayout'
 import { Separator } from '@/components/ui/separator'
 import { cn } from '@/lib/utils'
 import { MapPin, Factory, Box, LucideIcon } from 'lucide-react'
 import Image from 'next/image'
 import { motion } from 'motion/react'
+import PageHeader from '@/app/_components/pages/about/PageHeader'
 
 interface Factory {
   image: string
@@ -134,7 +134,8 @@ const FactoryInfo: React.FC<FactoryInfoProps> = ({ icon: Icon, label, value, ind
 const Page: React.FC = () => {
   return (
     <>
-      <AboutHeader
+      <PageHeader
+        bgImage="/headers/facilities-header.webp"
         heading={['Our', 'Facilities']}
         sub="Shin Shin Group is one of the largest conglomerates in Bangladesh, exporting apparel worldwide. The group comprises five factories."
       />

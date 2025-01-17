@@ -1,5 +1,4 @@
 'use client'
-import AboutHeader from '@/app/_components/pages/about/AboutHeader'
 import SectionLayout from '@/app/_components/shared/SectionLayout'
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
@@ -8,6 +7,7 @@ import ApplicationForm from './ApplicationForm'
 import { motion } from 'motion/react'
 import { getOpenJobs } from '@/app/actions'
 import { JobListing } from '@/payload-types'
+import PageHeader from '@/app/_components/pages/about/PageHeader'
 
 interface CultureItem {
   url: string
@@ -90,7 +90,8 @@ const Page: React.FC = () => {
   return (
     <div className="space-y-12 sm:space-y-16 md:space-y-24">
       <motion.div initial="hidden" animate="visible" variants={fadeInUp}>
-        <AboutHeader
+        <PageHeader
+          bgImage="/headers/career-header.webp"
           heading={['Career', 'Shin Shin Group']}
           sub="Shin Shin Group is one of the largest conglomerates in Bangladesh, exporting apparel worldwide. The group comprises five factories."
         />

@@ -136,61 +136,83 @@ export const MenuLink = ({ href, children, isActive, onClick }: MenuLinkProps) =
 
 const modalVariants: Variants = {
   hidden: {
-    y: '-100vh',
-  },
-  visible: {
-    y: 0,
+    opacity: 0,
     transition: {
-      type: 'tween',
       duration: 0.3,
+      when: 'afterChildren',
     },
   },
-  exit: {
-    y: '-100vh',
-    transition: {
-      type: 'tween',
-      duration: 0.3,
-      delay: 0.5,
-    },
-  },
-}
-
-const linkItemVariants: Variants = {
-  hidden: { opacity: 0, y: '50%' },
   visible: {
     opacity: 1,
-    y: 0,
     transition: {
-      duration: 0.5,
-      ease: 'easeOut',
+      duration: 0.3,
+      when: 'beforeChildren',
     },
   },
   exit: {
     opacity: 0,
-    y: '50%',
+    transition: {
+      duration: 1,
+      when: 'afterChildren',
+    },
+  },
+}
+
+const backdropVariants: Variants = {
+  hidden: {
+    opacity: 0,
     transition: {
       duration: 0.2,
-      ease: 'easeOut',
+    },
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      duration: 0.3,
+    },
+  },
+  exit: {
+    opacity: 0,
+    transition: {
+      duration: 0.2,
+      delay: 0.9,
     },
   },
 }
 
 const navLinksVariants: Variants = {
-  hidden: {},
+  hidden: {
+    transition: {
+      staggerChildren: 0.05,
+      staggerDirection: -1,
+    },
+  },
   visible: {
     transition: {
+      delayChildren: 0.2,
       staggerChildren: 0.1,
-      delayChildren: 0.3,
+    },
+  },
+}
+
+const linkItemVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 20,
+    transition: {
+      duration: 0.2,
+    },
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.3,
+      ease: 'easeOut',
     },
   },
   exit: {
     opacity: 0,
-    transition: {
-      staggerChildren: 0.05,
-      staggerDirection: -1,
-      duration: 0.2,
-      ease: 'easeOut',
-    },
   },
 }
 
@@ -218,7 +240,6 @@ export default function Menu() {
     setIsMenuOpen(false)
   }, [pathName])
 
-  // Prevent body scroll when menu is open
   useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = 'hidden'
@@ -239,7 +260,13 @@ export default function Menu() {
       <div className="menu-bar flex h-14 w-full items-center justify-between sm:h-24">
         <div className="menu-logo text-grayscale-black-900">
           <Link href="/">
-            <Image src="/logo.png" alt="logo" width={40} height={40} className="sm:h-10 sm:w-10" />
+            <Image
+              src="/logo.png"
+              alt="logo"
+              width={40}
+              height={40}
+              className="size-8 md:size-14"
+            />
           </Link>
         </div>
 
@@ -276,24 +303,21 @@ export default function Menu() {
       <AnimatePresence mode="wait">
         {isMenuOpen && (
           <motion.div
-            className="bg-gray-900 fixed inset-0 flex items-center justify-center"
+            className="fixed inset-0 flex items-center justify-center"
             variants={modalVariants}
             initial="hidden"
             animate="visible"
             exit="exit"
           >
-            <motion.div
-              className="bg-gray-900 relative w-full"
-              variants={navLinksVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-            >
+            {/* Background Layer */}
+            <motion.div className="bg-gray-900 absolute inset-0" variants={backdropVariants} />
+
+            {/* Content Layer */}
+            <motion.div className="relative w-full" variants={navLinksVariants}>
               <div className="flex h-full flex-col items-center justify-center gap-8">
                 {menuData.map((link, index) => (
                   <Link href={link.link} key={index} onClick={handleLinkClick}>
                     <motion.span
-                      key={index}
                       className={cn(
                         'hover:text-gray-300 cursor-pointer text-2xl font-light transition-colors',
                         pathName === link.link

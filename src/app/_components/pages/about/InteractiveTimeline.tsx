@@ -114,7 +114,7 @@ const InteractiveTimeline = () => {
                   style={{ zIndex: 50 }}
                 >
                   <div
-                    className="bg-white rounded-lg shadow-sm"
+                    className="rounded-lg border border-primary-blue-100 bg-others-white shadow-sm"
                     style={{ position: 'relative', zIndex: 50 }}
                   >
                     <motion.img
