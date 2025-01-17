@@ -50,6 +50,9 @@ importers:
       '@studio-freight/react-lenis':
         specifier: ^0.0.47
         version: 0.0.47(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      autoprefixer:
+        specifier: ^10.4.20
+        version: 10.4.20(postcss@8.4.49)
       axios:
         specifier: ^1.7.9
         version: 1.7.9
@@ -92,6 +95,9 @@ importers:
       payload:
         specifier: 3.16.0
         version: 3.16.0(graphql@16.10.0)(monaco-editor@0.52.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)
+      postcss:
+        specifier: ^8.4.49
+        version: 8.4.49
       react:
         specifier: 19.0.0
         version: 19.0.0
@@ -119,6 +125,9 @@ importers:
       tailwind-merge:
         specifier: ^2.6.0
         version: 2.6.0
+      tailwindcss:
+        specifier: ^3.4.17
+        version: 3.4.17
       tailwindcss-animate:
         specifier: ^1.0.7
         version: 1.0.7(tailwindcss@3.4.17)
@@ -138,18 +147,12 @@ importers:
       '@types/react-dom':
         specifier: 19.0.0
         version: 19.0.0
-      autoprefixer:
-        specifier: ^10.4.20
-        version: 10.4.20(postcss@8.4.49)
       eslint:
         specifier: ^9.16.0
         version: 9.18.0(jiti@1.21.7)
       eslint-config-next:
         specifier: 15.1.0
         version: 15.1.0(eslint@9.18.0(jiti@1.21.7))(typescript@5.7.2)
-      postcss:
-        specifier: ^8.4.49
-        version: 8.4.49
       prettier:
         specifier: ^3.4.2
         version: 3.4.2
@@ -159,9 +162,6 @@ importers:
       react-burger-menu:
         specifier: ^3.1.0
         version: 3.1.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
-      tailwindcss:
-        specifier: ^3.4.17
-        version: 3.4.17
       typescript:
         specifier: 5.7.2
         version: 5.7.2
