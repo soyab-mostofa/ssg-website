@@ -1,45 +1,43 @@
-# Dockerfile
+# Use the official Node.js 22.12.0 Alpine image as the base
 FROM node:22.12.0-alpine AS base
+
+# Install necessary packages
 RUN apk add --no-cache libc6-compat
 
-# Production dependencies stage
-FROM base AS deps
+# Set the working directory
 WORKDIR /app
+
+# Copy package.json and pnpm-lock.yaml
 COPY package.json pnpm-lock.yaml* ./
-RUN corepack enable pnpm && pnpm install --frozen-lockfile --prod
 
-# Builder stage
-FROM base AS builder
-WORKDIR /app
-COPY --from=deps /app/node_modules ./node_modules
+# Install dependencies using pnpm
+RUN corepack enable && corepack prepare pnpm@latest --activate && pnpm install --frozen-lockfile
+
+# Copy the rest of the application code
 COPY . .
-ENV NEXT_TELEMETRY_DISABLED 1
-RUN corepack enable pnpm && \
-    pnpm run build && \
-    rm -rf node_modules && \
-    pnpm install --prod --frozen-lockfile
 
-# Production stage
-FROM base AS runner
-WORKDIR /app
-ENV NODE_ENV production
+# Disable Next.js telemetry
 ENV NEXT_TELEMETRY_DISABLED 1
 
-RUN addgroup --system --gid 1001 nodejs && \
-    adduser --system --uid 1001 nextjs && \
-    chmod 555 /app && \
-    mkdir -p /app/.next/cache && \
-    chown -R nextjs:nodejs /app/.next/cache
+# Build the Next.js application
+RUN pnpm run build
 
-COPY --from=builder /app/public ./public
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+# Create a new user and group for running the application
+RUN addgroup -S nextjs && adduser -S nextjs -G nextjs
 
-USER nextjs
+# Set environment variables
+ENV NODE_ENV=production
+ENV PORT=3000
+ENV HOSTNAME="0.0.0.0"
+
+# Expose the application port
 EXPOSE 3000
-ENV PORT 3000
-ENV HOSTNAME "0.0.0.0"
 
-# Health check
+# Change ownership of the application files
+RUN chown -R nextjs:nextjs /app
 
-CMD ["node", "server.js"]
+# Switch to the new user
+USER nextjs
+
+# Start the application
+CMD ["pnpm", "start"]

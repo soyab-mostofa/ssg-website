@@ -5,23 +5,19 @@ services:
     container_name: shinshin-app
     build:
       context: .
-      target: runner
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.prod
     ports:
       - '3000:3000'
     environment:
-      - NODE_ENV=production
+      NODE_ENV: production
     depends_on:
       postgres:
         condition: service_healthy
       minio:
-        condition: service_healthy
+        condition: service_started
+    env_file:
+      - .env
     restart: unless-stopped
-    logging:
-      driver: 'json-file'
-      options:
-        max-size: '10m'
-        max-file: '3'
 
   minio:
     container_name: minio
@@ -37,15 +33,9 @@ services:
       MINIO_ROOT_PASSWORD: ${S3_SECRET_ACCESS_KEY}
     healthcheck:
       test: ['CMD', 'curl', '-f', 'http://localhost:9000/minio/health/live']
-      interval: 30s
+      interval: 45s
       timeout: 20s
-      retries: 3
-    restart: unless-stopped
-    logging:
-      driver: 'json-file'
-      options:
-        max-size: '10m'
-        max-file: '3'
+      retries: 2
 
   postgres:
     container_name: postgres
@@ -60,16 +50,13 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     healthcheck:
       test: ['CMD-SHELL', 'pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}']
-      interval: 30s
-      timeout: 10s
+      interval: 10s
+      timeout: 5s
       retries: 3
     restart: unless-stopped
-    logging:
-      driver: 'json-file'
-      options:
-        max-size: '10m'
-        max-file: '3'
 
 volumes:
   pgdata:
+    name: shinshin-pgdata
   minio_storage:
+    name: shinshin-minio
