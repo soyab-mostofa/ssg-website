@@ -16,28 +16,25 @@ const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 const s3Config: S3StorageOptions = {
-  collections: {
-    media: {
-      disableLocalStorage: true,
-      disablePayloadAccessControl: true,
-      generateFileURL: ({ filename }) =>
-        `${process.env.S3_PUBLIC_ENDPOINT}/api/v1/buckets/shin-shin-media/objects/download?preview=true&prefix=${filename}&version_id=null`,
-    },
-  },
-  bucket: process.env.S3_BUCKET,
   config: {
+    endpoint: process.env.S3_ENDPOINT,
+
     credentials: {
       accessKeyId: process.env.MINIO_ROOT_USER,
       secretAccessKey: process.env.MINIO_ROOT_PASSWORD,
     },
-    endpoint: process.env.S3_ENDPOINT,
-    region: process.env.S3_REGION,
     forcePathStyle: true,
-    logger: console,
+    region: process.env.S3_REGION,
   },
-  acl: 'public-read',
-  disableLocalStorage: true,
-  enabled: true,
+  bucket: process.env.S3_BUCKET,
+
+  collections: {
+    media: {
+      prefix: 'media',
+      generateFileURL: ({ filename, prefix }) =>
+        `${process.env.S3_ENDPOINT}/${process.env.S3_BUCKET}/${prefix}/${filename}`,
+    },
+  },
 }
 
 export default buildConfig({
