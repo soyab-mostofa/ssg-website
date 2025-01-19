@@ -11,13 +11,12 @@
     "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
     "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
     "lint": "cross-env NODE_OPTIONS=--no-deprecation next lint",
-    "migrate": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload migrate",
     "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
     "start": "cross-env NODE_OPTIONS=--no-deprecation next start"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
-    "@payloadcms/db-postgres": "3.16.0",
+    "@payloadcms/db-mongodb": "^3.17.1",
     "@payloadcms/next": "3.16.0",
     "@payloadcms/payload-cloud": "3.16.0",
     "@payloadcms/richtext-lexical": "3.16.0",
@@ -30,6 +29,7 @@
     "@radix-ui/react-separator": "^1.1.1",
     "@radix-ui/react-slot": "^1.1.1",
     "@studio-freight/react-lenis": "^0.0.47",
+    "autoprefixer": "^10.4.20",
     "axios": "^1.7.9",
     "babel-plugin-react-compiler": "19.0.0-beta-e552027-20250112",
     "class-variance-authority": "^0.7.1",
@@ -44,6 +44,7 @@
     "motion": "^11.15.0",
     "next": "15.1.0",
     "payload": "3.16.0",
+    "postcss": "^8.4.49",
     "react": "19.0.0",
     "react-awesome-reveal": "^4.3.1",
     "react-dom": "19.0.0",
@@ -53,10 +54,8 @@
     "resize-observer-polyfill": "^1.5.1",
     "sharp": "0.32.6",
     "tailwind-merge": "^2.6.0",
-    "tailwindcss-animate": "^1.0.7",
-    "autoprefixer": "^10.4.20",
-    "postcss": "^8.4.49",
-    "tailwindcss": "^3.4.17"
+    "tailwindcss": "^3.4.17",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",

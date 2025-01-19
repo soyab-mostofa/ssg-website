@@ -4,32 +4,24 @@ services:
   app:
     build:
       context: .
-      dockerfile: Dockerfile
+      target: production
     ports:
       - '3000:3000'
     environment:
       - NODE_ENV=production
-    env_file:
-      - .env
+      - MONGODB_URI=${MONGODB_URI}
+      - PAYLOAD_SECRET=${PAYLOAD_SECRET}
+      - NEXT_PUBLIC_SERVER_URL=${NEXT_PUBLIC_SERVER_URL}
     depends_on:
-      postgres:
-        condition: service_healthy
+      - mongodb
 
-  postgres:
-    image: postgres:15-alpine
-    ports:
-      - '5432:5432'
-    environment:
-      - POSTGRES_DB=${POSTGRES_DB}
-      - POSTGRES_USER=${POSTGRES_USER}
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+  mongodb:
+    image: mongo:latest
     volumes:
-      - postgres_data:/var/lib/postgresql/data
-    healthcheck:
-      test: ['CMD-SHELL', 'pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}']
-      interval: 5s
-      timeout: 5s
-      retries: 5
+      - mongodb_data:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD}
 
 volumes:
-  postgres_data:
+  mongodb_data:

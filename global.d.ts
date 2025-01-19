@@ -13,7 +13,7 @@ declare global {
 
       PAYLOAD_SECRET?: string
 
-      DATABASE_URI?: string
+      MONGODB_URI?: string
 
       S3_PUBLIC_ENDPOINT?: string
     }

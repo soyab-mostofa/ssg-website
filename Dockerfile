@@ -1,28 +1,61 @@
-# Dockerfile
-FROM node:20-alpine AS base
-RUN npm install -g pnpm
+# File: Dockerfile
+# Base development image
+FROM node:18-alpine AS development
 
-FROM base AS deps
+# Install pnpm
+RUN corepack enable && corepack prepare pnpm@latest --activate
+
 WORKDIR /app
+
+# Copy package files
 COPY package.json pnpm-lock.yaml ./
+
+# Install dependencies
+RUN pnpm install
+
+# Copy rest of the application
+COPY . .
+
+# Development build
+CMD ["pnpm", "dev"]
+
+# Production build stage
+FROM node:18-alpine AS builder
+
+# Install pnpm
+RUN corepack enable && corepack prepare pnpm@latest --activate
+
+WORKDIR /app
+
+# Copy package files
+COPY package.json pnpm-lock.yaml ./
+
+# Install dependencies
 RUN pnpm install --frozen-lockfile
 
-FROM base AS builder
-WORKDIR /app
-COPY --from=deps /app/node_modules ./node_modules
+# Copy rest of the application
 COPY . .
+
+# Build application
 RUN pnpm build
 
-FROM base AS runner
+# Production runtime stage
+FROM node:18-alpine AS production
+
+# Install pnpm
+RUN corepack enable && corepack prepare pnpm@latest --activate
+
 WORKDIR /app
-ENV NODE_ENV=production
-COPY --from=deps /app/node_modules ./node_modules
+
+# Copy package files
+COPY package.json pnpm-lock.yaml ./
+
+# Install production dependencies only
+RUN pnpm install --prod --frozen-lockfile
+
+# Copy built application from builder stage
+COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
-COPY --from=builder /app/.next/standalone ./
-COPY --from=builder /app/.next/static ./.next/static
-COPY --from=builder /app/dist ./dist
-# Add wait-for-it script
-COPY docker-entrypoint.sh .
-RUN chmod +x docker-entrypoint.sh
-EXPOSE 3000
-CMD ["./docker-entrypoint.sh"]
+
+# Start the application
+CMD ["pnpm", "start"]
