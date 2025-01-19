@@ -37,7 +37,7 @@ export const useTextLines = ({ text, containerRef }: UseTextLinesOptions) => {
       document.body.appendChild(span)
 
       const words = text.split(' ')
-      const maxWidth = container.offsetWidth
+      const maxWidth = container.offsetWidth - 16 // 16 is the padding
       const newLines: TextLine[] = []
       let currentLine = ''
 

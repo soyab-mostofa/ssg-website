@@ -36,7 +36,7 @@ export interface Config {
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
   };
   db: {
-    defaultIDType: number;
+    defaultIDType: string;
   };
   globals: {};
   globalsSelect: {};
@@ -72,7 +72,7 @@ export interface UserAuthOperations {
  * via the `definition` "users".
  */
 export interface User {
-  id: number;
+  id: string;
   role?: ('admin' | 'user') | null;
   updatedAt: string;
   createdAt: string;
@@ -90,7 +90,7 @@ export interface User {
  * via the `definition` "media".
  */
 export interface Media {
-  id: number;
+  id: string;
   alt: string;
   updatedAt: string;
   createdAt: string;
@@ -109,7 +109,7 @@ export interface Media {
  * via the `definition` "sustainability-reports".
  */
 export interface SustainabilityReport {
-  id: number;
+  id: string;
   /**
    * The year of the sustainability report (e.g., 2023)
    */
@@ -121,11 +121,11 @@ export interface SustainabilityReport {
   /**
    * Cover image for the report (Recommended aspect ratio: 6:8)
    */
-  coverImage: number | Media;
+  coverImage: string | Media;
   /**
    * PDF file of the sustainability report
    */
-  reportFile: number | Media;
+  reportFile: string | Media;
   status: 'draft' | 'published';
   /**
    * The date when this report was published
@@ -150,12 +150,12 @@ export interface SustainabilityReport {
  * via the `definition` "job-applications".
  */
 export interface JobApplication {
-  id: number;
+  id: string;
   fullName: string;
   email: string;
   phoneNumber: string;
-  position: number | JobListing;
-  resume: number | Media;
+  position: string | JobListing;
+  resume: string | Media;
   status?: ('pending' | 'reviewing' | 'shortlisted' | 'interview' | 'offered' | 'hired' | 'rejected') | null;
   termsAccepted: boolean;
   privacyPolicyAccepted: boolean;
@@ -185,7 +185,7 @@ export interface JobApplication {
  * via the `definition` "job-listings".
  */
 export interface JobListing {
-  id: number;
+  id: string;
   jobTitle: string;
   company: {
     name: string;
@@ -205,7 +205,7 @@ export interface JobListing {
   applicationDeadline: string;
   status?: ('active' | 'closed') | null;
   Applications?: {
-    docs?: (number | JobApplication)[] | null;
+    docs?: (string | JobApplication)[] | null;
     hasNextPage?: boolean | null;
   } | null;
   /**
@@ -220,32 +220,32 @@ export interface JobListing {
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
-  id: number;
+  id: string;
   document?:
     | ({
         relationTo: 'users';
-        value: number | User;
+        value: string | User;
       } | null)
     | ({
         relationTo: 'media';
-        value: number | Media;
+        value: string | Media;
       } | null)
     | ({
         relationTo: 'sustainability-reports';
-        value: number | SustainabilityReport;
+        value: string | SustainabilityReport;
       } | null)
     | ({
         relationTo: 'job-applications';
-        value: number | JobApplication;
+        value: string | JobApplication;
       } | null)
     | ({
         relationTo: 'job-listings';
-        value: number | JobListing;
+        value: string | JobListing;
       } | null);
   globalSlug?: string | null;
   user: {
     relationTo: 'users';
-    value: number | User;
+    value: string | User;
   };
   updatedAt: string;
   createdAt: string;
@@ -255,10 +255,10 @@ export interface PayloadLockedDocument {
  * via the `definition` "payload-preferences".
  */
 export interface PayloadPreference {
-  id: number;
+  id: string;
   user: {
     relationTo: 'users';
-    value: number | User;
+    value: string | User;
   };
   key?: string | null;
   value?:
@@ -278,7 +278,7 @@ export interface PayloadPreference {
  * via the `definition` "payload-migrations".
  */
 export interface PayloadMigration {
-  id: number;
+  id: string;
   name?: string | null;
   batch?: number | null;
   updatedAt: string;

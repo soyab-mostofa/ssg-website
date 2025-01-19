@@ -1,29 +1,43 @@
-version: '3.8'
+version: '3'
 
 services:
-  app:
-    build:
-      context: .
-      target: development
+  payload:
+    image: node:18-alpine
     ports:
       - '3000:3000'
     volumes:
-      - .:/app
-      - /app/node_modules
-    environment:
-      - NODE_ENV=development
-      - MONGODB_URI=mongodb://mongodb:27017/payload
-      - PAYLOAD_SECRET=${PAYLOAD_SECRET}
-      - NEXT_PUBLIC_SERVER_URL=http://localhost:3000
+      - .:/home/node/app
+      - node_modules:/home/node/app/node_modules
+    working_dir: /home/node/app/
+    command: sh -c "corepack enable && corepack prepare pnpm@latest --activate && pnpm install && pnpm dev"
     depends_on:
-      - mongodb
+      - mongo
+      # - postgres
+    env_file:
+      - .env
 
-  mongodb:
+  # Ensure your DATABASE_URI uses 'mongo' as the hostname ie. mongodb://mongo/my-db-name
+  mongo:
     image: mongo:latest
     ports:
       - '27017:27017'
+    command:
+      - --storageEngine=wiredTiger
     volumes:
-      - mongodb_data:/data/db
+      - data:/data/db
+    logging:
+      driver: none
+
+  # Uncomment the following to use postgres
+  # postgres:
+  #   restart: always
+  #   image: postgres:latest
+  #   volumes:
+  #     - pgdata:/var/lib/postgresql/data
+  #   ports:
+  #     - "5432:5432"
 
 volumes:
-  mongodb_data:
+  data:
+  # pgdata:
+  node_modules:

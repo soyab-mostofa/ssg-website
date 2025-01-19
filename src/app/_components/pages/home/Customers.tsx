@@ -3,10 +3,10 @@ import { memo } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import Image from 'next/image'
 import { useState, useCallback } from 'react'
-import TextFadeUp from '../../animated/TextFadeUp'
 import SectionChip from '../../shared/SectionChip'
 import Button from '../../shared/Button'
 import AnimateTextInView from '../../animated/animateTextInView'
+import TextFadeUp from '../../animated/TextFadeUp'
 
 // Move customers data outside component to prevent recreation on rerenders
 
@@ -40,16 +40,16 @@ export default function CustomersSection() {
         <div className="flex basis-1/2 flex-col items-start gap-8">
           <SectionChip>OUR CUSTOMERS</SectionChip>
           <AnimateTextInView
+            className={'-mb-1 w-full pt-2 text-2xl font-bold md:text-5xl'}
             text="Trusted by Industry Leaders"
-            className="text-3xl font-bold md:text-5xl"
           />
         </div>
 
         <div className="mt-auto h-full max-w-[584px] basis-1/2">
           <TextFadeUp
-            className="text-base text-grayscale-black-400"
+            className="self-end text-base font-normal text-grayscale-black-400 md:text-xl"
             text="Lorem ipsum dolor sit amet consectetur. Mattis arcu lectus morbi a ut massa eget mauris.
-            Dis facilisi gravida neque elementum auctor felis neque facilisis.Z"
+            Dis facilisi gravida neque elementum auctor. kfds;jldsjf"
           />
         </div>
       </div>
