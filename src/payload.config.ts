@@ -54,13 +54,8 @@ export default buildConfig({
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
   db: mongooseAdapter({
-    // Mongoose-specific arguments go here.
-    // URL is required.
     url: process.env.MONGODB_URI as string,
   }),
   sharp,
-  plugins: [
-    // storage-adapter-placeholder
-    s3Storage(s3Config),
-  ],
+  plugins: [s3Storage(s3Config)],
 })

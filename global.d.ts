@@ -14,7 +14,8 @@ declare global {
       PAYLOAD_SECRET?: string
 
       MONGODB_URI?: string
-
+      MONGO_USERNAME?: string
+      MONGO_PASSWORD?: string
       S3_PUBLIC_ENDPOINT?: string
     }
   }
