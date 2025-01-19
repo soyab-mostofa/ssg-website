@@ -3,9 +3,9 @@ declare global {
     interface ProcessEnv {
       S3_BUCKET: string
 
-      S3_ACCESS_KEY_ID: string
+      MINIO_ROOT_USER: string
 
-      S3_SECRET_ACCESS_KEY: string
+      MINIO_ROOT_PASSWORD: string
 
       S3_ENDPOINT?: string
 
