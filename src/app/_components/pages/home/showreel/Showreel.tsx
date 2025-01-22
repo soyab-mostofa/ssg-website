@@ -6,8 +6,7 @@ const Showreel = () => {
   return (
     <SectionLayout
       heading="A Legacy of Impact and Innovation"
-      subLeft="Lorem ipsum dolor sit amet consectetur. Mattis arcu lectus morbi a ut massa eget mauris.
-            Dis facilisi gravida neque elementum auctor felis neque facilisis."
+      subLeft="Since 2007, Shin Shin Group has been leading the way in responsible garment manufacturing. With five advanced factories, we champion environmental stewardship, inclusivity, and circular production to deliver unmatched quality for global brands."
       chip="Showreel"
     >
       <div className="container">

@@ -4,7 +4,12 @@ import { ProductCarousel } from './ProductCarousel'
 
 const ProductSection = () => {
   return (
-    <SectionLayout chip="PRODUCTS" heading="Discover Style for Every Generation">
+    <SectionLayout
+      headingWidth="100%"
+      productSection
+      chip="PRODUCTS"
+      heading="Discover Style for Every Generation"
+    >
       <ProductCarousel />
     </SectionLayout>
   )

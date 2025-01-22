@@ -18,6 +18,8 @@ interface SectionProps {
   headingWidth?: string
   grayBG?: boolean
   rightButton?: string
+  sustainSection?: boolean
+  productSection?: boolean
 }
 
 const SectionLayout = ({
@@ -31,6 +33,8 @@ const SectionLayout = ({
   grayBG,
   className,
   rightButton,
+  sustainSection,
+  productSection,
 }: SectionProps) => {
   return (
     <section
@@ -45,6 +49,8 @@ const SectionLayout = ({
         <div
           className={cn('mb-10 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-10', {
             'md:grid-cols-1': !subLeft && !rightButton,
+            'md:grid-cols-[687px_1fr]': sustainSection,
+            'md:grid-cols-[1fr]': productSection,
           })}
         >
           <div

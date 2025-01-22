@@ -7,14 +7,14 @@ const HeroTitle = () => {
   const [isLoading, setIsLoading] = useState(true)
   const [showContent, setShowContent] = useState(false)
 
-  const titleContent = 'Innovating Today for a Sustainable Tomorrow'
+  const titleContent = 'Fashioning a Sustainable Future'
   const descriptionContent =
-    'With five state-of-the-art factories and a commitment to sustainability, Shin Shin Group delivers world-class apparel solutions that prioritize people, planet, and progress.'
+    'At Shin Shin Group, we transform apparel manufacturing through innovation, inclusivity, and eco-friendly practices that lead the industry forward. Shin Shin Group leads the apparel industry with eco-conscious manufacturing, groundbreaking designs, and a commitment to circularity.'
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false)
-      setTimeout(() => setShowContent(true), 100)
+      setTimeout(() => setShowContent(true), 4000)
     }, 300)
 
     return () => clearTimeout(timer)

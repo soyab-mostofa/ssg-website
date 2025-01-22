@@ -83,6 +83,8 @@ export default function ImpactStories() {
       chip="IMPACT STORIES"
       className="relative py-8 sm:py-12"
       grayBG
+      headingWidth="100%"
+      productSection
     >
       <Carousel
         opts={{

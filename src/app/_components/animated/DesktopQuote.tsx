@@ -61,7 +61,7 @@ const DesktopQuote = ({ paragraph }: { paragraph: string }) => {
                   delay,
                   ease: 'easeOut',
                 }}
-                className="relative ml-1 inline-block text-2xl md:text-3xl"
+                className="relative ml-2 inline-block text-2xl md:text-3xl"
               >
                 {word}
                 <Image

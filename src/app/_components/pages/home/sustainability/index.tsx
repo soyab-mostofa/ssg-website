@@ -23,7 +23,9 @@ const SustainabilitySection = () => {
     <SectionLayout
       heading="Sustainability at Our Core"
       dark
-      subBottom="Lorem ipsum dolor sit amet consectetur. Mattis arcu lectus morbi a ut massa eget mauris. Dis facilisi gravida neque elementum auctor felis neque facilisis."
+      sustainSection
+      headingWidth="687px"
+      subBottom="Our commitment to sustainability drives everything we do, from using renewable energy and reducing greenhouse gas emissions to employing innovative water and waste management systems. Together, we shape a greener future for fashion."
       chip="Sustainability"
       className="relative overflow-hidden py-16 md:py-28"
       rightButton="Our Sustainability Efforts"

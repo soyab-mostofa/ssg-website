@@ -5,7 +5,6 @@ import { motion, useAnimation, AnimatePresence } from 'motion/react'
 const LoadingAnimation = ({ children, onLoadingComplete }) => {
   const [progress, setProgress] = useState(0)
   const [isLoading, setIsLoading] = useState(true)
-  const controls = useAnimation()
 
   useEffect(() => {
     const simulateLoading = async () => {
