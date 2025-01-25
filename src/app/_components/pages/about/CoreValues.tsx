@@ -7,7 +7,7 @@ const ValueCard = memo(
   ({ icon: Icon, title, description }: { icon: any; title: string; description: string }) => (
     <Card className="p-6">
       <div className="w-fit rounded-sm bg-secondary-red-600 p-3 text-primary-foreground">
-        <Icon size={24} />
+        <Icon fill="#d7191f" size={24} />
       </div>
       <p className="pb-2 pt-3 text-xl font-semibold sm:text-2xl">{title}</p>
       <p className="text-base text-muted-foreground">{description}</p>

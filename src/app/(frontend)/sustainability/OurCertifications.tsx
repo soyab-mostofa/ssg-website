@@ -30,7 +30,7 @@ const OurCertifications = () => {
       heading="Certified Excellence in Apparel"
       headingWidth="500px"
       className="px-4 sm:px-6 lg:px-8"
-      subLeft="Lorem ipsum dolor sit amet consectetur. Mattis arcu lectus morbi a ut massa eget mauris. Dis facilisi gravida neque elementum auctor felis neque facilisis. Molestie lacus elit."
+      subLeft="Shin Shin Group holds globally recognized certifications, ensuring sustainable practices, ethical production, and premium quality standards in every garment manufactured."
     >
       <div className="relative">
         <motion.div

@@ -36,20 +36,19 @@ export default function CustomersSection() {
 
   return (
     <section className="container py-24">
-      <div className="mb-10 flex flex-col justify-between gap-8 md:flex-row">
+      <div className="mb-10 flex flex-col justify-between gap-2 md:flex-row md:gap-8">
         <div className="flex basis-1/2 flex-col items-start gap-8">
           <SectionChip>OUR CUSTOMERS</SectionChip>
           <AnimateTextInView
             className={'-mb-1 w-full pt-2 text-2xl font-bold md:text-5xl'}
-            text="Trusted by Industry Leaders"
+            text="Trusted by Global Apparel Leaders"
           />
         </div>
 
         <div className="mt-auto h-full max-w-[584px] basis-1/2">
           <TextFadeUp
-            className="self-end text-base font-normal text-grayscale-black-400 md:text-xl"
-            text="Lorem ipsum dolor sit amet consectetur. Mattis arcu lectus morbi a ut massa eget mauris.
-            Dis facilisi gravida neque elementum auctor. kfds;jldsjf"
+            className="-ml-1 self-end text-base font-normal text-grayscale-black-400 md:text-xl"
+            text="From high-street fashion to timeless classics, Shin Shin Group partners with leading global brands, ensuring quality, innovation, and sustainable practices at every step."
           />
         </div>
       </div>

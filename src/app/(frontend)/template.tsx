@@ -2,7 +2,6 @@
 
 import { ReactNode, useRef, useEffect, useState } from 'react'
 import { motion, useScroll, useSpring, AnimatePresence } from 'motion/react'
-import { usePathname } from 'next/navigation'
 import Menu from '../_components/menu/Menu'
 import Footer from '../_components/shared/Footer'
 

@@ -1,41 +1,67 @@
+'use client'
 import React from 'react'
+import { motion, Variants } from 'motion/react'
 import SectionChip from '../../shared/SectionChip'
 import Image from 'next/image'
-import { RocketIcon } from 'lucide-react'
+import { Eye, RocketIcon } from 'lucide-react'
 import { Card } from '@/components/ui/card'
+import AnimateTextInView from '../../animated/animateTextInView'
+
+const fadeIn = {
+  hidden: { opacity: 0, filter: 'blur(10px)' },
+  visible: {
+    opacity: 1,
+    filter: 'blur(0px)',
+    transition: {
+      duration: 0.9,
+      ease: 'easeInOut',
+      delay: 0.2,
+      staggerChildren: 0.5,
+      easings: [0.5, 0.2, 0.3, 0.1],
+    },
+  },
+} as Variants
 
 const FoundingStory = () => {
   return (
-    <section className="container overflow-x-hidden py-8 md:py-16 lg:py-24">
+    <motion.section
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: '-100px', amount: 0.04 }}
+      variants={fadeIn}
+      className="container overflow-x-hidden py-8 md:py-16 lg:py-24"
+    >
       <SectionChip>Founding Story</SectionChip>
 
       <div className="mt-8 grid gap-4 lg:grid-cols-2 lg:gap-8">
-        {/* Left Column */}
-        <div className="flex flex-col space-y-6">
+        <motion.div variants={fadeIn} className="flex flex-col space-y-6">
           <div className="space-y-4">
-            <h2 className="text-3xl font-bold md:text-4xl lg:text-5xl">Founding Story</h2>
-            <div className="space-y-4 text-base md:text-lg">
+            <AnimateTextInView
+              text="Founding Story"
+              className="text-3xl font-bold md:text-4xl lg:text-5xl"
+            />
+            <motion.div variants={fadeIn} className="space-y-4 text-base md:text-lg">
               <p>
-                Shin Shin Group is one of the largest conglomerates in Bangladesh, exporting apparel
-                worldwide. The group comprises five factories: Shin Shin Apparels Ltd, Jeans Plus
-                Ltd, Khalifa Apparels Ltd, Organic Jeans Ltd, and Vancot Limited. All these
-                factories practice and promote sustainable and responsible apparel production.
+                Shin Shin Group began its journey in 2007, transforming the ready-made garment (RMG)
+                sector in Bangladesh. Starting with Shin Shin Apparels Ltd., the group rapidly
+                expanded, driven by quality, sustainability, and innovation. Recognizing global
+                apparel challenges, it embraced sustainable practices, leveraging advanced
+                technologies and skilled workforce to become a preferred partner for global brands.
               </p>
               <p>
-                By prioritizing the well-being of people and the planet, while striving for
-                continuous innovation and the highest quality, Shin Shin Group has earned a
-                prestigious position in the fashion industry. The group has received several
-                international awards and accolades for its commitment to sustainability and
-                inclusivity.
+                Over the years, Shin Shin Group acquired struggling factories, revitalizing them
+                through investments in infrastructure, energy-efficient technologies, and
+                sustainable practices. These efforts solidified its reputation as a leader in
+                ethical apparel production, catering to markets worldwide, with five factories and
+                over 8,700 employees.
               </p>
-            </div>
+            </motion.div>
           </div>
 
-          {/* Image Gallery */}
-          <div className="grid grid-cols-2 gap-4">
+          <motion.div variants={fadeIn} className="grid grid-cols-2 gap-4">
             <div className="relative aspect-[1.27/1] w-full overflow-hidden rounded-xl">
               <Image
-                src="/founding-story-1.png"
+                src="/about/about-1.JPG"
                 alt="Shin Shin Group facility view 1"
                 fill
                 className="object-cover object-center"
@@ -45,53 +71,58 @@ const FoundingStory = () => {
             </div>
             <div className="relative aspect-[1.27/1] w-full overflow-hidden rounded-xl">
               <Image
-                src="/founding-story-2.png"
+                src="/about/about-2.JPG"
                 alt="Shin Shin Group facility view 2"
                 fill
                 className="object-cover object-center"
                 suppressHydrationWarning
               />
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
-        {/* Right Column - Featured Image */}
-        <div className="relative aspect-[0.97/1] w-full lg:aspect-auto">
+        <motion.div variants={fadeIn} className="relative aspect-[0.97/1] w-full lg:aspect-auto">
           <Image
-            src="/founding-story-side.png"
+            src="/about/about-4.JPG"
             alt="Shin Shin Group main facility"
             fill
             sizes="(max-width: 1024px) 100vw, 50vw"
             className="rounded-xl object-cover object-center"
             priority
           />
-        </div>
+        </motion.div>
       </div>
-      <div className="mt-8 grid gap-8 md:mt-14 md:grid-cols-2">
-        <Card className="p-6">
-          <div className="w-fit rounded-sm bg-secondary-red-600 p-3 text-others-white">
-            <RocketIcon fill="white" size={24} />
-          </div>
-          <p className="pb-2 pt-3 text-xl font-semibold sm:text-2xl">Our Mission</p>
-          <p className="text-base">
-            To revolutionize the global apparel industry by delivering sustainable, innovative, and
-            high-quality solutions that empower people, protect the planet, and create lasting value
-            for all stakeholders.
-          </p>
-        </Card>
-        <Card className="p-6">
-          <div className="w-fit rounded-sm bg-secondary-red-600 p-3 text-others-white">
-            <RocketIcon fill="white" size={24} />
-          </div>
-          <p className="pb-2 pt-3 text-xl font-semibold sm:text-2xl">Our Mission</p>
-          <p className="text-base">
-            To revolutionize the global apparel industry by delivering sustainable, innovative, and
-            high-quality solutions that empower people, protect the planet, and create lasting value
-            for all stakeholders.
-          </p>
-        </Card>
-      </div>
-    </section>
+
+      <motion.div variants={fadeIn} className="mt-8 grid gap-8 md:mt-14 md:grid-cols-2">
+        <motion.div variants={fadeIn}>
+          <Card className="p-6">
+            <div className="w-fit rounded-sm bg-secondary-red-600 p-3 text-others-white">
+              <RocketIcon fill="#d7191f" size={24} />
+            </div>
+            <p className="pb-2 pt-3 text-xl font-semibold sm:text-2xl">Our Mission</p>
+            <p className="text-base">
+              Deliver high-quality, sustainable apparel through ethical practices, innovation, and
+              environmental care. Empowering people and fostering circular manufacturing, Shin Shin
+              Group creates lasting value for customers and communities.
+            </p>
+          </Card>
+        </motion.div>
+
+        <motion.div variants={fadeIn}>
+          <Card className="p-6">
+            <div className="w-fit rounded-sm bg-secondary-red-600 p-3 text-others-white">
+              <Eye fill="#d7191f" size={24} />
+            </div>
+            <p className="pb-2 pt-3 text-xl font-semibold sm:text-2xl">Our Vision</p>
+            <p className="text-base">
+              Become the most trusted apparel manufacturing partner, reshaping industries with
+              sustainability, inclusivity, and innovation. Shin Shin Group envisions a future of
+              responsible fashion that uplifts communities and preserves the planet.
+            </p>
+          </Card>
+        </motion.div>
+      </motion.div>
+    </motion.section>
   )
 }
 

@@ -1,3 +1,5 @@
+import { BlurFade } from '@/components/ui/blur-fade'
+import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel'
 import Image from 'next/image'
 import React from 'react'
 
@@ -9,24 +11,30 @@ const CarbonWipeout = () => {
       <div className="flex flex-col gap-6 pb-6 sm:gap-10 sm:pb-10">
         <h3 className="text-3xl font-bold">Carbon Wipeout</h3>
         <p className="text-base font-normal">
-          As an environmentally responsible business, we are firmly committed to minimizing our
-          carbon footprint and transitioning towards a sustainable, zero-carbon economy. To reduce
-          our environmental impact, we are setting up solar panels to prevent 2,000 tons of CO2 from
-          being released into the environment every year and create closed-loop systems.
+          Shin Shin Group actively pursues a carbon-neutral future. By integrating solar power
+          systems, optimizing energy use, and transitioning to LED lighting, we have reduced
+          greenhouse gas emissions year-on-year. With ambitious goals to cut emissions by 10% across
+          all entities by 2028, we strive to set new standards for environmental responsibility.
         </p>
       </div>
-      <div className="flex flex-col gap-8 sm:flex-row">
-        {pictures.map((picture, index) => {
-          return (
-            <div
-              key={index}
-              className="relative aspect-[379/420] w-full overflow-hidden rounded-lg bg-muted"
-            >
-              <Image src={picture} alt="carbon-wipeout" fill />
-            </div>
-          )
-        })}
-      </div>
+      <Carousel>
+        <CarouselContent>
+          {pictures.map((picture, index) => {
+            return (
+              <CarouselItem className="aspect-[379/420] basis-full sm:basis-1/3" key={index}>
+                <BlurFade
+                  inView
+                  duration={0.6}
+                  inViewMargin="100px 0px"
+                  className="relative h-full w-full overflow-hidden rounded-lg bg-muted"
+                >
+                  <Image src={picture} alt="carbon-wipeout" fill />
+                </BlurFade>
+              </CarouselItem>
+            )
+          })}
+        </CarouselContent>
+      </Carousel>
     </div>
   )
 }

@@ -123,6 +123,11 @@ export default {
         },
       },
       keyframes: {
+        'text-gradient': {
+          to: {
+            backgroundPosition: '200% center',
+          },
+        },
         'accordion-down': {
           from: {
             height: '0',
@@ -141,6 +146,7 @@ export default {
         },
       },
       animation: {
+        'text-gradient': 'text-gradient 1.3s linear infinite',
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
       },

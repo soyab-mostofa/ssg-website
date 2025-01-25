@@ -5,24 +5,55 @@ import { motion } from 'motion/react'
 import SectionLayout from '../../shared/SectionLayout'
 
 const timelineData = [
-  { year: 2007, x: 40, y: 320, image: '/founding-story-1.png', description: 'Company Founded' },
   {
+    yearText: 'The Beginning',
+    year: 2007,
+    x: 40,
+    y: 320,
+    image: '/founding-story-1.png',
+    description: 'First factory, Shin Shin Apparels Ltd, established.',
+  },
+  {
+    yearText: 'Going Green',
     year: 2009,
     x: 180,
     y: 280,
     image: '/founding-story-1.png',
-    description: 'First Major Milestone',
+    description: 'Organic Jeans Ltd launched to align with eco-conscious goals.',
   },
   {
+    yearText: 'Revival Through Circularity',
     year: 2014,
     x: 320,
     y: 260,
     image: '/founding-story-1.png',
-    description: 'International Expansion',
+    description: 'Jeans Plus Ltd acquired and transformed into a sustainability pioneer.',
   },
-  { year: 2015, x: 460, y: 240, image: '/founding-story-1.png', description: 'Product Innovation' },
-  { year: 2016, x: 600, y: 200, image: '/founding-story-1.png', description: 'Market Leadership' },
-  { year: 2022, x: 740, y: 100, image: '/founding-story-1.png', description: 'Global Recognition' },
+  {
+    yearText: 'Formalwear Expertise',
+    year: 2016,
+    x: 460,
+    y: 240,
+    image: '/founding-story-1.png',
+    description: 'Suad Garments Industries Ltd added high-end formalwear to our portfolio.',
+  },
+  {
+    yearText: 'Environmental Leadership',
+    year: 2020,
+    x: 600,
+    y: 200,
+    image: '/founding-story-1.png',
+    description: 'LEED Gold certification for adopting green factory practices.',
+  },
+  {
+    yearText: 'Global Excellence',
+    year: 2023,
+    x: 740,
+    y: 100,
+    image: '/founding-story-1.png',
+    description:
+      'Projected turnover of USD 126.24 million, powered by sustainability and innovation.',
+  },
 ]
 
 const InteractiveTimeline = () => {
@@ -99,33 +130,53 @@ const InteractiveTimeline = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: index * 0.1 }}
               style={{ cursor: 'pointer' }}
+              className="relative z-10"
             >
+              {/* Year label */}
+              <motion.foreignObject
+                x={point.x - 50}
+                y={point.y + 20}
+                width="100"
+                height="50"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5 }}
+              >
+                <p className="text-center text-xs font-bold text-primary-blue-">{point.year}</p>
+                <p className="text-center text-xs text-grayscale-black-400">{point.yearText}</p>
+              </motion.foreignObject>
+
               {/* Popup */}
               {activeYear === point.year && (
                 <motion.foreignObject
-                  x={point.x - 128}
-                  y={point.y - 180}
-                  width="256"
-                  height="200"
+                  x={point.x - 100}
+                  y={point.y - 200}
+                  width="200"
+                  height="300"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 20 }}
                   transition={{ duration: 0.2 }}
-                  style={{ zIndex: 50 }}
                 >
                   <div
-                    className="rounded-lg border border-primary-blue-100 bg-others-white shadow-sm"
+                    className="z-50 overflow-hidden rounded-lg border border-primary-blue-100 bg-others-white shadow-sm shadow-primary-blue-500/30"
                     style={{ position: 'relative', zIndex: 50 }}
                   >
                     <motion.img
                       src={point.image}
                       alt={`Event from ${point.year}`}
-                      className="h-32 w-full rounded object-cover"
+                      className="h-32 w-full object-cover"
                       initial={{ opacity: 0 }}
                       whileInView={{ opacity: 1 }}
                       viewport={{ once: true }}
                     />
-                    <p className="text-gray-600 py-2 text-center text-sm">{point.description}</p>
+                    <p
+                      style={{ fontSize: '10px', zIndex: 50 }}
+                      className="text-gray-600 inline-flex p-2 text-center text-xs font-semibold"
+                    >
+                      {point.description}
+                    </p>
                   </div>
                 </motion.foreignObject>
               )}
@@ -135,24 +186,11 @@ const InteractiveTimeline = () => {
                 cx={point.x}
                 cy={point.y}
                 r="6"
+                className="z-10"
                 fill={activeYear === point.year ? '#3B82F6' : '#E5E7EB'}
                 whileHover={{ scale: 1.5 }}
                 transition={{ duration: 0.2 }}
               />
-
-              {/* Year label */}
-              <motion.text
-                x={point.x}
-                y={point.y + 25}
-                textAnchor="middle"
-                className="fill-grayscale-black-400 text-sm"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.5 }}
-              >
-                {point.year}
-              </motion.text>
             </motion.g>
           ))}
         </svg>

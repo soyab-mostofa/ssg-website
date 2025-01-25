@@ -1,11 +1,11 @@
 'use client'
-import { AnimatePresence, motion, Variants } from 'motion/react'
+import { motion, Variants } from 'motion/react'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
 import React, { useState, useEffect } from 'react'
-import Hamburger from 'hamburger-react'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
+import MobileMenu from './MobileMenu'
 
 export interface MenuData {
   title: string
@@ -134,89 +134,7 @@ export const MenuLink = ({ href, children, isActive, onClick }: MenuLinkProps) =
   )
 }
 
-const modalVariants: Variants = {
-  hidden: {
-    opacity: 0,
-    transition: {
-      duration: 0.3,
-      when: 'afterChildren',
-    },
-  },
-  visible: {
-    opacity: 1,
-    transition: {
-      duration: 0.3,
-      when: 'beforeChildren',
-    },
-  },
-  exit: {
-    opacity: 0,
-    transition: {
-      duration: 1,
-      when: 'afterChildren',
-    },
-  },
-}
-
-const backdropVariants: Variants = {
-  hidden: {
-    opacity: 0,
-    transition: {
-      duration: 0.2,
-    },
-  },
-  visible: {
-    opacity: 1,
-    transition: {
-      duration: 0.3,
-    },
-  },
-  exit: {
-    opacity: 0,
-    transition: {
-      duration: 0.2,
-      delay: 0.9,
-    },
-  },
-}
-
-const navLinksVariants: Variants = {
-  hidden: {
-    transition: {
-      staggerChildren: 0.05,
-      staggerDirection: -1,
-    },
-  },
-  visible: {
-    transition: {
-      delayChildren: 0.2,
-      staggerChildren: 0.1,
-    },
-  },
-}
-
-const linkItemVariants: Variants = {
-  hidden: {
-    opacity: 0,
-    y: 20,
-    transition: {
-      duration: 0.2,
-    },
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.3,
-      ease: 'easeOut',
-    },
-  },
-  exit: {
-    opacity: 0,
-  },
-}
-
-const menuData: MenuData[] = [
+export const menuData: MenuData[] = [
   { title: 'Home', link: '/' },
   { title: 'About', link: '/about' },
   { title: 'Sustainability', link: '/sustainability' },
@@ -227,10 +145,6 @@ const menuData: MenuData[] = [
 export default function Menu() {
   const pathName = usePathname()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
-  }
 
   const handleLinkClick = () => {
     setIsMenuOpen(false)
@@ -252,11 +166,7 @@ export default function Menu() {
   }, [isMenuOpen])
 
   return (
-    <div
-      className={cn('container relative inset-0 z-50 flex w-full', {
-        'fixed h-screen overflow-hidden bg-others-white': isMenuOpen,
-      })}
-    >
+    <div className={cn('container relative inset-0 z-50 flex w-full', {})}>
       <div className="menu-bar flex h-14 w-full items-center justify-between sm:h-24">
         <div className="menu-logo text-grayscale-black-900">
           <Link href="/">
@@ -292,49 +202,8 @@ export default function Menu() {
             Contact Us
           </Link>
         </div>
-
-        {/* Mobile Menu Toggle */}
-        <div className="z-50 sm:hidden">
-          <Hamburger toggled={isMenuOpen} toggle={toggleMenu} size={20} />
-        </div>
+        <MobileMenu />
       </div>
-
-      {/* Mobile Menu Overlay */}
-      <AnimatePresence mode="wait">
-        {isMenuOpen && (
-          <motion.div
-            className="fixed inset-0 flex items-center justify-center"
-            variants={modalVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-          >
-            {/* Background Layer */}
-            <motion.div className="bg-gray-900 absolute inset-0" variants={backdropVariants} />
-
-            {/* Content Layer */}
-            <motion.div className="relative w-full" variants={navLinksVariants}>
-              <div className="flex h-full flex-col items-center justify-center gap-8">
-                {menuData.map((link, index) => (
-                  <Link href={link.link} key={index} onClick={handleLinkClick}>
-                    <motion.span
-                      className={cn(
-                        'hover:text-gray-300 cursor-pointer text-2xl font-light transition-colors',
-                        pathName === link.link
-                          ? 'text-secondary-red-500'
-                          : 'text-grayscale-black-800',
-                      )}
-                      variants={linkItemVariants}
-                    >
-                      {link.title}
-                    </motion.span>
-                  </Link>
-                ))}
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   )
 }

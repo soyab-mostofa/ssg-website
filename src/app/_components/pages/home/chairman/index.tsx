@@ -46,7 +46,7 @@ const ChairmansThoughts = () => {
                 />
               </motion.div>
               <AnimateTextInView
-                text="  Mohammad Sohel Sadat"
+                text="Mohammad Sohel Sadat"
                 className="mt-4 text-2xl font-bold text-grayscale-black-400 md:text-3xl"
               />
               <AnimateTextInView

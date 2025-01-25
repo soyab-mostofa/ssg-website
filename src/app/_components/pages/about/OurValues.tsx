@@ -10,7 +10,7 @@ const OurValues = () => {
       chip="Our values"
       heading="Values That Drive Us Forward"
       className="relative"
-      subLeft="Lorem ipsum dolor sit amet consectetur. Mattis arcu lectus morbi a ut massa eget mauris. Dis facilisi gravida neque elementum auctor felis neque facilisis."
+      subLeft="At Shin Shin Group, our values form the cornerstone of our journey toward innovation, sustainability, and excellence in apparel manufacturing. These principles guide our actions and define our purpose"
     >
       <CoreValues />
       <img

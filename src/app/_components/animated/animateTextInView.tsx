@@ -1,14 +1,14 @@
 'use client'
 import { motion, Variants } from 'motion/react'
-import { FC, useRef } from 'react'
+import { FC, HTMLAttributes, useRef } from 'react'
 import { useTextLines } from '@/lib/useTextLines'
 import { cn } from '@/lib/utils'
 
 const AnimateTextInView: FC<{
   text: string
-  className?: string
+  className?: HTMLAttributes<HTMLDivElement>['className']
   delay?: number
-  childClass?: string
+  childClass?: HTMLAttributes<HTMLSpanElement>['className']
 }> = ({ childClass, text, className = '', delay = 0.1 }) => {
   const containerRef = useRef(null)
   const lines = useTextLines({

@@ -27,11 +27,12 @@ const SustainabilityPage = () => {
       <PageHeader
         bgImage="/headers/sustainability-header.webp"
         heading={['Our', 'Sustainability']}
-        sub="Shin Shin Group is one of the largest conglomerates in Bangladesh, exporting apparel worldwide. The group comprises five factories."
+        sub="Shin Shin Group pioneers sustainability through water conservation, renewable energy, green factories, and carbon reduction, reshaping the future of apparel manufacturing."
       />
       <SectionLayout
         chip="sustainability"
         heading="Our Green Initiatives"
+        sideTextHeight
         className="py-0 pt-16 md:py-0 md:pt-24"
         subLeft={sustainabilityItems[active].content}
       >

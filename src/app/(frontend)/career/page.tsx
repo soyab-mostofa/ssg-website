@@ -16,17 +16,17 @@ interface CultureItem {
 
 const data: CultureItem[] = [
   {
-    url: 'https://plus.unsplash.com/premium_photo-1677368598706-4fa4f345d579?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    url: '/career/person-3.JPG',
     subTitle:
       'Lorem ipsum dolor sit amet consectetur. Odio enim aenean sed morbi ac. Scelerisque egestas eros vel libero vel. Orci libero orci varius dolor eu mattis sed vestibulum tincidunt. Accumsan malesuada mattis lobortis purus purus eros.',
   },
   {
-    url: 'https://plus.unsplash.com/premium_photo-1677368598706-4fa4f345d579?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    url: '/career/person-2.JPG',
     subTitle:
       'Lorem ipsum dolor sit amet consectetur. Odio enim aenean sed morbi ac. Scelerisque egestas eros vel libero vel. Orci libero orci varius dolor eu mattis sed vestibulum tincidunt. Accumsan malesuada mattis lobortis purus purus eros.',
   },
   {
-    url: 'https://plus.unsplash.com/premium_photo-1677368598706-4fa4f345d579?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    url: '/career/person-1.JPG',
     subTitle:
       'Lorem ipsum dolor sit amet consectetur. Odio enim aenean sed morbi ac. Scelerisque egestas eros vel libero vel. Orci libero orci varius dolor eu mattis sed vestibulum tincidunt. Accumsan malesuada mattis lobortis purus purus eros.',
   },
@@ -92,7 +92,7 @@ const Page: React.FC = () => {
       <motion.div initial="hidden" animate="visible" variants={fadeInUp}>
         <PageHeader
           bgImage="/headers/career-header.webp"
-          heading={['Career', 'Shin Shin Group']}
+          heading={['Career at', 'Shin Shin Group']}
           sub="Shin Shin Group is one of the largest conglomerates in Bangladesh, exporting apparel worldwide. The group comprises five factories."
         />
       </motion.div>

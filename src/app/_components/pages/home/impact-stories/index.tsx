@@ -15,20 +15,24 @@ import { motion } from 'motion/react'
 
 const stories = [
   {
-    title: 'Employment for differently-abled persons',
-    image: 'https://images.unsplash.com/photo-1573612664822-d7d347da7b80',
+    title: 'Providing employment opportunities for differently-abled individuals',
+    image: '/home/impact/impact-stories-1.JPG',
   },
   {
-    title: 'Free medical services',
-    image: 'https://images.unsplash.com/photo-1612423284934-2850a4ea6b0f',
+    title: 'Free medical clinics for workers and their families',
+    image: '/home/impact/impact-stories-2.JPG',
   },
   {
-    title: 'Community support programs',
-    image: 'https://images.unsplash.com/photo-1631050165089-6311e0d6c5f3',
+    title: 'Caring for gender specific health needs',
+    image: '/home/impact/impact-stories-3.JPG',
   },
   {
-    title: 'Access to education',
-    image: 'https://images.unsplash.com/photo-1679607581913-85ddcff3f19c',
+    title: 'Scholarships and daycare support for workers’ children',
+    image: '/home/impact/impact-stories-4.JPG',
+  },
+  {
+    title: 'Emergency safety drills for workers',
+    image: '/home/impact/impact-stories-5.JPG',
   },
 ].map((story) => ({
   ...story,
@@ -69,8 +73,8 @@ StoryCard.displayName = 'StoryCard'
 
 const CarouselControls = memo(() => (
   <div className="bottom-4 left-0 right-0 flex items-center justify-center gap-4 sm:gap-8">
-    <CarouselPrevious className="!static h-8 w-8 rounded-[10px] border-0 bg-[#fde8e9] text-secondary-red-500 hover:bg-others-white hover:text-secondary-red-600 sm:h-10 sm:w-10 xl:mt-4" />
-    <CarouselNext className="!static h-8 w-8 rounded-[10px] border-0 bg-secondary-red-500 text-others-white hover:bg-secondary-red-600 hover:text-others-white sm:h-10 sm:w-10 xl:mt-4" />
+    <CarouselPrevious className="!static h-8 w-8 rounded-[10px] border border-secondary-red-200 bg-[#fde8e9] text-secondary-red-500 hover:bg-others-white hover:text-secondary-red-600 sm:h-10 sm:w-10 xl:mt-4" />
+    <CarouselNext className="!static h-8 w-8 rounded-[10px] border-0 border-secondary-red-900 bg-secondary-red-500 text-others-white hover:bg-secondary-red-600 hover:text-others-white sm:h-10 sm:w-10 xl:mt-4" />
   </div>
 ))
 

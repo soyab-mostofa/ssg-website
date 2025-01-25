@@ -20,6 +20,7 @@ interface SectionProps {
   rightButton?: string
   sustainSection?: boolean
   productSection?: boolean
+  sideTextHeight?: boolean
 }
 
 const SectionLayout = ({
@@ -35,6 +36,7 @@ const SectionLayout = ({
   rightButton,
   sustainSection,
   productSection,
+  sideTextHeight,
 }: SectionProps) => {
   return (
     <section
@@ -68,16 +70,20 @@ const SectionLayout = ({
             {subBottom && (
               <TextFadeUp
                 dark={dark}
-                className="flex max-w-[687px] flex-wrap items-center text-base font-normal text-grayscale-black-400 md:text-xl"
+                className="-ml-1 mt-4 flex max-w-[687px] flex-wrap items-center text-base font-normal text-grayscale-black-400 md:ml-0 md:mt-0 md:text-xl"
                 text={subBottom}
               />
             )}
           </div>
           {subLeft && (
             <TextFadeUp
-              className={cn('self-end text-base font-normal text-grayscale-black-400 md:text-xl', {
-                'text-grayscale-black-100': dark,
-              })}
+              className={cn(
+                '-ml-1 self-end text-base font-normal text-grayscale-black-400 md:ml-0 md:text-xl',
+                {
+                  'text-grayscale-black-100': dark,
+                  'height-[200px]': sideTextHeight,
+                },
+              )}
               text={subLeft}
             />
           )}

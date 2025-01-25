@@ -25,7 +25,7 @@ const SustainabilitySection = () => {
       dark
       sustainSection
       headingWidth="687px"
-      subBottom="Our commitment to sustainability drives everything we do, from using renewable energy and reducing greenhouse gas emissions to employing innovative water and waste management systems. Together, we shape a greener future for fashion."
+      subBottom="Sustainability drives Shin Shin Group, from renewable energy and emission reductions to advanced water and waste management, shaping fashion’s greener future."
       chip="Sustainability"
       className="relative overflow-hidden py-16 md:py-28"
       rightButton="Our Sustainability Efforts"

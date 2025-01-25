@@ -14,36 +14,41 @@ interface Factory {
   location: string
   capacity: string
   productType: string
+  text: string
 }
 
 const factories: Factory[] = [
   {
     image: '/shin-shin-apperal.png',
     name: 'Shin Shin Apparels Ltd.',
-    location: 'Gazipur, Dhaka, Bangladesh',
+    location: 'Uttara, Dhaka, Bangladesh',
     capacity: '1.2 M Units/Month',
     productType: 'In-house Laundry',
+    text: 'Woven garments, sustainability, innovation, and advanced production technologies.',
   },
   {
     image: '/jeans-plus.png',
     name: 'Jeans Plus Ltd.',
-    location: 'Gazipur, Dhaka, Bangladesh',
+    location: 'Narayanganj, Bangladesh',
     capacity: '1.2 M Units/Month',
     productType: 'In-house Laundry',
+    text: 'High-capacity denim production, sustainability, innovation, advanced manufacturing processes.',
   },
   {
     image: '/organic-jeans.png',
     name: 'Organic Jeans Ltd.',
-    location: 'Gazipur, Dhaka, Bangladesh',
+    location: 'Dhaka, Bangladesh',
     capacity: '1.2 M Units/Month',
     productType: 'In-house Laundry',
+    text: 'Eco-friendly denim production, innovation, advanced machinery, and sustainability-focused practices.',
   },
   {
     image: '/vancot.png',
     name: 'Vancot Ltd.',
-    location: 'Gazipur, Dhaka, Bangladesh',
+    location: 'Chittagong, Bangladesh',
     capacity: '1.2 M Units/Month',
     productType: 'In-house Laundry',
+    text: ' Specialized in diverse woven apparel, embracing innovation and eco-conscious manufacturing techniques.',
   },
 ]
 
@@ -141,7 +146,7 @@ const Page: React.FC = () => {
       />
       <div className="px-4 sm:px-6 md:px-8">
         <SectionLayout
-          subLeft="Lorem ipsum dolor sit amet consectetur. Tincidunt id justo ante tortor pellentesque euismod. Condimentum amet sagittis bibendum purus tellus mauris cursus."
+          subLeft="Shin Shin Group operates five state-of-the-art facilities across Bangladesh, specializing in cut-to-pack processes, sustainable practices, and innovative garment production, ensuring global compliance and superior quality."
           chip="Facilities"
           heading="Our Facilities at a Glance"
           headingWidth="481px"
@@ -185,7 +190,7 @@ const Page: React.FC = () => {
                       <AnimateTextInView
                         childClass="text-sm sm:text-base md:pb-0 overflow-visible"
                         className="text-muted-foreground"
-                        text="Lorem ipsum dolor sit amet consectetur. Egestas roin dolor in gravida lectus in nisi egestas. Donec lobortis nisl justo enim laoreet nec sed id."
+                        text={factory.text}
                       />
                     </div>
 
