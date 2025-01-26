@@ -74,7 +74,7 @@ const InteractiveTimeline = () => {
     <SectionLayout
       heading="Our Journey"
       chip="timeline"
-      className="hidden sm:block"
+      className="hidden md:block"
       subLeft="Shin Shin Group, established in 2007, has grown into a leading apparel conglomerate with 8,727 employees across five factories in Bangladesh. The group achieved."
     >
       <motion.div
@@ -143,7 +143,7 @@ const InteractiveTimeline = () => {
                 viewport={{ once: true }}
                 transition={{ delay: 0.5 }}
               >
-                <p className="text-center text-xs font-bold text-primary-blue-">{point.year}</p>
+                <p className="text-primary-blue- text-center text-xs font-bold">{point.year}</p>
                 <p className="text-center text-xs text-grayscale-black-400">{point.yearText}</p>
               </motion.foreignObject>
 

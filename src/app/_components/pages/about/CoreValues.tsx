@@ -1,17 +1,25 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import React, { memo } from 'react'
 import { Card } from '@/components/ui/card'
 import { Sprout, Lightbulb, Shield, Users, Award, HandshakeIcon } from 'lucide-react'
-import React, { memo } from 'react'
+import { motion } from 'motion/react'
 
 const ValueCard = memo(
   ({ icon: Icon, title, description }: { icon: any; title: string; description: string }) => (
-    <Card className="p-6">
-      <div className="w-fit rounded-sm bg-secondary-red-600 p-3 text-primary-foreground">
-        <Icon fill="#d7191f" size={24} />
-      </div>
-      <p className="pb-2 pt-3 text-xl font-semibold sm:text-2xl">{title}</p>
-      <p className="text-base text-muted-foreground">{description}</p>
-    </Card>
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: 'easeOut' }}
+      viewport={{ once: true }}
+    >
+      <Card className="transform p-6 transition-transform duration-300 hover:scale-105">
+        <div className="w-fit rounded-sm bg-secondary-red-600 p-3 text-primary-foreground">
+          <Icon fill="#d7191f" size={24} />
+        </div>
+        <p className="pb-2 pt-3 text-xl font-semibold sm:text-2xl">{title}</p>
+        <p className="text-base text-muted-foreground">{description}</p>
+      </Card>
+    </motion.div>
   ),
 )
 
