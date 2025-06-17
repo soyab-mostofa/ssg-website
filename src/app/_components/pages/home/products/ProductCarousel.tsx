@@ -61,63 +61,19 @@ const ANIMATION_VARIANTS = {
 const CATEGORIES = [
   {
     title: "Men's Wear",
-    description: 'Classic, Comfortable, Timeless.',
-    url: 'https://images.unsplash.com/photo-1535530705774-695729778c55?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    url: '/products/product-3.webp',
   },
   {
     title: "Women's Wear",
-    description: 'Elegant, Versatile, Empowering.',
-    url: 'https://images.unsplash.com/photo-1495298599282-d8920eb5009b?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    url: '/products/product-4.webp',
   },
   {
-    title: "Girl's Wear",
-    description: 'Fun, Durable, Eco-Friendly.',
-    url: 'https://images.unsplash.com/photo-1601762603339-fd61e28b698a?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    title: "Boys's Wear",
+    url: '/products/product-1.webp',
   },
   {
-    title: "Boy's Wear",
-    description: 'Fun, Durable, Eco-Friendly.',
-    url: 'https://images.unsplash.com/photo-1512068549487-5e79d74c7fc3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzV8fGZhc2hpb258ZW58MHx8MHx8fDA%3D',
-  },
-  {
-    title: "Men's Wear",
-    description: 'Classic, Comfortable, Timeless.',
-    url: 'https://images.unsplash.com/photo-1535530705774-695729778c55?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  },
-  {
-    title: "Women's Wear",
-    description: 'Elegant, Versatile, Empowering.',
-    url: 'https://images.unsplash.com/photo-1495298599282-d8920eb5009b?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  },
-  {
-    title: "Girl's Wear",
-    description: 'Fun, Durable, Eco-Friendly.',
-    url: 'https://images.unsplash.com/photo-1601762603339-fd61e28b698a?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  },
-  {
-    title: "Boy's Wear",
-    description: 'Fun, Durable, Eco-Friendly.',
-    url: 'https://images.unsplash.com/photo-1512068549487-5e79d74c7fc3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzV8fGZhc2hpb258ZW58MHx8MHx8fDA%3D',
-  },
-  {
-    title: "Men's Wear",
-    description: 'Classic, Comfortable, Timeless.',
-    url: 'https://images.unsplash.com/photo-1535530705774-695729778c55?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  },
-  {
-    title: "Women's Wear",
-    description: 'Elegant, Versatile, Empowering.',
-    url: 'https://images.unsplash.com/photo-1495298599282-d8920eb5009b?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  },
-  {
-    title: "Girl's Wear",
-    description: 'Fun, Durable, Eco-Friendly.',
-    url: 'https://images.unsplash.com/photo-1601762603339-fd61e28b698a?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  },
-  {
-    title: "Boy's Wear",
-    description: 'Fun, Durable, Eco-Friendly.',
-    url: 'https://images.unsplash.com/photo-1512068549487-5e79d74c7fc3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzV8fGZhc2hpb258ZW58MHx8MHx8fDA%3D',
+    title: "Girls's Wear",
+    url: '/products/product-2.webp',
   },
 ] as const
 
@@ -175,7 +131,7 @@ export function ProductCarousel() {
                       className="rounded-xl object-cover"
                       priority={false}
                     />
-                  </motion.div>
+                  </motion.div>{' '}
                   <motion.div
                     className="bottom-0 left-0 mt-4 space-y-1 rounded-lg"
                     initial="hidden"
@@ -188,12 +144,6 @@ export function ProductCarousel() {
                     >
                       {product.title}
                     </motion.h3>
-                    <motion.p
-                      className="text-base text-grayscale-black-400"
-                      variants={ANIMATION_VARIANTS.text}
-                    >
-                      {product.description}
-                    </motion.p>
                   </motion.div>
                 </Card>
               </div>

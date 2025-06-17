@@ -52,8 +52,8 @@ const FoundingStory = () => {
                 Over the years, Shin Shin Group acquired struggling factories, revitalizing them
                 through investments in infrastructure, energy-efficient technologies, and
                 sustainable practices. These efforts solidified its reputation as a leader in
-                ethical apparel production, catering to markets worldwide, with five factories and
-                over 8,700 employees.
+                ethical apparel production, catering to markets worldwide, with four factories and
+                over 10,000 employees.
               </p>
             </motion.div>
           </div>
@@ -71,7 +71,7 @@ const FoundingStory = () => {
             </div>
             <div className="relative aspect-[1.27/1] w-full overflow-hidden rounded-xl">
               <Image
-                src="/about/about-2.JPG"
+                src="/about/about-2.webp"
                 alt="Shin Shin Group facility view 2"
                 fill
                 className="object-cover object-center"
@@ -101,9 +101,9 @@ const FoundingStory = () => {
             </div>
             <p className="pb-2 pt-3 text-xl font-semibold sm:text-2xl">Our Mission</p>
             <p className="text-base">
-              Deliver high-quality, sustainable apparel through ethical practices, innovation, and
-              environmental care. Empowering people and fostering circular manufacturing, Shin Shin
-              Group creates lasting value for customers and communities.
+              Delivering high-quality, sustainable apparel through ethical practices, innovation,
+              and environmental care. Empowering people and fostering circular manufacturing, Shin
+              Shin Group creates lasting value for customers and communities.
             </p>
           </Card>
         </motion.div>
@@ -115,8 +115,8 @@ const FoundingStory = () => {
             </div>
             <p className="pb-2 pt-3 text-xl font-semibold sm:text-2xl">Our Vision</p>
             <p className="text-base">
-              Become the most trusted apparel manufacturing partner, reshaping industries with
-              sustainability, inclusivity, and innovation. Shin Shin Group envisions a future of
+              Becoming the most trusted apparel manufacturing partner, reshaping industries with
+              sustainability, inclusively, and innovation. Shin Shin Group envisions a future of
               responsible fashion that uplifts communities and preserves the planet.
             </p>
           </Card>

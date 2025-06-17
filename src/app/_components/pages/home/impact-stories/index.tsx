@@ -15,24 +15,40 @@ import { motion } from 'motion/react'
 
 const stories = [
   {
-    title: 'Providing employment opportunities for differently-abled individuals',
-    image: '/home/impact/impact-stories-1.JPG',
+    title: "Scholarship for workers' children",
+    image: '/impact/impact-1.png',
   },
   {
-    title: 'Free medical clinics for workers and their families',
-    image: '/home/impact/impact-stories-2.JPG',
+    title: 'Free medical clinics for workers',
+    image: '/impact/impact-2.png',
   },
   {
-    title: 'Caring for gender specific health needs',
-    image: '/home/impact/impact-stories-3.JPG',
+    title: 'Fair price shop for workers and employees',
+    image: '/impact/impact-3.png',
   },
   {
-    title: 'Scholarships and daycare support for workers’ children',
-    image: '/home/impact/impact-stories-4.JPG',
+    title: "Daycare for workers' children",
+    image: '/impact/impact-4.png',
   },
   {
-    title: 'Emergency safety drills for workers',
-    image: '/home/impact/impact-stories-5.JPG',
+    title: 'Employment for differently-abled persons',
+    image: '/impact/impact-5.png',
+  },
+  {
+    title: 'Providing free sanitary napkins to female workers',
+    image: '/impact/impact-6.png',
+  },
+  {
+    title: 'Employment of third gender persons',
+    image: '/impact/impact-7.png',
+  },
+  {
+    title: 'Apps for workers to withdraw salary in advance',
+    image: '/impact/impact-8.png',
+  },
+  {
+    title: 'Distribution of free eye-glasses among workers',
+    image: '/impact/impact-9.png',
   },
 ].map((story) => ({
   ...story,

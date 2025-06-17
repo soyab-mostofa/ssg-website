@@ -38,9 +38,9 @@ const ChairmansThoughts = () => {
                 className="relative h-[436px]"
               >
                 <Image
-                  src="/chairman.png"
+                  src="/chairman.jpg"
                   alt="Chairman's Thought"
-                  className="object-cover object-center"
+                  className="object-cover object-top"
                   fill
                   sizes="(max-width: 768px) 100vw, 380px"
                 />

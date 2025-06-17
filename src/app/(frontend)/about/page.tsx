@@ -3,7 +3,7 @@ import React from 'react'
 import FoundingStory from '@/app/_components/pages/about/FoundingStory'
 import OurValues from '@/app/_components/pages/about/OurValues'
 import InteractiveTimeline from '@/app/_components/pages/about/InteractiveTimeline'
-import OurAwards from '@/app/_components/pages/about/AwardsGallery'
+// import OurAwards from '@/app/_components/pages/about/AwardsGallery'
 import { MobileTimeline } from '@/components/Timeline'
 import PageHeader from '@/app/_components/pages/about/PageHeader'
 
@@ -20,7 +20,7 @@ const Page = () => {
       <OurValues />
       <InteractiveTimeline />
       <MobileTimeline />
-      <OurAwards />
+      {/* <OurAwards /> */}
     </section>
   )
 }

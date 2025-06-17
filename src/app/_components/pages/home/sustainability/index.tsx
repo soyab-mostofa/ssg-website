@@ -9,10 +9,26 @@ import { useRef } from 'react'
 import SectionLayout from '@/app/_components/shared/SectionLayout'
 
 const data = [
-  'https://images.unsplash.com/photo-1573612664822-d7d347da7b80?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  'https://images.unsplash.com/photo-1612423284934-2850a4ea6b0f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  'https://images.unsplash.com/photo-1631050165089-6311e0d6c5f3?q=80&w=1988&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  'https://images.unsplash.com/photo-1512068549487-5e79d74c7fc3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzV8fGZhc2hpb258ZW58MHx8MHx8fDA%3D',
+  {
+    url: '/sustainability/sustain-1.webp',
+    description: 'Use of renewable energy',
+  },
+  {
+    url: '/sustainability/sustain-2.webp',
+    description: 'Having LEED Gold green factories',
+  },
+  {
+    url: '/sustainability/sustain-3.webp',
+    description: 'Effluent treatment plant (ETP)',
+  },
+  {
+    url: '/sustainability/sustain-4.webp',
+    description: 'A member of UN Global Compact',
+  },
+  {
+    url: '/sustainability/sustain-5.webp',
+    description: 'Rainwater harvesting systems',
+  },
 ]
 
 const SustainabilitySection = () => {
@@ -38,8 +54,9 @@ const SustainabilitySection = () => {
           }}
           className="z-50 w-full overflow-x-hidden"
         >
+          {' '}
           <CarouselContent className="xl:ml-[calc((100vw-1270px)/2)]">
-            {data.map((url, index) => (
+            {data.map((item, index) => (
               <CarouselItem
                 key={index}
                 className="relative flex w-full basis-80 flex-col pl-4 first:pl-9 sm:basis-[480px] sm:pl-8"
@@ -61,15 +78,34 @@ const SustainabilitySection = () => {
                     }
                   }
                   transition={{ duration: 0.9, delay: index * 0.2 }}
-                  className="ms-auto h-[360px] overflow-hidden"
+                  className="ms-auto h-[250px] overflow-hidden rounded-xl bg-others-white sm:h-[360px]"
                 >
+                  {' '}
                   <Image
-                    src={url}
-                    alt="product"
+                    src={item.url}
+                    alt="sustainability initiative"
                     width={480}
                     height={360}
-                    className="h-[250px] w-full rounded-xl object-cover sm:h-[360px]"
+                    className="h-full w-full object-cover"
                   />
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={
+                    isInView && {
+                      opacity: 1,
+                      y: 0,
+                      transition: {
+                        duration: 0.5,
+                        delay: index * 0.2 + 0.3,
+                      },
+                    }
+                  }
+                  className="mt-4"
+                >
+                  <h3 className="md:text-custom-30-semibold text-2xl font-semibold text-others-white">
+                    {item.description}
+                  </h3>
                 </motion.div>
               </CarouselItem>
             ))}

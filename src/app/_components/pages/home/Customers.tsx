@@ -1,10 +1,7 @@
 'use client'
 import { memo } from 'react'
-import { motion, AnimatePresence } from 'motion/react'
 import Image from 'next/image'
-import { useState, useCallback } from 'react'
 import SectionChip from '../../shared/SectionChip'
-import Button from '../../shared/Button'
 import AnimateTextInView from '../../animated/animateTextInView'
 import TextFadeUp from '../../animated/TextFadeUp'
 
@@ -13,13 +10,13 @@ import TextFadeUp from '../../animated/TextFadeUp'
 // Memoized customer logo component
 const CustomerLogo = memo(function CustomerLogo({ name, logo }: { name: string; logo: string }) {
   return (
-    <div className="mb-10 w-[calc(50%-20px)] rounded-lg border border-primary-blue-200 md:w-[calc(25%-20px)]">
+    <div className="mb-10 flex min-h-[124px] w-[calc(50%-20px)] items-center justify-center rounded-lg border border-primary-blue-200 md:w-[calc(25%-20px)]">
       <Image
         src={logo}
         alt={name}
         width={276}
         height={124}
-        className="h-auto object-cover"
+        className="h-auto max-h-[124px] max-w-[276px] object-contain p-2"
         loading="lazy"
         sizes="(max-width: 768px) 50vw, 25vw"
       />
@@ -28,12 +25,6 @@ const CustomerLogo = memo(function CustomerLogo({ name, logo }: { name: string; 
 })
 
 export default function CustomersSection() {
-  const [isOpen, setIsOpen] = useState(false)
-
-  const toggleOpen = useCallback(() => {
-    setIsOpen((prev) => !prev)
-  }, [])
-
   return (
     <section className="container py-24">
       <div className="mb-10 flex flex-col justify-between gap-2 md:flex-row md:gap-8">
@@ -51,42 +42,16 @@ export default function CustomersSection() {
             text="From high-street fashion to timeless classics, Shin Shin Group partners with leading global brands, ensuring quality, innovation, and sustainable practices at every step."
           />
         </div>
-      </div>
-
+      </div>{' '}
       {/* Logos Grid */}
-      <div className="relative">
-        <motion.div
-          initial={false}
-          animate={{ height: isOpen ? 'auto' : '430px' }}
-          transition={{ duration: 0.3 }}
-          className="overflow-hidden"
-        >
-          <div className="flex flex-wrap items-center justify-between">
-            {Array.from({ length: 29 }).map((_, i) => (
-              <CustomerLogo
-                key={`partner-${i + 1}`}
-                name={'partner name'}
-                logo={`/partners/partner-${i + 1}.png`}
-              />
-            ))}
-          </div>
-        </motion.div>
-
-        <AnimatePresence>
-          {!isOpen && (
-            <motion.div
-              className="to-transparent absolute inset-0 z-10 bg-gradient-to-t from-others-white via-others-white/10"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-            />
-          )}
-        </AnimatePresence>
-      </div>
-
-      <div className="relative z-50 mt-10 flex justify-center pb-4">
-        <Button onClick={toggleOpen}>{isOpen ? 'Show Less' : 'View All'}</Button>
+      <div className="flex flex-wrap items-center justify-between">
+        {Array.from({ length: 27 }).map((_, i) => (
+          <CustomerLogo
+            key={`partner-${i + 1}`}
+            name={'partner name'}
+            logo={`/brands/brand-${i + 1}.png`}
+          />
+        ))}
       </div>
     </section>
   )

@@ -9,7 +9,7 @@ const HeroTitle = () => {
 
   const titleContent = 'Sustainability Woven Into Every Thread'
   const descriptionContent =
-    'Driven by sustainability, inclusivity, and innovation, Shin Shin Group redefines apparel manufacturing with cutting-edge technology and an unwavering commitment to people and the planet.'
+    'Driven by sustainability, inclusivity, and innovation, Shin Shin Group redefines apparel manufacturing with cutting-edge technology and an unwavering commitment to people and planet.'
 
   useEffect(() => {
     const hasVisited = localStorage.getItem('hasVisitedHero')
@@ -27,7 +27,7 @@ const HeroTitle = () => {
   }, [])
 
   return (
-    <div className="mx-auto flex min-h-[350px] max-w-[335px] flex-col items-center justify-center gap-4 md:mx-0 md:min-h-[252px] md:max-w-[687px] md:gap-6">
+    <div className="mx-auto flex min-h-[350px] max-w-[335px] flex-col items-stretch justify-center gap-4 md:mx-0 md:min-h-[252px] md:max-w-[687px] md:gap-6">
       {isLoading ? (
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="space-x-2">
@@ -55,7 +55,7 @@ const HeroTitle = () => {
           />
           <AnimatedText
             text={descriptionContent}
-            className="text-white flex flex-wrap justify-center text-base leading-[1.4] text-others-white md:justify-start md:text-[20px]"
+            className="text-white flex max-w-[649px] flex-wrap justify-center text-base leading-[1.4] text-others-white md:justify-start md:text-[20px]"
             delay={0.9}
           />
         </>

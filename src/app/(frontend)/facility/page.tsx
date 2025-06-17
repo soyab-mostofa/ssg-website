@@ -14,41 +14,40 @@ interface Factory {
   location: string
   capacity: string
   productType: string
-  text: string
 }
 
 const factories: Factory[] = [
   {
     image: '/shin-shin-apperal.png',
     name: 'Shin Shin Apparels Ltd.',
-    location: 'Uttara, Dhaka, Bangladesh',
-    capacity: '1.2 M Units/Month',
-    productType: 'In-house Laundry',
-    text: 'Woven garments, sustainability, innovation, and advanced production technologies.',
+    location:
+      'Dag# R.S 228, JL#73, Gorat, East Norshinghapur, Zirabo, Savar, Dhaka-1341, Bangladesh',
+    capacity: '3.9 M Units/Month',
+    productType:
+      'Chino Pants, Trousers, Jackets-Denim, Cargo Pant, Parachute bottom, School Uniforms, Top Bottom set (Knit Top/Bottom)',
   },
   {
     image: '/jeans-plus.png',
     name: 'Jeans Plus Ltd.',
-    location: 'Narayanganj, Bangladesh',
-    capacity: '1.2 M Units/Month',
-    productType: 'In-house Laundry',
-    text: 'High-capacity denim production, sustainability, innovation, advanced manufacturing processes.',
+    location: 'Plot# 398, Sreepur Bus Stand, Ganak Bari, Ashulia, Savar, Dhaka-1349, Bangladesh',
+    capacity: '3.4 M Units/Month',
+    productType:
+      'Chino Pants, Trousers, Jackets-Denim, Cargo Pant, Parachute bottom, School Uniforms, PU Pant',
   },
   {
     image: '/organic-jeans.png',
     name: 'Organic Jeans Ltd.',
-    location: 'Dhaka, Bangladesh',
-    capacity: '1.2 M Units/Month',
-    productType: 'In-house Laundry',
-    text: 'Eco-friendly denim production, innovation, advanced machinery, and sustainability-focused practices.',
+    location:
+      'Plot- A/1&2, Block-B, BSCIC I/A, Fauzderhat, Sagarika Road, Chittagong-4219, Bangladesh',
+    capacity: '5.5 M Units/Month',
+    productType: 'Chino Pants, Trousers, Jackets-Denim, Cargo Pant, Parachute bottom, Swimwear',
   },
   {
     image: '/vancot.png',
-    name: 'Vancot Ltd.',
-    location: 'Chittagong, Bangladesh',
-    capacity: '1.2 M Units/Month',
-    productType: 'In-house Laundry',
-    text: ' Specialized in diverse woven apparel, embracing innovation and eco-conscious manufacturing techniques.',
+    name: 'Vancot Limited.',
+    location: 'Plot# 18-20, Sector# 03, Karnaphuli EPZ, North Patenga, Chittagong-4204, Bangladesh',
+    capacity: '5.5 M Units/Month',
+    productType: 'Chino Pants, Trousers, Jackets-Denim, Cargo Pant, Parachute bottom',
   },
 ]
 
@@ -178,19 +177,13 @@ const Page: React.FC = () => {
                     )}
                   >
                     <FactoryImage src={factory.image} alt={factory.name} />
-                  </motion.div>
-
+                  </motion.div>{' '}
                   {/* Content container */}
                   <div className="flex flex-col gap-4 sm:basis-1/2 sm:gap-6">
                     <div className="space-y-3 sm:space-y-4">
                       <AnimateTextInView
                         className="text-xl font-bold tracking-tight sm:text-2xl md:text-4xl"
                         text={factory.name}
-                      />
-                      <AnimateTextInView
-                        childClass="text-sm sm:text-base md:pb-0 overflow-visible"
-                        className="text-muted-foreground"
-                        text={factory.text}
                       />
                     </div>
 

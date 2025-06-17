@@ -7,7 +7,7 @@ const OurAwards = () => {
     <SectionLayout
       chip="awards"
       heading="Awards & Recognition"
-      subLeft="Shin Shin Group earned international awards and global certifications, showcasing sustainability, ethics, and inclusivity."
+      subLeft="Shin Shin Group earned numerous awards & recognitions, showcasing sustainability, ethics, and inclusivity."
     >
       <AwardsGallery />
     </SectionLayout>

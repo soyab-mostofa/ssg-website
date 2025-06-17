@@ -1,6 +1,8 @@
 import '../globals.css'
 import { cn } from '@/lib/utils'
 import { Inter } from 'next/font/google'
+import { StagewiseToolbar } from '@stagewise/toolbar-next'
+import { ReactPlugin } from '@stagewise-plugins/react'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,6 +18,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         className={cn(inter.className, 'relative bg-others-white subpixel-antialiased')}
         suppressHydrationWarning
       >
+        <StagewiseToolbar
+          config={{
+            plugins: [ReactPlugin],
+          }}
+        />
         {children}
       </body>
     </html>

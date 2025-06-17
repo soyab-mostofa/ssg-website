@@ -5,7 +5,7 @@ import Button from '@/app/_components/shared/Button'
 
 const Hero = () => {
   return (
-    <div className="relative w-full bg-[url('/hero-bg-mobile.png')] bg-cover bg-center bg-no-repeat md:bg-[url('/hero-background.webp')] md:pt-0">
+    <div className="relative w-full bg-[url('/hero-bg-mobile.png')] bg-cover bg-[right_0_center] bg-no-repeat md:bg-[url('/hero-bg.webp')] md:bg-[right_0_center] md:pt-0">
       <div className="relative bg-cover">
         <div className="container z-10">
           <div className="pb-32 pt-32 md:pb-60 md:pt-[200px]">

@@ -138,6 +138,12 @@ importers:
       '@eslint/eslintrc':
         specifier: ^3.2.0
         version: 3.2.0
+      '@stagewise-plugins/react':
+        specifier: ^0.4.8
+        version: 0.4.8(@stagewise/toolbar@0.4.8)
+      '@stagewise/toolbar-next':
+        specifier: ^0.4.8
+        version: 0.4.8(@types/react@19.0.0)(next@15.1.0(babel-plugin-react-compiler@19.0.0-beta-e552027-20250112)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.77.4))(react@19.0.0)
       '@types/leaflet':
         specifier: ^1.9.16
         version: 1.9.16
@@ -1656,6 +1662,27 @@ packages:
   '@smithy/util-waiter@4.0.2':
     resolution: {integrity: sha512-piUTHyp2Axx3p/kc2CIJkYSv0BAaheBQmbACZgQSSfWUumWNW+R1lL+H9PDBxKJkvOeEX+hKYEFiwO8xagL8AQ==}
     engines: {node: '>=18.0.0'}
+
+  '@stagewise-plugins/react@0.4.8':
+    resolution: {integrity: sha512-2zzk7U5kZ4xnI8rOm1HILPCMhPruQ+KSyFPzSMFRiW0jJJlKhPO5eNly+wQSrg1IUnkNoLH0yDl1HNJp42zpyQ==}
+    peerDependencies:
+      '@stagewise/toolbar': 0.4.8
+
+  '@stagewise/toolbar-next@0.4.8':
+    resolution: {integrity: sha512-Ya35ePRkuxroUJX1Tsk+tIZaQIbP9frX5jglXS1FZ3SKDgGpVgb8E0mOmF+QjTwzEU+BhJyMV41/yzqUneBX9g==}
+    peerDependencies:
+      '@types/react': '>=18.0.0'
+      next: '>=14.0.0'
+      react: '>=18.0.0'
+
+  '@stagewise/toolbar-react@0.4.8':
+    resolution: {integrity: sha512-g+r2npAfftM87+jFt4go9e0KaIAkQ/sObDKWEmBp4IJaFpsOmcfBtLiF/GIoiXRrllxMa5oQZeRrra8EFq166A==}
+    peerDependencies:
+      '@types/react': '>=18.0.0'
+      react: '>=18.0.0'
+
+  '@stagewise/toolbar@0.4.8':
+    resolution: {integrity: sha512-0ByvC4hYdHHf3rK5M+xSR9mipHYr8naNn2OgDBtv4DE0SoSCr08KfQtZ6VpsBNbOW/Mh1Y4c/AoWcyCTOc2ocA==}
 
   '@studio-freight/hamo@0.6.33':
     resolution: {integrity: sha512-U3Nvw5wDvB/jps2/ZbGL2TFL+CcZvJF/tkjL7S7ajuzDi9T5VkqCguws6tuWHttZ74Z6DfXxV1b8F1EB30AyJg==}
@@ -6722,6 +6749,25 @@ snapshots:
       '@smithy/abort-controller': 4.0.1
       '@smithy/types': 4.1.0
       tslib: 2.8.1
+
+  '@stagewise-plugins/react@0.4.8(@stagewise/toolbar@0.4.8)':
+    dependencies:
+      '@stagewise/toolbar': 0.4.8
+
+  '@stagewise/toolbar-next@0.4.8(@types/react@19.0.0)(next@15.1.0(babel-plugin-react-compiler@19.0.0-beta-e552027-20250112)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.77.4))(react@19.0.0)':
+    dependencies:
+      '@stagewise/toolbar-react': 0.4.8(@types/react@19.0.0)(react@19.0.0)
+      '@types/react': 19.0.0
+      next: 15.1.0(babel-plugin-react-compiler@19.0.0-beta-e552027-20250112)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.77.4)
+      react: 19.0.0
+
+  '@stagewise/toolbar-react@0.4.8(@types/react@19.0.0)(react@19.0.0)':
+    dependencies:
+      '@stagewise/toolbar': 0.4.8
+      '@types/react': 19.0.0
+      react: 19.0.0
+
+  '@stagewise/toolbar@0.4.8': {}
 
   '@studio-freight/hamo@0.6.33(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
     dependencies:
