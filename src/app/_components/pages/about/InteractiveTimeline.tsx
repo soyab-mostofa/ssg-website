@@ -18,7 +18,7 @@ const timelineData = [
     year: 2009,
     x: 180,
     y: 280,
-    image: '/public/shin-shin-apperal.png',
+    image: '/shin-shin-apperal.png',
     description: 'Shin Shin Apparels Ltd established, focusing on quality and sustainability.',
   },
   {
