@@ -10,13 +10,13 @@ import TextFadeUp from '../../animated/TextFadeUp'
 // Memoized customer logo component
 const CustomerLogo = memo(function CustomerLogo({ name, logo }: { name: string; logo: string }) {
   return (
-    <div className="mb-10 flex min-h-[124px] w-[calc(50%-20px)] items-center justify-center rounded-lg border border-primary-blue-200 md:w-[calc(25%-20px)]">
+    <div className="mb-10 flex min-h-[124px] w-[calc(50%-20px)] items-center justify-center overflow-hidden rounded-lg border border-primary-blue-200 md:w-[calc(25%-20px)]">
       <Image
         src={logo}
         alt={name}
         width={276}
         height={124}
-        className="h-auto max-h-[124px] max-w-[276px] object-contain p-2"
+        className="h-auto max-h-[124px] max-w-40 object-contain p-2 md:max-w-[276px]"
         loading="lazy"
         sizes="(max-width: 768px) 50vw, 25vw"
       />

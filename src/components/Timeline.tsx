@@ -6,15 +6,17 @@ export function MobileTimeline() {
   const data = [
     {
       title: '2007',
+      eventName: 'Jeans Plus Ltd Established',
       content: (
         <div>
           <p className="dark:text-neutral-200 mb-4 text-xs font-normal text-grayscale-black-800 md:text-sm">
-            First factory, Shin Shin Apparels Ltd, established.
+            Jeans Plus Ltd established as the foundation of our sustainable apparel manufacturing
+            journey.
           </p>
           <div className="aspect-square">
             <Image
-              src="/founding-story-1.png"
-              alt="Tailor-made garment production"
+              src="/jeans-plus.png"
+              alt="Jeans Plus Ltd"
               width={500}
               height={500}
               className="h-full w-full rounded-lg object-cover"
@@ -25,15 +27,16 @@ export function MobileTimeline() {
     },
     {
       title: '2009',
+      eventName: 'Shin Shin Apparels Ltd Established',
       content: (
         <div>
           <p className="dark:text-neutral-200 mb-4 text-xs font-normal text-grayscale-black-800 md:text-sm">
-            Organic Jeans Ltd launched to align with eco-conscious goals.
+            Shin Shin Apparels Ltd established, focusing on quality and sustainability.
           </p>
           <div className="aspect-square">
             <Image
-              src="/founding-story-1.png"
-              alt="Tailor-made garment production"
+              src="/shin-shin-apperal.png"
+              alt="Shin Shin Apparels Ltd"
               width={500}
               height={500}
               className="h-full w-full rounded-lg object-cover"
@@ -44,15 +47,36 @@ export function MobileTimeline() {
     },
     {
       title: '2014',
+      eventName: 'Organic Jeans Ltd Launched',
       content: (
         <div>
           <p className="dark:text-neutral-200 mb-4 text-xs font-normal text-grayscale-black-800 md:text-sm">
-            Jeans Plus Ltd acquired and transformed into a sustainability pioneer.
+            Organic Jeans Ltd launched, specializing in eco-friendly denim production.
           </p>
           <div className="aspect-square">
             <Image
-              src="/founding-story-1.png"
-              alt="Tailor-made garment production"
+              src="/organic-jeans.png"
+              alt="Organic Jeans Ltd"
+              width={500}
+              height={500}
+              className="h-full w-full rounded-lg object-cover"
+            />
+          </div>
+        </div>
+      ),
+    },
+    {
+      title: '2015',
+      eventName: 'Vancot Ltd Established',
+      content: (
+        <div>
+          <p className="dark:text-neutral-200 mb-4 text-xs font-normal text-grayscale-black-800 md:text-sm">
+            Vancot Ltd established, expanding into knitwear and woven garments.
+          </p>
+          <div className="aspect-square">
+            <Image
+              src="/vancot.png"
+              alt="Vancot Ltd"
               width={500}
               height={500}
               className="h-full w-full rounded-lg object-cover"
@@ -63,15 +87,16 @@ export function MobileTimeline() {
     },
     {
       title: '2016',
+      eventName: 'Khalifa Apparels Ltd Launched',
       content: (
         <div>
           <p className="dark:text-neutral-200 mb-4 text-xs font-normal text-grayscale-black-800 md:text-sm">
-            Suad Garments Industries Ltd added high-end formalwear to our portfolio.
+            Khalifa Apparels Ltd launched, focusing on high-quality apparel manufacturing.
           </p>
           <div className="aspect-square">
             <Image
-              src="/founding-story-1.png"
-              alt="Tailor-made garment production"
+              src="/vancot.png"
+              alt="Khalifa Apparels Ltd"
               width={500}
               height={500}
               className="h-full w-full rounded-lg object-cover"
@@ -82,34 +107,17 @@ export function MobileTimeline() {
     },
     {
       title: '2020',
+      eventName: 'Saud Garments Industries Ltd Established',
       content: (
         <div>
           <p className="dark:text-neutral-200 mb-4 text-xs font-normal text-grayscale-black-800 md:text-sm">
-            LEED Gold certification for adopting green factory practices.
+            Saud Garments Industries Ltd established, enhancing production capacity and
+            sustainability efforts.
           </p>
           <div className="aspect-square">
             <Image
-              src="/founding-story-1.png"
-              alt="Tailor-made garment production"
-              width={500}
-              height={500}
-              className="h-full w-full rounded-lg object-cover"
-            />
-          </div>
-        </div>
-      ),
-    },
-    {
-      title: '2023',
-      content: (
-        <div>
-          <p className="dark:text-neutral-200 mb-4 text-xs font-normal text-grayscale-black-800 md:text-sm">
-            Projected turnover of USD 126.24 million, powered by sustainability and innovation.
-          </p>
-          <div className="aspect-square">
-            <Image
-              src="/founding-story-1.png"
-              alt="Tailor-made garment production"
+              src="/vancot.png"
+              alt="Saud Garments Industries Ltd"
               width={500}
               height={500}
               className="h-full w-full rounded-lg object-cover"

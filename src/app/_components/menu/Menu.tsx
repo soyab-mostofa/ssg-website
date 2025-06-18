@@ -145,6 +145,8 @@ export const menuData: MenuData[] = [
 export default function Menu() {
   const pathName = usePathname()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isVisible, setIsVisible] = useState(true)
+  const [lastScrollY, setLastScrollY] = useState(0)
 
   const handleLinkClick = () => {
     setIsMenuOpen(false)
@@ -165,45 +167,83 @@ export default function Menu() {
     }
   }, [isMenuOpen])
 
+  // Scroll detection for navbar visibility
+  useEffect(() => {
+    const controlNavbar = () => {
+      const currentScrollY = window.scrollY
+
+      if (currentScrollY < 100) {
+        // Always show navbar at the top
+        setIsVisible(true)
+      } else if (currentScrollY > lastScrollY) {
+        // Scrolling down - hide navbar
+        setIsVisible(false)
+      } else {
+        // Scrolling up - show navbar
+        setIsVisible(true)
+      }
+
+      setLastScrollY(currentScrollY)
+    }
+
+    window.addEventListener('scroll', controlNavbar)
+    return () => {
+      window.removeEventListener('scroll', controlNavbar)
+    }
+  }, [lastScrollY])
+
   return (
-    <div className={cn('container relative inset-0 z-50 flex w-full', {})}>
-      <div className="menu-bar flex h-14 w-full items-center justify-between sm:h-24">
-        <div className="menu-logo text-grayscale-black-900">
-          <Link href="/">
-            <Image
-              src="/main-logo.png"
-              alt="logo"
-              width={40}
-              height={40}
-              className="size-8 md:size-14"
-            />
-          </Link>
-        </div>
+    <motion.div
+      className={cn(
+        'bg-white/95 fixed left-0 right-0 top-0 z-40 backdrop-blur-md transition-transform duration-300 ease-in-out',
+        {
+          'translate-y-0': isVisible,
+          '-translate-y-full': !isVisible,
+        },
+      )}
+      initial={{ y: 0 }}
+      animate={{ y: isVisible ? 0 : -100 }}
+      transition={{ duration: 0.3, ease: 'easeInOut' }}
+    >
+      <div className="container relative flex w-full">
+        <div className="menu-bar flex h-14 w-full items-center justify-between sm:h-24">
+          <div className="menu-logo text-grayscale-black-900">
+            <Link href="/">
+              <Image
+                src="/main-logo.png"
+                alt="logo"
+                width={40}
+                height={40}
+                className="size-8 md:size-14"
+              />
+            </Link>
+          </div>
 
-        {/* Desktop Menu */}
-        <nav className="hidden gap-8 sm:inline-flex">
-          {menuData.map((item) => (
-            <MenuLink
-              key={item.link}
-              href={item.link}
-              isActive={pathName === item.link}
-              onClick={handleLinkClick}
+          {/* Desktop Menu */}
+          <nav className="hidden gap-8 sm:inline-flex">
+            {menuData.map((item) => (
+              <MenuLink
+                key={item.link}
+                href={item.link}
+                isActive={pathName === item.link}
+                onClick={handleLinkClick}
+              >
+                {item.title}
+              </MenuLink>
+            ))}
+          </nav>
+
+          <div className="hidden sm:inline-block">
+            <Link
+              href="/contact"
+              className="flex w-full flex-row items-center justify-center gap-2 rounded-[12px] bg-secondary-red-500 px-4 py-3 text-sm text-others-white md:w-fit"
             >
-              {item.title}
-            </MenuLink>
-          ))}
-        </nav>
-
-        <div className="hidden sm:inline-block">
-          <Link
-            href="/contact"
-            className="flex w-full flex-row items-center justify-center gap-2 rounded-[12px] bg-secondary-red-500 px-4 py-3 text-sm text-others-white md:w-fit"
-          >
-            Contact Us
-          </Link>
+              Contact Us
+            </Link>{' '}
+          </div>
+          <MobileMenu />
         </div>
-        <MobileMenu />
       </div>
-    </div>
+    </motion.div>
   )
 }

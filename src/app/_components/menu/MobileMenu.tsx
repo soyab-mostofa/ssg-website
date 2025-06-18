@@ -28,7 +28,6 @@ const MobileMenu = () => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
   }
-
   const handleLinkClick = () => {
     setIsMenuOpen(false)
   }
@@ -36,23 +35,24 @@ const MobileMenu = () => {
   const menuVariants = {
     hidden: {
       opacity: 0,
-      x: '-100%',
+      scale: 0.8,
       transition: {
         duration: 0.3,
+        ease: 'easeInOut',
       },
     },
     visible: {
       opacity: 1,
-      x: 0,
+      scale: 1,
       transition: {
         duration: 0.3,
+        ease: 'easeInOut',
       },
     },
   }
-
   return (
     <>
-      <div className="fixed right-4 z-50 sm:hidden">
+      <div className="flex items-center sm:hidden">
         <Hamburger toggled={isMenuOpen} toggle={toggleMenu} size={24} color="#000" />
       </div>
       <AnimatePresence>
@@ -62,49 +62,55 @@ const MobileMenu = () => {
             animate="visible"
             exit="hidden"
             variants={menuVariants}
-            className="bg-white fixed inset-0 z-40"
+            className="bg-white fixed inset-0 z-[60] backdrop-blur-md"
           >
-            <motion.ul className="flex h-full flex-col items-center justify-center space-y-6 bg-others-white p-8">
-              {menuData.map((link, index) => (
+            {/* Close button area */}
+            <div className="absolute right-4 top-4 z-10">
+              <Hamburger toggled={isMenuOpen} toggle={toggleMenu} size={24} color="#000" />
+            </div>
+
+            {/* Menu content - Properly centered accounting for mobile viewport */}
+            <div className="flex min-h-screen items-center justify-center bg-primary-blue-500/70 px-8 backdrop-blur-lg">
+              <motion.ul className="flex flex-col items-center space-y-6 text-center">
+                {menuData.map((link, index) => (
+                  <motion.li
+                    key={index}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.15 + 0.3 }}
+                  >
+                    <Link href={link.link} onClick={handleLinkClick} className="block">
+                      <span
+                        className={cn(
+                          'text-3xl font-light transition-all duration-300 hover:scale-105 sm:text-4xl',
+                          pathName === link.link
+                            ? 'text-secondary-red-500'
+                            : 'text-grayscale-black-800 hover:text-secondary-red-500',
+                        )}
+                      >
+                        {link.title}
+                      </span>
+                    </Link>
+                  </motion.li>
+                ))}
                 <motion.li
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
+                  transition={{ delay: menuData.length * 0.15 + 0.3 }}
+                  className="mt-6"
                 >
-                  <Link href={link.link} onClick={handleLinkClick} className="inline-block">
+                  <Link href={'/contact'} onClick={handleLinkClick} className="block">
                     <span
                       className={cn(
-                        'text-3xl font-light transition-colors duration-300',
-                        pathName === link.link
-                          ? 'text-secondary-red-500'
-                          : 'hover:text-gray-500 text-grayscale-black-800',
+                        'inline-flex items-center gap-2 rounded-[12px] bg-secondary-red-500 px-8 py-4 text-lg font-medium text-others-white transition-all duration-300 hover:scale-105 hover:bg-secondary-red-600',
                       )}
                     >
-                      {link.title}
+                      Contact Us
                     </span>
                   </Link>
                 </motion.li>
-              ))}
-              <motion.li
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 6 * 0.1 }}
-              >
-                <Link href={'/contact'} onClick={handleLinkClick} className="block">
-                  <span
-                    className={cn(
-                      'text-3xl font-light transition-colors duration-300',
-                      pathName === 'contact'
-                        ? 'text-secondary-red-500'
-                        : 'hover:text-gray-500 text-grayscale-black-800',
-                    )}
-                  >
-                    Contact Us
-                  </span>
-                </Link>
-              </motion.li>
-            </motion.ul>
+              </motion.ul>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

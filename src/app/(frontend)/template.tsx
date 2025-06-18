@@ -103,7 +103,7 @@ export default function Template({ children, logoSrc = '/logo.png' }: TemplatePr
         }}
       >
         <Menu />
-        {children}
+        <div className="pt-14 sm:pt-24">{children}</div>
         <Footer />
       </motion.div>
     </div>

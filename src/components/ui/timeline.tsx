@@ -5,6 +5,7 @@ import React, { useEffect, useRef, useState } from 'react'
 
 interface TimelineEntry {
   title: string
+  eventName?: string
   content: React.ReactNode
 }
 
@@ -76,6 +77,7 @@ export const Timeline = ({ data, colors = {} }: TimelineProps) => {
       <div ref={ref} className="relative mx-auto max-w-7xl pb-20">
         {data.map((item, index) => (
           <div key={index} className="flex justify-start pt-10 md:gap-10 md:pt-40">
+            {' '}
             <div className="sticky top-40 z-40 flex max-w-xs flex-col items-center self-start md:w-full md:flex-row lg:max-w-sm">
               <div
                 className="absolute left-3 flex h-10 w-10 items-center justify-center rounded-full md:left-3"
@@ -90,21 +92,40 @@ export const Timeline = ({ data, colors = {} }: TimelineProps) => {
                   }}
                 />
               </div>
-              <h3
-                className="hidden text-xl font-bold md:block md:pl-20 md:text-5xl"
-                style={{ color: mergedColors.secondaryText }}
-              >
-                {item.title}
-              </h3>
-            </div>
-
+              <div className="hidden md:flex md:flex-col md:pl-20">
+                <h3
+                  className="text-xl font-bold md:text-5xl"
+                  style={{ color: mergedColors.secondaryText }}
+                >
+                  {item.title}
+                </h3>
+                {item.eventName && (
+                  <p
+                    className="mt-2 text-sm font-medium md:text-base"
+                    style={{ color: mergedColors.text }}
+                  >
+                    {item.eventName}
+                  </p>
+                )}
+              </div>
+            </div>{' '}
             <div className="relative w-full pl-20 pr-4 md:pl-4">
-              <h3
-                className="mb-4 block text-left text-2xl font-bold md:hidden"
-                style={{ color: mergedColors.secondaryText }}
-              >
-                {item.title}
-              </h3>
+              <div className="mb-4 flex items-center justify-between gap-2 md:hidden">
+                <h3
+                  className="block text-left text-2xl font-bold"
+                  style={{ color: mergedColors.secondaryText }}
+                >
+                  {item.title}
+                </h3>
+                {item.eventName && (
+                  <p
+                    className="text-end text-sm font-semibold"
+                    style={{ color: mergedColors.text }}
+                  >
+                    {item.eventName}
+                  </p>
+                )}
+              </div>
               <div className="prose prose-sm md:prose-base" style={{ color: mergedColors.text }}>
                 {item.content}
               </div>
