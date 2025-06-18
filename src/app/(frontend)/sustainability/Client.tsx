@@ -1,15 +1,14 @@
 'use client'
-import SectionLayout from '@/app/_components/shared/SectionLayout'
 import React, { useState, useEffect } from 'react'
-import SustainabilityAccordion, { sustainabilityItems } from './sustainability-accordion'
+import { sustainabilityItems } from './sustainability-data'
 import CarbonWipeout from './CarbonWipeout'
 import SustainableDevelopment from './SustainableDevelopment'
 import ImpactStories from '@/app/_components/pages/home/impact-stories'
-import { motion, AnimatePresence } from 'motion/react'
 import Image from 'next/image'
 import SustainabilityReport from './sustainability-report'
 import OurCertifications from './OurCertifications'
 import PageHeader from '@/app/_components/pages/about/PageHeader'
+import SectionChip from '@/app/_components/shared/SectionChip'
 
 const SustainabilityPage = () => {
   const [active, setActive] = useState<number>(0)
@@ -28,48 +27,46 @@ const SustainabilityPage = () => {
         bgImage="/headers/sustainability-header.webp"
         heading={['Our', 'Sustainability']}
         sub="Shin Shin Group pioneers sustainability through water conservation, renewable energy, green factories, and carbon reduction, reshaping the future of apparel manufacturing."
-      />
-      <SectionLayout
-        chip="sustainability"
-        heading="Our Green Initiatives"
-        sideTextHeight
-        className="py-0 pt-16 md:py-0 md:pt-24"
-        subLeft={sustainabilityItems[active].content}
-      >
-        <div className="relative mx-auto aspect-[2.4/1] max-w-[1240px]">
-          {/* Responsive container with dynamic padding-top based on aspect ratio */}
-          <div className="relative w-full pb-[41.66%] sm:pb-[41.66%] md:pb-[41.66%] lg:pb-[41.66%]">
-            <div className="container absolute inset-0 mx-auto">
-              <div className="relative h-full w-full overflow-hidden rounded-lg bg-grayscale-black-100">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={active}
-                    className="absolute inset-0 rounded-lg"
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -20 }}
-                    transition={{ duration: 0.5, ease: 'easeInOut' }}
-                  >
-                    <Image
-                      src={sustainabilityItems[active].image}
-                      alt={sustainabilityItems[active].title}
-                      fill
-                      className="object-cover"
-                      priority
-                    />
-                  </motion.div>
-                </AnimatePresence>
-              </div>
+      />{' '}
+      {/* Sustainability Section */}
+      <section className="py-16 md:py-24">
+        <div className="container mx-auto px-4">
+          <div className="mb-8">
+            <SectionChip>sustainability</SectionChip>
+          </div>
+
+          <div className="mb-12 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16">
+            {/* Left Side - Title */}
+            <div className="flex flex-col justify-center">
+              <h2 className="text-grayscale-black text-4xl font-bold md:text-5xl lg:text-6xl">
+                {sustainabilityItems[active].title}
+              </h2>
+            </div>
+
+            {/* Right Side - Text Content */}
+            <div className="flex flex-col justify-center">
+              <p className="text-lg leading-relaxed text-grayscale-black-600 md:text-xl">
+                {sustainabilityItems[active].content}
+              </p>
             </div>
           </div>
+          {/* Full-width Image */}
+          <div className="relative mx-auto h-[500px] w-full max-w-[1200px] overflow-hidden rounded-lg bg-grayscale-black-100">
+            <Image
+              src={sustainabilityItems[active].image}
+              alt={sustainabilityItems[active].title}
+              fill
+              className="object-cover object-center transition-opacity duration-500"
+              priority
+            />
+          </div>
         </div>
-        <SustainabilityAccordion />
-        <CarbonWipeout />
-        <SustainableDevelopment />
-        <ImpactStories />
-        <SustainabilityReport />
-        <OurCertifications />
-      </SectionLayout>
+      </section>
+      <CarbonWipeout />
+      <SustainableDevelopment />
+      <ImpactStories />
+      <SustainabilityReport />
+      <OurCertifications />
     </div>
   )
 }

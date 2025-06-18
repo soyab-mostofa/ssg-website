@@ -1,7 +1,7 @@
 'use client'
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
-import { sustainabilityItems } from './sustainability-accordion'
+import { sustainabilityItems } from './sustainability-data'
 import Image from 'next/image'
 
 const SustainabilityCarousel = () => {

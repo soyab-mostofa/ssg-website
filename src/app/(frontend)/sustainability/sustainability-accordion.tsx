@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import { PlusCircleIcon } from 'lucide-react'
 import { BlurFade } from '@/components/ui/blur-fade'
@@ -17,27 +17,48 @@ export const sustainabilityItems: AccordionItem[] = [
     title: 'Water',
     content:
       'Shin Shin Group minimizes water use with rainwater harvesting, sensor-based taps, and condensate recovery systems, ensuring every drop is used efficiently.',
-    image: '/sustainability-windmill.png',
+    image: '/sustainability/sustain-5.webp',
   },
   {
     title: 'Renewable Energy',
     content:
-      'With 95.5 MWh solar energy harnessed in 2023, Shin Shin Group powers its operations sustainably, cutting reliance on non-renewable resources.',
-    image: '/sustainability-windmill.png',
+      'With 91.2 kWp solar energy harnessed in 2023, Shin Shin Group powers its operations sustainably, cutting reliance on non-renewable resources.',
+    image: '/sustainability/sustain-1.webp',
+  },
+  {
+    title: 'UN Global Compact Member',
+    content:
+      'As a signatory of un global compact, ssg adheres to OECD code of conducts of responsible business',
+    image: '/sustainability/sustain-4.webp',
   },
   {
     title: 'Green Factory',
     content:
-      'Our LEED Gold-certified factories integrate eco-friendly designs, energy-efficient technology, and optimized resource use to lead the apparel industry in sustainability.',
-    image: '/sustainability-windmill.png',
+      'Our LEED Gold-certified factory Jeans Plus Limited, integrates eco-friendly designs, energy-efficient technology, and optimized resource use to lead the apparel industry in sustainability.',
+    image: '/sustainability/sustain-2.webp',
   },
 ]
 
-export default function SustainabilityAccordion() {
-  const [expandedIndex, setExpandedIndex] = useState<number | null>(0)
+export default function SustainabilityAccordion({
+  active,
+  setActive,
+}: {
+  active: number
+  setActive: (index: number) => void
+}) {
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(active)
+
+  // Sync accordion state with main component's active state
+  useEffect(() => {
+    setExpandedIndex(active)
+  }, [active])
 
   const toggleAccordion = (index: number) => {
-    setExpandedIndex(expandedIndex === index ? null : index)
+    const newIndex = expandedIndex === index ? null : index
+    setExpandedIndex(newIndex)
+    if (newIndex !== null) {
+      setActive(newIndex)
+    }
   }
 
   return (

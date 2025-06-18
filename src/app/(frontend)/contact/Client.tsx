@@ -19,7 +19,7 @@ const Client = () => {
       <PageHeader
         bgImage="/headers/contact-header.webp"
         heading={['Get in Touch', 'With us']}
-        sub="Shin Shin Group is one of the largest conglomerates in Bangladesh, exporting apparel worldwide. The group comprises five factories."
+        sub="Shin Shin Group is one of the largest conglomerates in Bangladesh, exporting apparel worldwide. The group comprises four factories."
       />
       <ContactInfo />
       <Map />

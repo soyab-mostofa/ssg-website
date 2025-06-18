@@ -171,7 +171,7 @@ export default function Menu() {
         <div className="menu-logo text-grayscale-black-900">
           <Link href="/">
             <Image
-              src="/logo.png"
+              src="/main-logo.jpg"
               alt="logo"
               width={40}
               height={40}

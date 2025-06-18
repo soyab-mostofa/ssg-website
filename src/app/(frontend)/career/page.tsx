@@ -11,24 +11,39 @@ import PageHeader from '@/app/_components/pages/about/PageHeader'
 
 interface CultureItem {
   url: string
+  position: string
   subTitle: string
+  name?: string
+  quote: string
 }
 
 const data: CultureItem[] = [
   {
-    url: '/career/person-3.JPG',
+    url: '/career/employee-1.JPG',
+    name: 'Al Amin',
+    position: 'Assistant General Manager, IT',
     subTitle:
       'Lorem ipsum dolor sit amet consectetur. Odio enim aenean sed morbi ac. Scelerisque egestas eros vel libero vel. Orci libero orci varius dolor eu mattis sed vestibulum tincidunt. Accumsan malesuada mattis lobortis purus purus eros.',
+    quote:
+      'Innovation drives us forward. Every day at Shin Shin Group brings new opportunities to revolutionize how technology serves our mission.',
   },
   {
-    url: '/career/person-2.JPG',
+    url: '/career/employee-2.JPG',
+    name: 'Roksana Jahan',
+    position: 'Deputy Manager, Quality',
     subTitle:
       'Lorem ipsum dolor sit amet consectetur. Odio enim aenean sed morbi ac. Scelerisque egestas eros vel libero vel. Orci libero orci varius dolor eu mattis sed vestibulum tincidunt. Accumsan malesuada mattis lobortis purus purus eros.',
+    quote:
+      "Quality is not just our standard—it's our promise. Every stitch tells a story of excellence and dedication.",
   },
   {
-    url: '/career/person-1.JPG',
+    url: '/career/employee-3.JPG',
+    name: 'Sujan Paul',
+    position: 'Senior General Manager',
     subTitle:
       'Lorem ipsum dolor sit amet consectetur. Odio enim aenean sed morbi ac. Scelerisque egestas eros vel libero vel. Orci libero orci varius dolor eu mattis sed vestibulum tincidunt. Accumsan malesuada mattis lobortis purus purus eros.',
+    quote:
+      'Leadership means empowering others to achieve greatness. Together, we build not just garments, but dreams.',
   },
 ]
 
@@ -93,7 +108,7 @@ const Page: React.FC = () => {
         <PageHeader
           bgImage="/headers/career-header.webp"
           heading={['Career at', 'Shin Shin Group']}
-          sub="Shin Shin Group is one of the largest conglomerates in Bangladesh, exporting apparel worldwide. The group comprises five factories."
+          sub="Shin Shin Group is one of the largest conglomerates in Bangladesh, exporting apparel worldwide. The group comprises four factories."
         />
       </motion.div>
 
@@ -106,7 +121,7 @@ const Page: React.FC = () => {
         <SectionLayout
           heading="Diverse Workforce"
           chip="Overview"
-          subLeft="Lorem ipsum dolor sit amet consectetur. Odio enim aenean sed morbi ac. Scelerisque egestas eros vel libero vel. Orci libero orci varius dolor eu mattis sed vestibulum tincidunt. Accumsan malesuada mattis lobortis purus purus eros."
+          subLeft="Shin Shin Group is dedicated to fostering a rich and varied workforce. The company actively promotes an inclusive environment, recognizing the value of all individuals. Beyond employment, Shin Shin Group is committed to supporting its employees and their families through various welfare initiatives."
         >
           <div className="container px-4 sm:px-6 md:px-8">
             <div className="relative aspect-video w-full overflow-hidden rounded-lg">
@@ -135,17 +150,7 @@ const Page: React.FC = () => {
           <motion.div className="container px-4 sm:px-6 md:px-8" variants={staggerContainer}>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-6">
               {data.map((item, index) => (
-                <motion.div
-                  key={index}
-                  className="relative aspect-square w-full overflow-hidden rounded-lg"
-                  variants={fadeInUp}
-                >
-                  <AnimatedImage
-                    src={item.url}
-                    alt={`culture-${index + 1}`}
-                    className="origin-center rounded-lg object-cover object-center"
-                  />
-                </motion.div>
+                <EmployeeCard key={index} item={item} index={index} />
               ))}
             </div>
           </motion.div>
@@ -171,6 +176,63 @@ const Page: React.FC = () => {
         <ApplicationForm />
       </motion.div>
     </div>
+  )
+}
+
+const EmployeeCard: React.FC<{ item: CultureItem; index: number }> = ({ item, index }) => {
+  const [isHovered, setIsHovered] = useState(false)
+
+  return (
+    <motion.div
+      key={index}
+      className="group relative aspect-square w-full cursor-pointer overflow-hidden rounded-lg bg-others-white"
+      variants={fadeInUp}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {/* Image - hidden on hover */}
+      <motion.div
+        className="absolute inset-0 z-0"
+        initial={{ opacity: 1 }}
+        animate={{ opacity: isHovered ? 0 : 1 }}
+        transition={{ duration: 0.4, ease: 'easeInOut' }}
+      >
+        <AnimatedImage
+          src={item.url}
+          alt={`${item.name} - ${item.position}`}
+          className="origin-center rounded-lg object-cover object-center"
+        />
+      </motion.div>
+
+      {/* White Background with Content - shown on hover */}
+      <motion.div
+        className="bg-white absolute inset-0 z-20 flex h-full w-full flex-col items-center justify-center rounded-lg p-6 shadow-lg"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isHovered ? 1 : 0 }}
+        transition={{ duration: 0.4, ease: 'easeInOut' }}
+      >
+        <div className="text-black text-center">
+          <motion.blockquote
+            className="text-gray-800 mb-4 text-sm font-medium italic leading-relaxed md:text-base lg:text-lg"
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: isHovered ? 0 : 30, opacity: isHovered ? 1 : 0 }}
+            transition={{ duration: 0.5, delay: 0.1, ease: 'easeOut' }}
+          >
+            &ldquo;{item.quote}&rdquo;
+          </motion.blockquote>
+
+          <motion.div
+            className="border-gray-300 border-t pt-3"
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: isHovered ? 0 : 30, opacity: isHovered ? 1 : 0 }}
+            transition={{ duration: 0.5, delay: 0.2, ease: 'easeOut' }}
+          >
+            <p className="text-black text-sm font-bold md:text-base">{item.name}</p>
+            <p className="text-gray-600 text-xs font-medium md:text-sm">{item.position}</p>
+          </motion.div>
+        </div>
+      </motion.div>
+    </motion.div>
   )
 }
 

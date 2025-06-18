@@ -7,7 +7,7 @@ const pictures = ['/carbon-wipeout-1.png', '/carbon-wipeout-2.png', '/carbon-wip
 
 const CarbonWipeout = () => {
   return (
-    <div className="container py-24">
+    <div className="container pb-24">
       <div className="flex flex-col gap-6 pb-6 sm:gap-10 sm:pb-10">
         <h3 className="text-3xl font-bold">Carbon Wipeout</h3>
         <p className="text-base font-normal">
@@ -28,7 +28,12 @@ const CarbonWipeout = () => {
                   inViewMargin="100px 0px"
                   className="relative h-full w-full overflow-hidden rounded-lg bg-muted"
                 >
-                  <Image src={picture} alt="carbon-wipeout" fill />
+                  <Image
+                    src={picture}
+                    alt="carbon-wipeout"
+                    className="object-cover object-center"
+                    fill
+                  />
                 </BlurFade>
               </CarouselItem>
             )

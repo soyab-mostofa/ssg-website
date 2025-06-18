@@ -18,7 +18,7 @@ const timelineData = [
     year: 2009,
     x: 180,
     y: 280,
-    image: '/shin-shin-apperal.png',
+    image: '/public/shin-shin-apperal.png',
     description: 'Shin Shin Apparels Ltd established, focusing on quality and sustainability.',
   },
   {
@@ -42,7 +42,7 @@ const timelineData = [
     year: 2016,
     x: 600,
     y: 200,
-    image: '/founding-story-1.png',
+    image: '/vancot.png',
     description: 'Khalifa Apparels Ltd launched, focusing on high-quality apparel manufacturing.',
   },
   {
@@ -50,7 +50,7 @@ const timelineData = [
     year: 2020,
     x: 740,
     y: 100,
-    image: '/founding-story-1.png',
+    image: '/vancot.png',
     description:
       'Saud Garments Industries Ltd established, enhancing production capacity and sustainability efforts.',
   },
@@ -75,7 +75,7 @@ const InteractiveTimeline = () => {
       heading="Our Journey"
       chip="timeline"
       className="hidden md:block"
-      subLeft="Shin Shin Group, established in 2007, has grown into a leading apparel conglomerate with 8,727 employees across five factories in Bangladesh. The group achieved."
+      subLeft="Shin Shin Group, established in 2007, has grown into a leading apparel conglomerate with 8,727 employees across four factories in Bangladesh. The group achieved."
     >
       <motion.div
         className="container relative mx-auto -mt-24 w-full overflow-visible md:block"
