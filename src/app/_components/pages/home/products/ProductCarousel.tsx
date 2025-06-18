@@ -106,7 +106,7 @@ export function ProductCarousel() {
               <div className="relative ml-4 w-full pr-4 xl:mr-0">
                 <Card className="flex h-full w-full flex-col border-0 shadow-none">
                   <motion.div
-                    className="relative ms-auto h-[400px] w-full p-0 md:h-[300px]"
+                    className="relative ms-auto h-[400px] w-full p-0"
                     initial={{ width: '0%', opacity: 0 }}
                     animate={
                       isInView && {
