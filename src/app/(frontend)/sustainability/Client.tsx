@@ -230,7 +230,7 @@ const SustainabilityPage = () => {
           </div>{' '}
           {/* Revolutionary Image Display */}
           <motion.div
-            className="relative mx-auto h-[600px] w-full max-w-[1400px] overflow-hidden rounded-3xl shadow-2xl"
+            className="relative mx-auto h-96 w-full max-w-[1400px] overflow-hidden rounded-3xl shadow-2xl md:h-[600px]"
             whileHover={{ scale: shouldReduceMotion ? 1 : 1.02 }}
             transition={{ duration: 0.3 }}
           >
