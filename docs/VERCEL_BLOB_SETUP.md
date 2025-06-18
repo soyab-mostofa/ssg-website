@@ -112,11 +112,13 @@ Our configuration:
 The previous S3 configuration has been replaced with Vercel Blob storage. Key changes:
 
 ### Removed S3 Configuration:
+
 - `@payloadcms/storage-s3` package usage
 - S3-specific environment variables
 - Custom S3 endpoint configuration
 
 ### Added Vercel Blob Configuration:
+
 - `@payloadcms/storage-vercel-blob` package
 - `BLOB_READ_WRITE_TOKEN` environment variable
 - Simplified configuration
@@ -126,6 +128,7 @@ The previous S3 configuration has been replaced with Vercel Blob storage. Key ch
 The storage configuration is automatically applied to the specified collections. No changes needed in collection definitions.
 
 Example Media collection (`src/collections/Media.ts`):
+
 ```typescript
 import type { CollectionConfig } from 'payload'
 
@@ -145,21 +148,25 @@ export const Media: CollectionConfig = {
 ## 🛠️ Development vs Production
 
 ### Development
+
 - Set `BLOB_READ_WRITE_TOKEN` in `.env.local`
 - Files uploaded during development go to the same Blob store
 
 ### Production
+
 - Environment variable automatically set by Vercel
 - Production uploads are isolated from development
 
 ## 📊 Monitoring and Limits
 
 ### Vercel Blob Limits (as of 2024):
+
 - **Free Plan**: 500MB storage, 1GB bandwidth/month
 - **Pro Plan**: 100GB storage, 1TB bandwidth/month
 - **Enterprise**: Custom limits
 
 ### Monitoring:
+
 1. Check usage in Vercel Dashboard → Storage → Blob
 2. Monitor bandwidth usage in Analytics
 3. Set up alerts for approaching limits
@@ -169,10 +176,12 @@ export const Media: CollectionConfig = {
 ### Common Issues:
 
 1. **"Invalid token" error**:
+
    - Verify `BLOB_READ_WRITE_TOKEN` is correctly set
    - Ensure token hasn't expired or been revoked
 
 2. **Upload failures**:
+
    - Check Vercel function timeout limits
    - Consider enabling `clientUploads` for large files
 
@@ -181,6 +190,7 @@ export const Media: CollectionConfig = {
    - Check that files were uploaded successfully
 
 ### Debug Mode:
+
 Add logging to check configuration:
 
 ```typescript
@@ -195,4 +205,4 @@ console.log('Blob token configured:', !!process.env.BLOB_READ_WRITE_TOKEN)
 
 ---
 
-*Last updated: ${new Date().toISOString().split('T')[0]}*
+_Last updated: ${new Date().toISOString().split('T')[0]}_

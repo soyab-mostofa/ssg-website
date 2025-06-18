@@ -51,7 +51,8 @@ export function generateSEO(config: SEOConfig): Metadata {
         'max-image-preview': 'large',
         'max-snippet': -1,
       },
-    },    openGraph: {
+    },
+    openGraph: {
       title,
       description,
       type: ogType,
@@ -108,7 +109,8 @@ export function generatePageSEO({
   ogImage?: string
   noindex?: boolean
   nofollow?: boolean
-}): Metadata {  return generateSEO({
+}): Metadata {
+  return generateSEO({
     title,
     description,
     keywords,
@@ -141,7 +143,8 @@ export function generateArticleSEO({
   authors?: string[]
   section?: string
   tags?: string[]
-}): Metadata {  return generateSEO({
+}): Metadata {
+  return generateSEO({
     title,
     description,
     keywords,
@@ -174,7 +177,8 @@ export function generateProductSEO({
   price?: number
   currency?: string
   availability?: 'InStock' | 'OutOfStock' | 'PreOrder'
-}): Metadata {  const metadata = generateSEO({
+}): Metadata {
+  const metadata = generateSEO({
     title,
     description,
     keywords,
@@ -198,13 +202,11 @@ export function generateProductSEO({
 // Helper function to truncate descriptions for meta tags
 export function truncateDescription(description: string, maxLength = 160): string {
   if (description.length <= maxLength) return description
-  
+
   const truncated = description.substring(0, maxLength)
   const lastSpace = truncated.lastIndexOf(' ')
-  
-  return lastSpace > 0 
-    ? truncated.substring(0, lastSpace) + '...'
-    : truncated + '...'
+
+  return lastSpace > 0 ? truncated.substring(0, lastSpace) + '...' : truncated + '...'
 }
 
 // Helper function to format title with brand
@@ -215,15 +217,7 @@ export function formatTitle(title: string, includeBrand = true): string {
 
 // Common keyword sets for different page types
 export const commonKeywords = {
-  fashion: [
-    'apparel',
-    'garment',
-    'textile',
-    'clothing',
-    'fashion',
-    'manufacturing',
-    'bangladesh',
-  ],
+  fashion: ['apparel', 'garment', 'textile', 'clothing', 'fashion', 'manufacturing', 'bangladesh'],
   sustainable: [
     'sustainable',
     'eco-friendly',

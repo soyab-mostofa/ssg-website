@@ -16,7 +16,7 @@ export default function JobListings({ jobs }: { jobs: JobListing[] }) {
           <SectionChip>JOB OPENINGS</SectionChip>
           <AnimateTextInView
             text="We are always looking for talented individuals to join our team. If you are passionate about sustainability and are looking for a challenging and rewarding career, we encourage you to apply."
-            className="-mb-1 w-full max-w-[584px] pt-2 text-2xl font-bold md:text-5xl"
+            className="-mb-1 w-full max-w-[584px] pt-2 text-base"
             delay={0.2}
           />
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">

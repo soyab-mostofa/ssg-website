@@ -4,7 +4,8 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: 'Shin Shin Group - Leading Sustainable Apparel Manufacturer',
     short_name: 'Shin Shin Group',
-    description: 'Shin Shin Group is Bangladesh\'s leading sustainable apparel manufacturer, pioneering eco-friendly practices in textile manufacturing with innovative designs and ethical production.',
+    description:
+      "Shin Shin Group is Bangladesh's leading sustainable apparel manufacturer, pioneering eco-friendly practices in textile manufacturing with innovative designs and ethical production.",
     start_url: '/',
     display: 'standalone',
     background_color: '#ffffff',
@@ -43,7 +44,8 @@ export default function manifest(): MetadataRoute.Manifest {
         sizes: '16x16',
         type: 'image/png',
       },
-    ],    screenshots: [
+    ],
+    screenshots: [
       {
         src: '/screenshot-wide.png',
         sizes: '1280x720',

@@ -65,7 +65,8 @@ const defaultOrganizationData: OrganizationSchema = {
   name: 'Shin Shin Group',
   url: 'https://www.shinshingroup.com',
   logo: 'https://www.shinshingroup.com/logo.png',
-  description: 'Shin Shin Group is Bangladesh\'s leading sustainable apparel manufacturer, pioneering eco-friendly practices in textile manufacturing with innovative designs and ethical production.',
+  description:
+    "Shin Shin Group is Bangladesh's leading sustainable apparel manufacturer, pioneering eco-friendly practices in textile manufacturing with innovative designs and ethical production.",
   address: {
     '@type': 'PostalAddress',
     streetAddress: 'House # 25, Road # 34, Gulshan-2',
@@ -94,11 +95,13 @@ const defaultWebsiteData: WebsiteSchema = {
   '@type': 'WebSite',
   name: 'Shin Shin Group',
   url: 'https://www.shinshingroup.com',
-  description: 'Shin Shin Group is Bangladesh\'s leading sustainable apparel manufacturer, pioneering eco-friendly practices in textile manufacturing with innovative designs and ethical production.',
+  description:
+    "Shin Shin Group is Bangladesh's leading sustainable apparel manufacturer, pioneering eco-friendly practices in textile manufacturing with innovative designs and ethical production.",
   publisher: {
     '@type': 'Organization',
     name: 'Shin Shin Group',
-  },  potentialAction: {
+  },
+  potentialAction: {
     '@type': 'SearchAction',
     target: 'https://www.shinshingroup.com/search?q={search_term_string}',
     'query-input': 'required name=search_term_string',
@@ -143,7 +146,11 @@ export function WebsiteStructuredData(props?: { data?: Partial<WebsiteSchema> })
   return <StructuredData type="website" data={props?.data} />
 }
 
-export function BreadcrumbStructuredData({ items }: { items: Array<{ name: string; url?: string }> }) {
+export function BreadcrumbStructuredData({
+  items,
+}: {
+  items: Array<{ name: string; url?: string }>
+}) {
   const breadcrumbData: BreadcrumbSchema = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',

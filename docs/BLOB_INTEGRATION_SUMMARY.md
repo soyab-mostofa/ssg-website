@@ -5,16 +5,19 @@ The Shin Shin Group website has been successfully configured to use Vercel Blob 
 ## 🎯 What Was Implemented
 
 ### 1. Package Installation
+
 ```bash
 pnpm add @payloadcms/storage-vercel-blob
 ```
 
 ### 2. Configuration Updates
+
 - ✅ **Payload Config**: Updated `src/payload.config.ts` with Vercel Blob storage
 - ✅ **S3 Removal**: Removed previous S3 storage configuration and package
 - ✅ **Environment Variables**: Added `BLOB_READ_WRITE_TOKEN` to environment setup
 
 ### 3. Configuration Details
+
 ```typescript
 // src/payload.config.ts
 vercelBlobStorage({
@@ -31,6 +34,7 @@ vercelBlobStorage({
 ## 🔑 Required Setup Steps
 
 ### 1. Create Vercel Blob Storage
+
 1. Go to [Vercel Dashboard](https://vercel.com/dashboard)
 2. Select your project
 3. Navigate to **Storage** tab
@@ -39,13 +43,16 @@ vercelBlobStorage({
 6. Click **"Create"**
 
 ### 2. Get Your Token
+
 1. In your Blob storage settings, copy the `BLOB_READ_WRITE_TOKEN`
 2. Add to your local `.env.local`:
+
 ```bash
 BLOB_READ_WRITE_TOKEN=your_token_here
 ```
 
 ### 3. Deploy Environment Variable
+
 1. In Vercel project settings → **Environment Variables**
 2. Add `BLOB_READ_WRITE_TOKEN` with your token
 3. Apply to Production, Preview, and Development environments
@@ -53,10 +60,12 @@ BLOB_READ_WRITE_TOKEN=your_token_here
 ## 📁 File Structure Changes
 
 ### Added Files:
+
 - `docs/VERCEL_BLOB_SETUP.md` - Comprehensive setup guide
 - Updated `.env.example` with new environment variable
 
 ### Modified Files:
+
 - `src/payload.config.ts` - Replaced S3 with Vercel Blob storage
 - `package.json` - Removed `@payloadcms/storage-s3`, added `@payloadcms/storage-vercel-blob`
 
@@ -72,14 +81,17 @@ BLOB_READ_WRITE_TOKEN=your_token_here
 ## 📊 Storage Limits
 
 ### Free Plan:
+
 - 500MB storage
 - 1GB bandwidth/month
 
 ### Pro Plan:
-- 100GB storage  
+
+- 100GB storage
 - 1TB bandwidth/month
 
 ### Enterprise:
+
 - Custom limits available
 
 ## 🔧 Next Steps

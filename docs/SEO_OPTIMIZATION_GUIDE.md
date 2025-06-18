@@ -80,9 +80,16 @@ import { generatePageSEO, commonKeywords } from '@/app/_components/seo/seo-utils
 
 export const metadata = generatePageSEO({
   title: 'About Us - Our Story',
-  description: 'Learn about Shin Shin Group\'s journey in sustainable textile manufacturing since 1983.',
+  description:
+    "Learn about Shin Shin Group's journey in sustainable textile manufacturing since 1983.",
   path: '/about',
-  keywords: [...commonKeywords.fashion, ...commonKeywords.sustainable, 'about', 'company story', 'bangladesh textile'],
+  keywords: [
+    ...commonKeywords.fashion,
+    ...commonKeywords.sustainable,
+    'about',
+    'company story',
+    'bangladesh textile',
+  ],
 })
 ```
 
@@ -160,4 +167,4 @@ export default function ProductPage() {
 
 ---
 
-*Last updated: ${new Date().toISOString().split('T')[0]}*
+_Last updated: ${new Date().toISOString().split('T')[0]}_
