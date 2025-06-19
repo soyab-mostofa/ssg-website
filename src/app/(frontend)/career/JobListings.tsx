@@ -3,10 +3,33 @@
 import { motion } from 'motion/react'
 // import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
-import AnimateTextInView from '@/app/_components/animated/animateTextInView'
 import SectionChip from '@/app/_components/shared/SectionChip'
 import Button from '@/app/_components/shared/Button'
 import { JobListing } from '@/payload-types'
+
+// Helper function to safely parse dates and handle malformed date strings
+const parseDate = (dateString: string): Date => {
+  // Remove any leading '+' signs and normalize the date string
+  const cleanDateString = dateString.replace(/^\+/, '')
+  
+  try {
+    const parsedDate = new Date(cleanDateString)
+    
+    // Check if the date is valid and not in the far future (year > 9999)
+    if (isNaN(parsedDate.getTime()) || parsedDate.getFullYear() > 9999) {
+      // If invalid or far future date, return current date + 30 days as fallback
+      const fallbackDate = new Date()
+      fallbackDate.setDate(fallbackDate.getDate() + 30)
+      return fallbackDate
+    }
+      return parsedDate
+  } catch (_error) {
+    // If parsing fails, return current date + 30 days as fallback
+    const fallbackDate = new Date()
+    fallbackDate.setDate(fallbackDate.getDate() + 30)
+    return fallbackDate
+  }
+}
 
 export default function JobListings({ jobs }: { jobs: JobListing[] }) {
   return (
@@ -14,11 +37,16 @@ export default function JobListings({ jobs }: { jobs: JobListing[] }) {
       <div className="container px-4 md:px-6">
         <div className="space-y-6">
           <SectionChip>JOB OPENINGS</SectionChip>
-          <AnimateTextInView
-            text="We are always looking for talented individuals to join our team. If you are passionate about sustainability and are looking for a challenging and rewarding career, we encourage you to apply."
-            className="-mb-1 w-full max-w-[584px] pt-2 text-base"
-            delay={0.2}
-          />
+          <motion.p
+            className="text-lg font-bold tracking-tight text-grayscale-black-500 md:text-xl lg:text-2xl"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0, repeatCount: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            We are always looking for talented individuals to join our team. If you are passionate
+            about sustainability and are looking for a challenging and rewarding career, we
+            encourage you to apply.
+          </motion.p>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {jobs.map((job, index) => (
               <motion.div
@@ -34,11 +62,10 @@ export default function JobListings({ jobs }: { jobs: JobListing[] }) {
                       <p className="text-sm font-medium text-primary-blue-500">
                         {job.company.name}
                       </p>
-                    </div>
-                    <div className="flex flex-wrap gap-2 text-lg text-grayscale-black-400">
+                    </div>                    <div className="flex flex-wrap gap-2 text-lg text-grayscale-black-400">
                       <span>{job.workType}</span>
                       <span>|</span>
-                      <span>{new Date(job.updatedAt).toDateString()}</span>
+                      <span>Posted: {parseDate(job.updatedAt).toDateString()}</span>
                       <span>|</span>
                       <span>{job.location}</span>
                     </div>
@@ -50,9 +77,8 @@ export default function JobListings({ jobs }: { jobs: JobListing[] }) {
                       <div>
                         <span className="text-lg font-bold">{job.salary.amount}</span>
                         <span className="text-gray-600 text-sm">/{job.salary.period}</span>
-                      </div>
-                      <span className="text-sm text-[#1D1F2C]">
-                        {new Date(job.applicationDeadline).toDateString()}
+                      </div>                      <span className="text-sm text-[#1D1F2C]">
+                        Deadline: {parseDate(job.applicationDeadline).toLocaleDateString()}
                       </span>
                     </div>
                     <div className="grid gap-3 md:grid-cols-2">

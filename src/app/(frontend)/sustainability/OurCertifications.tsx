@@ -11,7 +11,12 @@ const CustomerLogo = memo(function CustomerLogo({ logo }: { logo: string }) {
   return (
     <div className="relative aspect-[241/285] w-full max-w-[241px] rounded-lg border border-primary-blue-200">
       <div className="flex aspect-[241/285] w-full max-w-[241px] justify-center">
-        <Image src={logo} alt={'certifications'} className="h-auto max-w-full object-cover" fill />
+        <Image
+          src={logo}
+          alt={'certifications'}
+          className="h-auto max-w-full object-contain"
+          fill
+        />
       </div>
     </div>
   )
@@ -40,8 +45,8 @@ const OurCertifications = () => {
           className="overflow-hidden"
         >
           <div className="container grid grid-cols-3 gap-4 md:grid-cols-5 md:gap-8 lg:grid-cols-5">
-            {Array.from({ length: 23 }).map((_, i) => (
-              <CustomerLogo key={i} logo={`/awards/awards-${i + 1}.png`} />
+            {Array.from({ length: 24 }).map((_, i) => (
+              <CustomerLogo key={i} logo={`/certs/certification-${i + 1}.webp`} />
             ))}
           </div>
         </motion.div>
