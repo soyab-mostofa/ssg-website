@@ -11,10 +11,10 @@ import { JobListing } from '@/payload-types'
 const parseDate = (dateString: string): Date => {
   // Remove any leading '+' signs and normalize the date string
   const cleanDateString = dateString.replace(/^\+/, '')
-  
+
   try {
     const parsedDate = new Date(cleanDateString)
-    
+
     // Check if the date is valid and not in the far future (year > 9999)
     if (isNaN(parsedDate.getTime()) || parsedDate.getFullYear() > 9999) {
       // If invalid or far future date, return current date + 30 days as fallback
@@ -22,7 +22,7 @@ const parseDate = (dateString: string): Date => {
       fallbackDate.setDate(fallbackDate.getDate() + 30)
       return fallbackDate
     }
-      return parsedDate
+    return parsedDate
   } catch (_error) {
     // If parsing fails, return current date + 30 days as fallback
     const fallbackDate = new Date()
@@ -62,7 +62,8 @@ export default function JobListings({ jobs }: { jobs: JobListing[] }) {
                       <p className="text-sm font-medium text-primary-blue-500">
                         {job.company.name}
                       </p>
-                    </div>                    <div className="flex flex-wrap gap-2 text-lg text-grayscale-black-400">
+                    </div>{' '}
+                    <div className="flex flex-wrap gap-2 text-lg text-grayscale-black-400">
                       <span>{job.workType}</span>
                       <span>|</span>
                       <span>Posted: {parseDate(job.updatedAt).toDateString()}</span>
@@ -77,7 +78,8 @@ export default function JobListings({ jobs }: { jobs: JobListing[] }) {
                       <div>
                         <span className="text-lg font-bold">{job.salary.amount}</span>
                         <span className="text-gray-600 text-sm">/{job.salary.period}</span>
-                      </div>                      <span className="text-sm text-[#1D1F2C]">
+                      </div>{' '}
+                      <span className="text-sm text-[#1D1F2C]">
                         Deadline: {parseDate(job.applicationDeadline).toLocaleDateString()}
                       </span>
                     </div>
