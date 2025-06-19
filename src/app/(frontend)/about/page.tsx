@@ -13,8 +13,7 @@ const Page = () => {
       <PageHeader
         bgImage="/headers/about-header.webp"
         heading={['About', 'Shin Shin Group']}
-        sub="Shin Shin Group is a leading Bangladeshi conglomerate in the apparel industry. It serves global markets with high-quality, eco-friendly products​
-"
+        sub="Discover Shin Shin Group's journey as a leading apparel conglomerate, committed to quality, innovation, and global excellence since 2007."
       />
       <FoundingStory />
       <OurValues />

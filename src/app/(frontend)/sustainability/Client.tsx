@@ -156,7 +156,7 @@ const SustainabilityPage = () => {
       <PageHeader
         bgImage="/headers/sustainability-header.webp"
         heading={['Our', 'Sustainability']}
-        sub="Shin Shin Group pioneers sustainability through water conservation, renewable energy, green factories, and carbon reduction, reshaping the future of apparel manufacturing."
+        sub="Our commitment to a better future: People, planet, and responsible production. Explore our green initiatives and social impact programs"
       />{' '}
       {/* Award-worthy Sustainability Section */}
       <motion.section

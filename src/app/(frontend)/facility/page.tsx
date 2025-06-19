@@ -141,7 +141,7 @@ const Page: React.FC = () => {
       <PageHeader
         bgImage="/headers/facilities-header.webp"
         heading={['Our', 'Facilities']}
-        sub="Shin Shin Group is one of the largest conglomerates in Bangladesh, exporting apparel worldwide. The group comprises four factories."
+        sub="Explore our four state-of-the-art factories, equipped with advanced technology for high-quality, efficient, and sustainable apparel production"
       />
       <div className="px-4 sm:px-6 md:px-8">
         <SectionLayout

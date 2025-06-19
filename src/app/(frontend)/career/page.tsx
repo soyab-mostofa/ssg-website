@@ -12,36 +12,29 @@ import PageHeader from '@/app/_components/pages/about/PageHeader'
 interface CultureItem {
   url: string
   position: string
-  subTitle: string
   name?: string
   quote: string
 }
 
 const data: CultureItem[] = [
   {
-    url: '/career/employee-1.JPG',
+    url: '/career/employee-1.webp',
     name: 'Al Amin',
     position: 'Assistant General Manager, IT',
-    subTitle:
-      'Lorem ipsum dolor sit amet consectetur. Odio enim aenean sed morbi ac. Scelerisque egestas eros vel libero vel. Orci libero orci varius dolor eu mattis sed vestibulum tincidunt. Accumsan malesuada mattis lobortis purus purus eros.',
     quote:
       'Innovation drives us forward. Every day at Shin Shin Group brings new opportunities to revolutionize how technology serves our mission.',
   },
   {
-    url: '/career/employee-2.JPG',
+    url: '/career/employee-2.webp',
     name: 'Roksana Jahan',
     position: 'Deputy Manager, Quality',
-    subTitle:
-      'Lorem ipsum dolor sit amet consectetur. Odio enim aenean sed morbi ac. Scelerisque egestas eros vel libero vel. Orci libero orci varius dolor eu mattis sed vestibulum tincidunt. Accumsan malesuada mattis lobortis purus purus eros.',
     quote:
       "Quality is not just our standard—it's our promise. Every stitch tells a story of excellence and dedication.",
   },
   {
-    url: '/career/employee-3.JPG',
+    url: '/career/employee-3.webp',
     name: 'Sujan Paul',
     position: 'Senior General Manager',
-    subTitle:
-      'Lorem ipsum dolor sit amet consectetur. Odio enim aenean sed morbi ac. Scelerisque egestas eros vel libero vel. Orci libero orci varius dolor eu mattis sed vestibulum tincidunt. Accumsan malesuada mattis lobortis purus purus eros.',
     quote:
       'Leadership means empowering others to achieve greatness. Together, we build not just garments, but dreams.',
   },
@@ -108,7 +101,7 @@ const Page: React.FC = () => {
         <PageHeader
           bgImage="/headers/career-header.webp"
           heading={['Career at', 'Shin Shin Group']}
-          sub="Shin Shin Group is one of the largest conglomerates in Bangladesh, exporting apparel worldwide. The group comprises four factories."
+          sub="Join our growing family at Shin Shin Group. Explore opportunities for professional development and contribute to a sustainable global apparel leader"
         />
       </motion.div>
 
