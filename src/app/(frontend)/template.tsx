@@ -13,7 +13,7 @@ interface TemplateProps {
   logoSrc?: string
 }
 
-export default function Template({ children, logoSrc = '/logo.png' }: TemplateProps) {
+export default function Template({ children, logoSrc = '/main-logo.png' }: TemplateProps) {
   const scrollRef = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll()
 
