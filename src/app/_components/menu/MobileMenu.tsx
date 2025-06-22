@@ -82,7 +82,7 @@ const MobileMenu = () => {
                     <Link href={link.link} onClick={handleLinkClick} className="block">
                       <span
                         className={cn(
-                          'text-3xl font-light transition-all duration-300 hover:scale-105 sm:text-4xl',
+                          'text-3xl font-light text-others-white transition-all duration-300 hover:scale-105 sm:text-4xl',
                           pathName === link.link
                             ? 'text-secondary-red-500'
                             : 'text-grayscale-black-800 hover:text-secondary-red-500',
