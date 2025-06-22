@@ -10,7 +10,7 @@ export default function Footer() {
           {/* Left Column - Logo and Contact */}
           <div className="lg:col-span-4">
             <Image
-              src="/logo-dark.png"
+              src="/main-logo.png"
               alt="Shin Shin Group"
               width={100}
               height={100}
@@ -27,8 +27,8 @@ export default function Footer() {
           {/* Mission Statement */}
           <div className="lg:col-span-8">
             <p className="mb-12 text-lg leading-relaxed text-others-white/70">
-              As denim enthusiasts, we&apos;re on a mission to revolutionize the industry to make
-              denim the ultimate choice!
+              Crafting high-quality, eco-friendly apparel for global markets. Leading fashion
+              innovation, Together We Grow.
             </p>
 
             {/* Navigation Grid */}
