@@ -14,7 +14,7 @@ const Page = () => {
       <ChairmansThoughts />
       <SustainabilitySection />
       <ProductSection />
-      <ImpactStories />
+      {/* <ImpactStories /> */}
       <CustomersSection />
     </div>
   )

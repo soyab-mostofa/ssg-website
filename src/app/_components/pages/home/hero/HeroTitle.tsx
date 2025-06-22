@@ -7,7 +7,7 @@ const HeroTitle = () => {
   const [isLoading, setIsLoading] = useState(true)
   const [showContent, setShowContent] = useState(false)
 
-  const titleContent = 'Sustainability Woven Into Every Thread'
+  const titleContent = 'Weaving the future of fashion'
   const descriptionContent =
     'Driven by sustainability, inclusivity, and innovation, Shin Shin Group redefines apparel manufacturing with cutting-edge technology and an unwavering commitment to people and planet.'
 
