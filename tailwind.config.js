@@ -126,7 +126,8 @@ export default {
         'text-gradient': {
           to: {
             backgroundPosition: '200% center',
-          },        },
+          },
+        },
       },
       animation: {
         'text-gradient': 'text-gradient 1.3s linear infinite',

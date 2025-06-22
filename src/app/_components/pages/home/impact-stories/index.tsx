@@ -72,7 +72,8 @@ const StoryCard = memo(({ story, index }: { story: (typeof stories)[0]; index: n
         priority={index === 0}
         loading={index === 0 ? 'eager' : 'lazy'}
       />
-      <div className="to-transparent absolute inset-0 bg-gradient-to-t from-grayscale-black-800/40 via-grayscale-black-800/20" />
+      <div className="absolute inset-0 bg-grayscale-black-800/30" />
+      <div className="to-transparent absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-grayscale-black-800/80 via-grayscale-black-800/40 sm:h-28 md:h-32" />
       <motion.h3
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -113,11 +114,12 @@ export default function ImpactStories() {
         }}
         className="w-full"
       >
-        <CarouselContent className="mb-10 ml-0 mr-2 h-60 sm:h-60 md:h-80 lg:h-96 xl:ml-[calc((100vw-1240px)/2)] xl:h-[600px]">
+        {' '}
+        <CarouselContent className="mb-10 ml-0 mr-2 h-48 sm:h-52 md:h-64 lg:h-72 xl:ml-[calc((100vw-1240px)/2)] xl:h-[450px]">
           {stories.map((story, index) => (
             <CarouselItem
               key={story.title}
-              className="h-full basis-[300px] overflow-hidden pl-4 pr-2 sm:basis-[400px] md:basis-[500px] lg:basis-[600xp] xl:basis-[995px] xl:pr-0"
+              className="h-full basis-[250px] overflow-hidden pl-4 pr-2 sm:basis-[320px] md:basis-[400px] lg:basis-[480px] xl:basis-[750px] xl:pr-0"
             >
               <StoryCard story={story} index={index} />
             </CarouselItem>

@@ -53,7 +53,7 @@ const FoundingStory = () => {
                 through investments in infrastructure, energy-efficient technologies, and
                 sustainable practices. These efforts solidified its reputation as a leader in
                 ethical apparel production, catering to markets worldwide, with four factories and
-                over 10,000 employees.
+                over 11,000 employees.
               </p>
             </motion.div>
           </div>

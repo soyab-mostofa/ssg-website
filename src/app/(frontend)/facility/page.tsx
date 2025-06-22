@@ -35,7 +35,7 @@ const factories: Factory[] = [
       'Chino Pants, Trousers, Jackets-Denim, Cargo Pant, Parachute bottom, School Uniforms, PU Pant',
   },
   {
-    image: '/organic-jeans.png',
+    image: '/organic-jeans.webp',
     name: 'Organic Jeans Ltd.',
     location:
       'Plot- A/1&2, Block-B, BSCIC I/A, Fauzderhat, Sagarika Road, Chittagong-4219, Bangladesh',

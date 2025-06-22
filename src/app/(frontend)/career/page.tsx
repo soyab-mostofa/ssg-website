@@ -12,7 +12,6 @@ import PageHeader from '@/app/_components/pages/about/PageHeader'
 interface CultureItem {
   url: string
   position: string
-  subTitle: string
   name?: string
   quote: string
 }
@@ -22,28 +21,22 @@ const data: CultureItem[] = [
     url: '/career/employee-1.JPG',
     name: 'Al Amin',
     position: 'Assistant General Manager, IT',
-    subTitle:
-      'Lorem ipsum dolor sit amet consectetur. Odio enim aenean sed morbi ac. Scelerisque egestas eros vel libero vel. Orci libero orci varius dolor eu mattis sed vestibulum tincidunt. Accumsan malesuada mattis lobortis purus purus eros.',
     quote:
-      'Innovation drives us forward. Every day at Shin Shin Group brings new opportunities to revolutionize how technology serves our mission.',
+      'At Shin Shin Group, the collaborative environment fuels innovation and pushes me to deliver cutting-edge IT solutions that drive our mission forward.',
   },
   {
     url: '/career/employee-2.JPG',
     name: 'Roksana Jahan',
     position: 'Deputy Manager, Quality',
-    subTitle:
-      'Lorem ipsum dolor sit amet consectetur. Odio enim aenean sed morbi ac. Scelerisque egestas eros vel libero vel. Orci libero orci varius dolor eu mattis sed vestibulum tincidunt. Accumsan malesuada mattis lobortis purus purus eros.',
     quote:
-      "Quality is not just our standard—it's our promise. Every stitch tells a story of excellence and dedication.",
+      'Working at Shin Shin Group, I take pride in ensuring every garment meets the highest quality standards, knowing my work helps build trust with customers globally.',
   },
   {
     url: '/career/employee-3.JPG',
     name: 'Sujan Paul',
     position: 'Senior General Manager',
-    subTitle:
-      'Lorem ipsum dolor sit amet consectetur. Odio enim aenean sed morbi ac. Scelerisque egestas eros vel libero vel. Orci libero orci varius dolor eu mattis sed vestibulum tincidunt. Accumsan malesuada mattis lobortis purus purus eros.',
     quote:
-      'Leadership means empowering others to achieve greatness. Together, we build not just garments, but dreams.',
+      'My journey at Shin Shin Group has been shaped by strong teamwork and leadership – together we’re creating meaningful impact through sustainable apparel manufacturing.',
   },
 ]
 
@@ -105,7 +98,7 @@ const EmployeeCard: React.FC<{ item: CultureItem; index: number }> = ({ item, in
       <AnimatedImage
         src={item.url}
         alt={`${item.name} - ${item.position}`}
-        className="z-0 origin-center rounded-lg object-cover object-center transition-transform duration-500 ease-in-out group-hover:scale-105"
+        className="z-0 origin-center rounded-lg object-cover object-center transition-all duration-500 ease-in-out group-hover:scale-105 group-hover:blur-xl"
       />
 
       {/* Dark Overlay with Content */}
@@ -194,7 +187,7 @@ const Page: React.FC = () => {
           heading="Team & Culture Overview"
           chip="Team & Culture"
           dark
-          subLeft="Conserving natural resources like water is imperative to our vision as a sustainable clothing manufacturer. So, our approach is to reduce, reuse, and recycle. In 2020 alone, we have saved 24.31% of water, reducing 5% of wastewater!"
+          subLeft="At Shin Shin Group, we believe in empowering our people and fostering a collaborative, inclusive environment. Our team members are at the heart of our success, driving innovation and making a global impact in the apparel industry. Discover what it's like to build your career."
         >
           <motion.div className="container px-4 sm:px-6 md:px-8" variants={staggerContainer}>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-6">

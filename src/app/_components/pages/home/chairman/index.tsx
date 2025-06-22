@@ -69,7 +69,7 @@ function MetricsList() {
         <li className="pb-4 text-grayscale-black-400/20 md:border-b-0 md:pb-6 md:pr-6">
           <div className="mb-5 flex items-center gap-4">
             <p className="text-5xl font-bold text-primary-blue-500">
-              <NumberTicker value={10} />
+              <NumberTicker value={11} />
               <span className="text-2xl uppercase">k</span>
             </p>
             <p className="w-24 text-lg font-medium text-primary-blue-500">Total Workforce</p>
