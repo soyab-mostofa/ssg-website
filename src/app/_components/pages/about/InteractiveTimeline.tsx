@@ -26,7 +26,7 @@ const timelineData = [
     year: 2014,
     x: 320,
     y: 260,
-    image: '/organic-jeans.png',
+    image: '/organic-jeans.webp',
     description: 'Organic Jeans Ltd launched, specializing in eco-friendly denim production.',
   },
   {
@@ -75,7 +75,7 @@ const InteractiveTimeline = () => {
       heading="Our Journey"
       chip="timeline"
       className="hidden md:block"
-      subLeft="Shin Shin Group, established in 2007, has grown into a leading apparel conglomerate with 11,000 employees across four factories in Bangladesh. The group achieved."
+      subLeft="Shin Shin Group, established in 2007, has grown into a leading apparel conglomerate with 11,000 employees across four factories in Bangladesh."
     >
       <motion.div
         className="container relative mx-auto -mt-24 w-full overflow-visible md:block"

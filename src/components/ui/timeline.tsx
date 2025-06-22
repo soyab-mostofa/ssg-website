@@ -68,9 +68,10 @@ export const Timeline = ({ data, colors = {} }: TimelineProps) => {
       style={{ backgroundColor: mergedColors.background }}
     >
       <div className="mx-auto -mb-20 max-w-7xl px-4 py-20 md:px-8 lg:px-10">
-        <AnimateTextInView text="Timeline Journey" className="text-3xl font-bold md:text-5xl" />
+        <AnimateTextInView text="Our Journey" className="text-3xl font-bold md:text-5xl" />
         <p className="max-w-sm text-sm md:text-base" style={{ color: mergedColors.secondaryText }}>
-          Track the progress through time
+          Shin Shin Group, established in 2007, has grown into a leading apparel conglomerate with
+          11,000 employees across four factories in Bangladesh.
         </p>
       </div>
 
