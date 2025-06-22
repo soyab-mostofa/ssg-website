@@ -10,7 +10,7 @@ const timelineData = [
     year: 2007,
     x: 40,
     y: 320,
-    image: '/jeans-plus.png',
+    image: '/timeline/jeans-plus.webp',
     description: 'Jeans Plus Ltd',
   },
   {
@@ -18,7 +18,7 @@ const timelineData = [
     year: 2009,
     x: 180,
     y: 280,
-    image: '/shin-shin-apperal.png',
+    image: '/timeline/shinshin-apparel.webp',
     description: 'Shin Shin Apparels Ltd established, focusing on quality and sustainability.',
   },
   {
@@ -26,7 +26,7 @@ const timelineData = [
     year: 2014,
     x: 320,
     y: 260,
-    image: '/organic-jeans.webp',
+    image: '/organic.webp',
     description: 'Organic Jeans Ltd launched, specializing in eco-friendly denim production.',
   },
   {
@@ -34,7 +34,7 @@ const timelineData = [
     year: 2015,
     x: 460,
     y: 240,
-    image: '/vancot.png',
+    image: '/timeline/vancot.webp',
     description: 'Vancot Ltd established, expanding into knitwear and woven garments.',
   },
   {
@@ -50,7 +50,7 @@ const timelineData = [
     year: 2020,
     x: 740,
     y: 100,
-    image: '/vancot.png',
+    image: '/timeline/saud.webp',
     description:
       'Saud Garments Industries Ltd established, enhancing production capacity and sustainability efforts.',
   },
