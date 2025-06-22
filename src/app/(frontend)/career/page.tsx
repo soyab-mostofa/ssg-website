@@ -18,21 +18,21 @@ interface CultureItem {
 
 const data: CultureItem[] = [
   {
-    url: '/public/career/employee-1.webp',
+    url: '/career/employee-1.webp',
     name: 'Al Amin',
     position: 'Assistant General Manager, IT',
     quote:
       'At Shin Shin Group, the collaborative environment fuels innovation and pushes me to deliver cutting-edge IT solutions that drive our mission forward.',
   },
   {
-    url: '/public/career/employee-2.webp',
+    url: '/career/employee-2.webp',
     name: 'Roksana Jahan',
     position: 'Deputy Manager, Quality',
     quote:
       'Working at Shin Shin Group, I take pride in ensuring every garment meets the highest quality standards, knowing my work helps build trust with customers globally.',
   },
   {
-    url: '/public/career/employee-3.webp',
+    url: '/career/employee-3.webp',
     name: 'Sujan Paul',
     position: 'Senior General Manager',
     quote:
