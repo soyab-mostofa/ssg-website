@@ -26,7 +26,7 @@ const timelineData = [
     year: 2014,
     x: 320,
     y: 260,
-    image: '/organic.webp',
+    image: '/timeline/organic.webp',
     description: 'Organic Jeans Ltd launched, specializing in eco-friendly denim production.',
   },
   {
