@@ -16,11 +16,11 @@ import { motion } from 'motion/react'
 const stories = [
   {
     title: "Scholarship for workers' children",
-    image: '/impact/impact-1.png',
+    image: '/impact/impact-1.webp',
   },
   {
     title: 'Free medical clinics for workers',
-    image: '/impact/impact-2.png',
+    image: '/impact/impact-2.webp',
   },
   {
     title: 'Fair price shop for workers and employees',
@@ -28,7 +28,7 @@ const stories = [
   },
   {
     title: "Daycare for workers' children",
-    image: '/impact/impact-4.png',
+    image: '/impact/impact-4.webp',
   },
   {
     title: 'Employment for differently-abled persons',
@@ -44,11 +44,11 @@ const stories = [
   },
   {
     title: 'Apps for workers to withdraw salary in advance',
-    image: '/impact/impact-8.png',
+    image: '/impact/impact-8.webp',
   },
   {
     title: 'Distribution of free eye-glasses among workers',
-    image: '/impact/impact-9.png',
+    image: '/impact/impact-9.webp',
   },
 ].map((story) => ({
   ...story,

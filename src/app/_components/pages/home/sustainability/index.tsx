@@ -55,7 +55,7 @@ const SustainabilitySection = () => {
           className="z-50 w-full overflow-x-hidden"
         >
           {' '}
-          <CarouselContent className="xl:ml-[calc((100vw-1270px)/2)]">
+          <CarouselContent className="min-h-56 xl:ml-[calc((100vw-1270px)/2)]">
             {data.map((item, index) => (
               <CarouselItem
                 key={index}

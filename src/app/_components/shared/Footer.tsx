@@ -134,7 +134,7 @@ export default function Footer() {
 
         {/* Copyright */}
         <div className="border-gray-800 text-gray-400 mt-16 border-t pt-8 text-center">
-          <p>© Shin Shin Group 2024</p>
+          <p>© Shin Shin Group 2025</p>
         </div>
       </div>
     </footer>
