@@ -10,7 +10,7 @@ export default function Footer() {
           {/* Left Column - Logo and Contact */}
           <div className="lg:col-span-4">
             <Image
-              src="/main-logo.png"
+              src="/logo-dark.png"
               alt="Shin Shin Group"
               width={100}
               height={100}
