@@ -83,7 +83,15 @@ const InteractiveTimeline = () => {
         viewport={{ once: true }}
         transition={{ staggerChildren: 0.2 }}
       >
-        <svg viewBox="0 0 800 400" className="h-auto w-full" style={{ overflow: 'visible' }}>
+        <svg 
+          viewBox="0 0 800 400" 
+          className="h-auto w-full" 
+          style={{ 
+            overflow: 'visible', 
+            fontFamily: 'inherit',
+            WebkitTextSizeAdjust: '100%'
+          }}
+        >
           {/* Base timeline path */}
           <motion.path
             d={pathData}
@@ -127,42 +135,7 @@ const InteractiveTimeline = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: index * 0.1 }}
               style={{ cursor: 'pointer' }}
-              className="relative z-10"
-            >
-              {' '}
-              {/* Year label - moved outside SVG for Safari compatibility */}
-              <motion.text
-                x={point.x}
-                y={point.y + 35}
-                textAnchor="middle"
-                className="fill-primary-blue text-xs font-bold"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.5 }}
-              >
-                {point.year}
-              </motion.text>{' '}
-              <motion.text
-                x={point.x}
-                y={point.y + 50}
-                textAnchor="middle"
-                className="fill-grayscale-black-400"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.5 }}
-                style={{ fontSize: '10px' }}
-              >
-                <tspan x={point.x} dy="0">
-                  {point.yearText.split(' ')[0]}
-                </tspan>
-                <tspan x={point.x} dy="12">
-                  {point.yearText.split(' ').slice(1).join(' ')}
-                </tspan>
-              </motion.text>
-              {/* Popup - removed for Safari compatibility, moved outside SVG */}
-              {/* Timeline dot */}
+              className="relative z-10"            >              {/* Timeline dot */}
               <motion.circle
                 cx={point.x}
                 cy={point.y}
@@ -176,17 +149,46 @@ const InteractiveTimeline = () => {
           ))}
         </svg>
 
-        {/* Popup moved outside SVG for Safari compatibility */}
+        {/* Year labels positioned outside SVG for better Safari compatibility */}
+        {timelineData.map((point, index) => (
+          <div
+            key={`label-${point.year}`}
+            className="absolute z-20 pointer-events-none"
+            style={{
+              left: `${(point.x / 800) * 100}%`,
+              top: `${((point.y + 35) / 400) * 100}%`,
+              transform: 'translateX(-50%)',
+            }}
+          >
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5 + index * 0.1 }}
+              className="text-center"
+            >
+              <div className="text-xs font-bold text-primary-blue-500 mb-1">
+                {point.year}
+              </div>
+              <div className="text-[10px] text-grayscale-black-400 leading-tight">
+                <div>{point.yearText.split(' ')[0]}</div>
+                <div>{point.yearText.split(' ').slice(1).join(' ')}</div>
+              </div>
+            </motion.div>
+          </div>
+        ))}{/* Popup moved outside SVG for Safari compatibility */}
         {activePoint && (
           <motion.div
             className="absolute z-50 overflow-hidden rounded-lg border border-primary-blue-100 bg-others-white shadow-sm shadow-primary-blue-500/30"
             style={{
-              left: `${(activePoint.x / 1000) * 100}%`,
-              top: `${((activePoint.y - 140) / 400) * 100}%`,
+              left: `${Math.max(0, Math.min(80, (activePoint.x / 800) * 100))}%`,
+              top: `${Math.max(0, ((activePoint.y - 140) / 400) * 100)}%`,
               width: '200px',
               height: 'auto',
               transform: 'translateX(-50%)',
               pointerEvents: 'none',
+              WebkitBackfaceVisibility: 'hidden',
+              backfaceVisibility: 'hidden',
             }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
