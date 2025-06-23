@@ -10,7 +10,7 @@ export default function Footer() {
           {/* Left Column - Logo and Contact */}
           <div className="lg:col-span-4">
             <Image
-              src="/logo-dark.png"
+              src="/public/logo-datk.png"
               alt="Shin Shin Group"
               width={100}
               height={100}
@@ -35,7 +35,6 @@ export default function Footer() {
             <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
               {/* Menu Column 1 */}
               <div>
-                <h3 className="mb-4 font-medium">Menu</h3>
                 <ul className="space-y-3">
                   <li>
                     <Link
@@ -66,7 +65,6 @@ export default function Footer() {
 
               {/* Menu Column 2 */}
               <div>
-                <h3 className="mb-4 font-medium">Menu</h3>
                 <ul className="space-y-3">
                   <li>
                     <Link

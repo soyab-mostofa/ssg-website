@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from 'react'
 import { motion } from 'motion/react'
@@ -84,7 +83,7 @@ const InteractiveTimeline = () => {
         viewport={{ once: true }}
         transition={{ staggerChildren: 0.2 }}
       >
-        <svg viewBox="0 0 800 400" className="h-auto w-full overflow-visible">
+        <svg viewBox="0 0 800 400" className="h-auto w-full" style={{ overflow: 'visible' }}>
           {/* Base timeline path */}
           <motion.path
             d={pathData}
@@ -96,7 +95,6 @@ const InteractiveTimeline = () => {
             viewport={{ once: true }}
             transition={{ duration: 1.5, ease: 'easeInOut' }}
           />
-
           {/* Highlighted path */}
           {activeYear && (
             <motion.path
@@ -108,18 +106,17 @@ const InteractiveTimeline = () => {
               animate={{ pathLength: 1 }}
               transition={{ duration: 0.5, ease: 'easeInOut' }}
             />
-          )}
-
+          )}{' '}
           {/* Timeline points with popups */}
           {timelineData.map((point, index) => (
             <motion.g
               key={point.year}
-              onHoverStart={() => {
+              onMouseEnter={() => {
                 setHasBeenHovered(true)
                 setActiveYear(point.year)
                 setActivePoint(point)
               }}
-              onHoverEnd={() => {
+              onMouseLeave={() => {
                 if (hasBeenHovered) {
                   setActiveYear(null)
                   setActivePoint(null)
@@ -132,55 +129,39 @@ const InteractiveTimeline = () => {
               style={{ cursor: 'pointer' }}
               className="relative z-10"
             >
-              {/* Year label */}
-              <motion.foreignObject
-                x={point.x - 50}
-                y={point.y + 20}
-                width="100"
-                height="50"
+              {' '}
+              {/* Year label - moved outside SVG for Safari compatibility */}
+              <motion.text
+                x={point.x}
+                y={point.y + 35}
+                textAnchor="middle"
+                className="fill-primary-blue text-xs font-bold"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.5 }}
               >
-                <p className="text-primary-blue- text-center text-xs font-bold">{point.year}</p>
-                <p className="text-center text-xs text-grayscale-black-400">{point.yearText}</p>
-              </motion.foreignObject>
-
-              {/* Popup */}
-              {activeYear === point.year && (
-                <motion.foreignObject
-                  x={point.x - 100}
-                  y={point.y - 200}
-                  width="200"
-                  height="300"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 20 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <div
-                    className="z-50 overflow-hidden rounded-lg border border-primary-blue-100 bg-others-white shadow-sm shadow-primary-blue-500/30"
-                    style={{ position: 'relative', zIndex: 50 }}
-                  >
-                    <motion.img
-                      src={point.image}
-                      alt={`Event from ${point.year}`}
-                      className="h-32 w-full object-cover"
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
-                      viewport={{ once: true }}
-                    />
-                    <p
-                      style={{ fontSize: '10px', zIndex: 50 }}
-                      className="text-gray-600 inline-flex p-2 text-center text-xs font-semibold"
-                    >
-                      {point.description}
-                    </p>
-                  </div>
-                </motion.foreignObject>
-              )}
-
+                {point.year}
+              </motion.text>{' '}
+              <motion.text
+                x={point.x}
+                y={point.y + 50}
+                textAnchor="middle"
+                className="fill-grayscale-black-400"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5 }}
+                style={{ fontSize: '10px' }}
+              >
+                <tspan x={point.x} dy="0">
+                  {point.yearText.split(' ')[0]}
+                </tspan>
+                <tspan x={point.x} dy="12">
+                  {point.yearText.split(' ').slice(1).join(' ')}
+                </tspan>
+              </motion.text>
+              {/* Popup - removed for Safari compatibility, moved outside SVG */}
               {/* Timeline dot */}
               <motion.circle
                 cx={point.x}
@@ -194,6 +175,37 @@ const InteractiveTimeline = () => {
             </motion.g>
           ))}
         </svg>
+
+        {/* Popup moved outside SVG for Safari compatibility */}
+        {activePoint && (
+          <motion.div
+            className="absolute z-50 overflow-hidden rounded-lg border border-primary-blue-100 bg-others-white shadow-sm shadow-primary-blue-500/30"
+            style={{
+              left: `${(activePoint.x / 1000) * 100}%`,
+              top: `${((activePoint.y - 140) / 400) * 100}%`,
+              width: '200px',
+              height: 'auto',
+              transform: 'translateX(-50%)',
+              pointerEvents: 'none',
+            }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            transition={{ duration: 0.2 }}
+          >
+            <motion.img
+              src={activePoint.image}
+              alt={`Event from ${activePoint.year}`}
+              className="h-32 w-full object-cover"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+            />
+            <p className="text-gray-600 inline-flex p-2 text-center text-xs font-semibold">
+              {activePoint.description}
+            </p>
+          </motion.div>
+        )}
       </motion.div>
     </SectionLayout>
   )
