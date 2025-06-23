@@ -98,7 +98,7 @@ const TimelinePopup = memo<TimelinePopupProps>(({ point, position }) => {
     <motion.div
       className="pointer-events-none fixed z-50 bg-others-white"
       style={{
-        left: position.x - 150,
+        left: position.x - 160,
         top: position.y - 250,
         transform: 'translate(-50%, -100%)',
       }}
@@ -228,23 +228,25 @@ const InteractiveTimeline = memo(() => {
             preserveAspectRatio="none"
             style={{ zIndex: 1 }}
           >
-            {' '}
-            {/* Main timeline path */}
+            {/* Main timeline path - Subtle thin connecting line */}
             <motion.path
               d={createPath}
-              stroke="hsl(220 4% 70%)" // grayscale-black-200
+              stroke="hsl(220 4% 85%)" // Very light gray
               strokeWidth="1.5"
               fill="none"
+              strokeDasharray="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               className="transition-all duration-300"
               vectorEffect="non-scaling-stroke"
               initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ pathLength: 1, opacity: 1 }}
+              animate={{ pathLength: 1, opacity: 0.6 }}
               transition={{
                 pathLength: { duration: 2, ease: 'easeInOut', delay: 0.3 },
                 opacity: { duration: 0.5, delay: 0.5 },
               }}
             />
-            {/* Highlighted segment */}
+            {/* Highlighted segment - Subtle blue highlight */}
             <AnimatePresence>
               {hoveredIndex !== null && (
                 <motion.path
@@ -252,10 +254,13 @@ const InteractiveTimeline = memo(() => {
                   stroke="hsl(212 65% 27%)" // primary-blue-500
                   strokeWidth="2"
                   fill="none"
+                  strokeDasharray="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                   className="transition-all duration-300"
                   vectorEffect="non-scaling-stroke"
                   initial={{ pathLength: 0, opacity: 0 }}
-                  animate={{ pathLength: 1, opacity: 1 }}
+                  animate={{ pathLength: 1, opacity: 0.8 }}
                   exit={{ pathLength: 0, opacity: 0 }}
                   transition={{ duration: 0.4, ease: 'easeInOut' }}
                 />
@@ -269,8 +274,8 @@ const InteractiveTimeline = memo(() => {
               key={event.year}
               className="absolute -translate-x-1/2 -translate-y-1/2 transform"
               style={{
-                left: `${event.position.x}%`,
-                top: `${event.position.y}%`,
+                left: `${event.position.x - 1}%`,
+                top: `${event.position.y - 2}%`,
                 zIndex: 2,
               }}
               variants={dotVariants}
