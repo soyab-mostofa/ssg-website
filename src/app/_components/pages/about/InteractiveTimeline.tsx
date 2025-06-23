@@ -83,13 +83,13 @@ const InteractiveTimeline = () => {
         viewport={{ once: true }}
         transition={{ staggerChildren: 0.2 }}
       >
-        <svg 
-          viewBox="0 0 800 400" 
-          className="h-auto w-full" 
-          style={{ 
-            overflow: 'visible', 
+        <svg
+          viewBox="0 0 800 400"
+          className="h-auto w-full"
+          style={{
+            overflow: 'visible',
             fontFamily: 'inherit',
-            WebkitTextSizeAdjust: '100%'
+            WebkitTextSizeAdjust: '100%',
           }}
         >
           {/* Base timeline path */}
@@ -135,7 +135,10 @@ const InteractiveTimeline = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: index * 0.1 }}
               style={{ cursor: 'pointer' }}
-              className="relative z-10"            >              {/* Timeline dot */}
+              className="relative z-10"
+            >
+              {' '}
+              {/* Timeline dot */}
               <motion.circle
                 cx={point.x}
                 cy={point.y}
@@ -153,7 +156,7 @@ const InteractiveTimeline = () => {
         {timelineData.map((point, index) => (
           <div
             key={`label-${point.year}`}
-            className="absolute z-20 pointer-events-none"
+            className="pointer-events-none absolute z-20"
             style={{
               left: `${(point.x / 800) * 100}%`,
               top: `${((point.y + 35) / 400) * 100}%`,
@@ -167,16 +170,15 @@ const InteractiveTimeline = () => {
               transition={{ delay: 0.5 + index * 0.1 }}
               className="text-center"
             >
-              <div className="text-xs font-bold text-primary-blue-500 mb-1">
-                {point.year}
-              </div>
-              <div className="text-[10px] text-grayscale-black-400 leading-tight">
+              <div className="mb-1 text-xs font-bold text-primary-blue-500">{point.year}</div>
+              <div className="text-[10px] leading-tight text-grayscale-black-400">
                 <div>{point.yearText.split(' ')[0]}</div>
                 <div>{point.yearText.split(' ').slice(1).join(' ')}</div>
               </div>
             </motion.div>
           </div>
-        ))}{/* Popup moved outside SVG for Safari compatibility */}
+        ))}
+        {/* Popup moved outside SVG for Safari compatibility */}
         {activePoint && (
           <motion.div
             className="absolute z-50 overflow-hidden rounded-lg border border-primary-blue-100 bg-others-white shadow-sm shadow-primary-blue-500/30"
