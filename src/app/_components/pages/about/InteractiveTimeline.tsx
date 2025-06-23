@@ -25,7 +25,7 @@ const TIMELINE_DATA: readonly TimelinePoint[] = [
   {
     yearText: 'Jeans Plus Ltd',
     year: 2007,
-    position: { x: 10, y: 80 },
+    position: { x: 5, y: 80 },
     image: '/timeline/jeans-plus.webp',
     description:
       'Jeans Plus Ltd established, marking the beginning of our journey in apparel manufacturing.',
@@ -33,35 +33,35 @@ const TIMELINE_DATA: readonly TimelinePoint[] = [
   {
     yearText: 'Shin Shin Apparels Ltd',
     year: 2009,
-    position: { x: 25, y: 65 },
+    position: { x: 20, y: 70 },
     image: '/timeline/shinshin-apparel.webp',
     description: 'Shin Shin Apparels Ltd established, focusing on quality and sustainability.',
   },
   {
     yearText: 'Organic Jeans Ltd',
     year: 2014,
-    position: { x: 45, y: 45 },
+    position: { x: 38, y: 60 },
     image: '/timeline/organic.webp',
     description: 'Organic Jeans Ltd launched, specializing in eco-friendly denim production.',
   },
   {
     yearText: 'Vancot Ltd',
     year: 2015,
-    position: { x: 65, y: 55 },
+    position: { x: 55, y: 58 },
     image: '/timeline/vancot.webp',
     description: 'Vancot Ltd established, expanding into knitwear and woven garments.',
   },
   {
     yearText: 'Khalifa Apparels Ltd',
     year: 2016,
-    position: { x: 80, y: 40 },
+    position: { x: 70, y: 50 },
     image: '/vancot.png',
     description: 'Khalifa Apparels Ltd launched, focusing on high-quality apparel manufacturing.',
   },
   {
     yearText: 'Saud Garments Industries Ltd',
     year: 2022,
-    position: { x: 95, y: 25 },
+    position: { x: 90, y: 30 },
     image: '/timeline/saud.webp',
     description:
       'Saud Garments Industries Ltd established, enhancing production capacity and sustainability efforts.',
@@ -96,10 +96,10 @@ const dotVariants: Variants = {
 const TimelinePopup = memo<TimelinePopupProps>(({ point, position }) => {
   return (
     <motion.div
-      className="pointer-events-none fixed z-50 bg-others-white"
+      className="pointer-events-none fixed z-50 overflow-hidden rounded-lg bg-others-white shadow"
       style={{
         left: position.x - 160,
-        top: position.y - 250,
+        top: position.y - 290,
         transform: 'translate(-50%, -100%)',
       }}
       initial={{ opacity: 0, y: 10, scale: 0.95 }}
@@ -107,13 +107,13 @@ const TimelinePopup = memo<TimelinePopupProps>(({ point, position }) => {
       exit={{ opacity: 0, y: 10, scale: 0.95 }}
       transition={{ duration: 0.2, ease: 'easeOut' }}
     >
-      <Card className="w-80 border-0 bg-others-white shadow-lg">
+      <Card className="w-72 border-0 bg-others-white shadow-lg">
         <CardContent className="overflow-hidden p-0">
           <div className="relative overflow-hidden">
             <Image
               src={point.image}
               alt={`${point.yearText} - ${point.year}`}
-              className="h-32 w-full object-cover"
+              className="h-48 w-full object-cover"
               width={320}
               height={128}
               sizes="320px"
@@ -213,7 +213,7 @@ const InteractiveTimeline = memo(() => {
       subLeft="Shin Shin Group, established in 2007, has grown into a leading apparel conglomerate with 11,000 employees across four factories in Bangladesh. The group achieved remarkable milestones in sustainable manufacturing."
     >
       <motion.div
-        className="container relative mx-auto -mt-16 w-full"
+        className="container relative mx-auto -mt-24 w-full"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
@@ -232,7 +232,7 @@ const InteractiveTimeline = memo(() => {
             <motion.path
               d={createPath}
               stroke="hsl(220 4% 85%)" // Very light gray
-              strokeWidth="1.5"
+              strokeWidth=".8"
               fill="none"
               strokeDasharray="none"
               strokeLinecap="round"
@@ -252,7 +252,7 @@ const InteractiveTimeline = memo(() => {
                 <motion.path
                   d={getSegmentPath(0, hoveredIndex)}
                   stroke="hsl(212 65% 27%)" // primary-blue-500
-                  strokeWidth="2"
+                  strokeWidth="1.5"
                   fill="none"
                   strokeDasharray="none"
                   strokeLinecap="round"
