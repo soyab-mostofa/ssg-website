@@ -98,19 +98,19 @@ const EmployeeCard: React.FC<{ item: CultureItem; index: number }> = ({ item, in
       <AnimatedImage
         src={item.url}
         alt={`${item.name} - ${item.position}`}
-        className="z-0 origin-center rounded-lg object-cover object-center transition-all duration-500 ease-in-out group-hover:scale-105 group-hover:blur-xl"
+        className="z-0 origin-center rounded-lg object-cover object-center transition-all duration-500 ease-in-out"
       />
 
       {/* Dark Overlay with Content */}
       <motion.div
-        className="bg-black/70 absolute inset-0 z-10 flex h-full w-full flex-col items-center justify-center rounded-lg p-6"
+        className="absolute inset-0 z-50 flex h-full w-full flex-col items-center justify-center rounded-lg bg-others-white p-6"
         initial={{ opacity: 0 }}
         animate={{ opacity: isHovered ? 1 : 0 }}
         transition={{ duration: 0.4, ease: 'easeInOut' }}
       >
-        <div className="text-white text-center">
+        <div className="text-white text-left">
           <motion.blockquote
-            className="mb-4 text-sm font-medium italic leading-relaxed md:text-base lg:text-lg"
+            className="mb-4 text-sm font-medium leading-relaxed md:text-base lg:text-lg"
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: isHovered ? 0 : 30, opacity: isHovered ? 1 : 0 }}
             transition={{ duration: 0.5, delay: 0.1, ease: 'easeOut' }}
@@ -119,7 +119,7 @@ const EmployeeCard: React.FC<{ item: CultureItem; index: number }> = ({ item, in
           </motion.blockquote>
 
           <motion.div
-            className="border-white/30 border-t pt-3"
+            className="border-t border-others-white/30 pt-3"
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: isHovered ? 0 : 30, opacity: isHovered ? 1 : 0 }}
             transition={{ duration: 0.5, delay: 0.2, ease: 'easeOut' }}
@@ -166,7 +166,7 @@ const Page: React.FC = () => {
           subLeft="Shin Shin Group is dedicated to fostering a rich and varied workforce. The company actively promotes an inclusive environment, recognizing the value of all individuals. Beyond employment, Shin Shin Group is committed to supporting its employees and their families through various welfare initiatives."
         >
           <div className="container px-4 sm:px-6 md:px-8">
-            <div className="relative aspect-video w-full overflow-hidden rounded-lg">
+            <div className="relative aspect-video max-h-[500px] w-full overflow-hidden rounded-lg">
               <AnimatedImage
                 src="/career-header.png"
                 alt="career"

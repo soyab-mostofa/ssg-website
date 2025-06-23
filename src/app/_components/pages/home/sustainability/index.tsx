@@ -7,6 +7,7 @@ import Image from 'next/image'
 import { motion, useInView } from 'motion/react'
 import { useRef } from 'react'
 import SectionLayout from '@/app/_components/shared/SectionLayout'
+import Autoplay from 'embla-carousel-autoplay'
 
 const data = [
   {
@@ -27,7 +28,7 @@ const data = [
   },
   {
     url: '/sustainability/sustain-5.webp',
-    description: 'Rainwater harvesting systems',
+    description: 'Rainwater harvesting system',
   },
 ]
 
@@ -47,12 +48,15 @@ const SustainabilitySection = () => {
       rightButton="Our Sustainability Efforts"
     >
       <div ref={containerRef}>
+        {' '}
         <Carousel
           opts={{
             align: 'start',
             containScroll: 'keepSnaps',
+            loop: true,
           }}
-          className="z-50 w-full overflow-x-hidden"
+          plugins={[Autoplay({ delay: 2000, stopOnInteraction: false })]}
+          className="z-50 max-h-[500px] w-full overflow-x-hidden"
         >
           {' '}
           <CarouselContent className="min-h-56 xl:ml-[calc((100vw-1270px)/2)]">
@@ -78,7 +82,7 @@ const SustainabilitySection = () => {
                     }
                   }
                   transition={{ duration: 0.9, delay: index * 0.2 }}
-                  className="ms-auto h-[250px] overflow-hidden rounded-xl bg-others-white sm:h-[360px]"
+                  className="ms-auto h-full overflow-hidden rounded-2xl bg-others-white sm:h-[500px]"
                 >
                   {' '}
                   <Image

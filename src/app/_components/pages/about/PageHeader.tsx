@@ -37,6 +37,7 @@ const PageHeader = ({
         className="origin-center bg-center object-cover"
         priority
       />
+      <div className="absolute inset-0 z-10 bg-gradient-to-br from-others-white/70 to-grayscale-black-500" />
     </div>
   )
 }

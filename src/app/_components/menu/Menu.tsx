@@ -206,15 +206,15 @@ export default function Menu() {
       transition={{ duration: 0.3, ease: 'easeInOut' }}
     >
       <div className="container relative flex w-full">
-        <div className="menu-bar flex h-14 w-full items-center justify-between sm:h-24">
+        <div className="menu-bar z-50 flex h-14 w-full items-center justify-between sm:h-24">
           <div className="menu-logo text-grayscale-black-900">
             <Link href="/">
               <Image
                 src="/main-logo.png"
                 alt="logo"
-                width={40}
-                height={40}
-                className="size-8 md:size-14"
+                width={50}
+                height={50}
+                className="size-8 md:size-16"
               />
             </Link>
           </div>

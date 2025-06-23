@@ -11,7 +11,7 @@ const Page = () => {
   return (
     <section className="overflow-x-hidden">
       <PageHeader
-        bgImage="/headers/about-header.webp"
+        bgImage="/about-header.webp"
         heading={['About', 'Shin Shin Group']}
         sub="Discover Shin Shin Group's journey as a leading apparel conglomerate, committed to quality, innovation, and global excellence since 2007."
       />

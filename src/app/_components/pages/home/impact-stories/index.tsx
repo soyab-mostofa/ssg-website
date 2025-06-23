@@ -12,6 +12,7 @@ import {
 } from '@/components/ui/carousel'
 import Image from 'next/image'
 import { motion } from 'motion/react'
+import Autoplay from 'embla-carousel-autoplay'
 
 const stories = [
   {
@@ -107,19 +108,22 @@ export default function ImpactStories() {
       headingWidth="100%"
       productSection
     >
+      {' '}
       <Carousel
         opts={{
           align: 'start',
           containScroll: 'keepSnaps',
+          loop: true,
         }}
+        plugins={[Autoplay({ delay: 2000, stopOnInteraction: false })]}
         className="w-full"
       >
         {' '}
-        <CarouselContent className="mb-10 ml-0 mr-2 h-48 sm:h-52 md:h-64 lg:h-72 xl:ml-[calc((100vw-1240px)/2)] xl:h-[450px]">
+        <CarouselContent className="mb-10 ml-0 mr-2 h-48 min-h-56 sm:h-52 md:h-64 lg:h-72 xl:ml-[calc((100vw-1270px)/2)] xl:h-[450px]">
           {stories.map((story, index) => (
             <CarouselItem
               key={story.title}
-              className="h-full basis-[250px] overflow-hidden pl-4 pr-2 sm:basis-[320px] md:basis-[400px] lg:basis-[480px] xl:basis-[750px] xl:pr-0"
+              className="h-full basis-80 overflow-hidden pl-4 pr-2 sm:basis-[480px] xl:pr-0"
             >
               <StoryCard story={story} index={index} />
             </CarouselItem>
