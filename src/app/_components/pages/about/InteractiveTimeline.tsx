@@ -213,7 +213,7 @@ const InteractiveTimeline = memo(() => {
       subLeft="Shin Shin Group, established in 2007, has grown into a leading apparel conglomerate with 11,000 employees across four factories in Bangladesh. The group achieved remarkable milestones in sustainable manufacturing."
     >
       <motion.div
-        className="container relative mx-auto -mt-24 w-full"
+        className="-mt-18 container relative mx-auto w-full"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
