@@ -26,7 +26,7 @@ const TIMELINE_DATA: readonly TimelinePoint[] = [
     yearText: 'Jeans Plus Ltd',
     year: 2007,
     position: { x: 15, y: 80 },
-    image: 'jeans-plus.webp',
+    image: '/jeans-plus.webp',
     description:
       'Jeans Plus Ltd established, marking the beginning of our journey in apparel manufacturing.',
   },
