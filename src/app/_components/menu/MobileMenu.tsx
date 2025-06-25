@@ -85,7 +85,7 @@ const MobileMenu = () => {
                           'text-3xl font-light text-others-white transition-all duration-300 hover:scale-105 sm:text-4xl',
                           pathName === link.link
                             ? 'text-secondary-red-500'
-                            : 'text-grayscale-black-800 hover:text-secondary-red-500',
+                            : 'text-grayscale-black-100 hover:text-secondary-red-500',
                         )}
                       >
                         {link.title}

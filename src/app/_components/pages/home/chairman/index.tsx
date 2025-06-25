@@ -40,7 +40,7 @@ const ChairmansThoughts = () => {
                 <Image
                   src="/chairman.jpg"
                   alt="Chairman's Thought"
-                  className="object-cover object-top"
+                  className="scale-x-[-1] object-cover object-top"
                   fill
                   sizes="(max-width: 768px) 100vw, 380px"
                 />

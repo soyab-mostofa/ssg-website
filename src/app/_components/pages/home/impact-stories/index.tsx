@@ -129,7 +129,7 @@ export default function ImpactStories() {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselControls />
+        {/* <CarouselControls /> */}
       </Carousel>
     </SectionLayout>
   )

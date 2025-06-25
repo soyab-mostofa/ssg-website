@@ -48,7 +48,7 @@ const TIMELINE_DATA: readonly TimelinePoint[] = [
     year: 2009,
     x: 180,
     y: 280,
-    image: '/timeline/shinshin-apparel.webp',
+    image: '/shinshin-apparel.webp',
     description: 'Shin Shin Apparels Ltd established, focusing on quality and sustainability.',
   },
   {
@@ -56,7 +56,7 @@ const TIMELINE_DATA: readonly TimelinePoint[] = [
     year: 2014,
     x: 320,
     y: 260,
-    image: '/timeline/organic.webp',
+    image: '/organic.webp',
     description: 'Organic Jeans Ltd launched, specializing in eco-friendly denim production.',
   },
   {
@@ -66,14 +66,6 @@ const TIMELINE_DATA: readonly TimelinePoint[] = [
     y: 240,
     image: '/timeline/vancot.webp',
     description: 'Vancot Ltd established, expanding into knitwear and woven garments.',
-  },
-  {
-    yearText: 'Khalifa Apparels Ltd',
-    year: 2016,
-    x: 600,
-    y: 200,
-    image: '/vancot.png',
-    description: 'Khalifa Apparels Ltd launched, focusing on high-quality apparel manufacturing.',
   },
   {
     yearText: 'Saud Garments Industries Ltd',

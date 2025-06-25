@@ -8,10 +8,10 @@ interface HeroTextAnimationProps {
   delay?: number
 }
 
-const HeroTextAnimation: React.FC<HeroTextAnimationProps> = ({ 
-  text, 
-  className = '', 
-  delay = 0.5 
+const HeroTextAnimation: React.FC<HeroTextAnimationProps> = ({
+  text,
+  className = '',
+  delay = 0.5,
 }) => {
   // Split text into words while preserving spaces
   const words = text.split(' ')
@@ -53,10 +53,7 @@ const HeroTextAnimation: React.FC<HeroTextAnimationProps> = ({
     >
       {words.map((word, index) => (
         <span key={index} className="inline-block overflow-hidden">
-          <motion.span
-            variants={wordVariants}
-            className="inline-block"
-          >
+          <motion.span variants={wordVariants} className="inline-block">
             {word}
             {/* Add space after each word except the last one */}
             {index < words.length - 1 && '\u00A0'}

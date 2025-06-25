@@ -18,7 +18,7 @@ interface Factory {
 
 const factories: Factory[] = [
   {
-    image: '/shin-shin-apperal.png',
+    image: '/shinshin-apparel.webp',
     name: 'Shin Shin Apparels Ltd.',
     location:
       'Dag# R.S 228, JL#73, Gorat, East Norshinghapur, Zirabo, Savar, Dhaka-1341, Bangladesh',
@@ -43,7 +43,7 @@ const factories: Factory[] = [
     productType: 'Chino Pants, Trousers, Jackets-Denim, Cargo Pant, Parachute bottom, Swimwear',
   },
   {
-    image: '/vancot.png',
+    image: '/vancot.webp',
     name: 'Vancot Limited.',
     location: 'Plot# 18-20, Sector# 03, Karnaphuli EPZ, North Patenga, Chittagong-4204, Bangladesh',
     capacity: '5.5 M Units/Month',

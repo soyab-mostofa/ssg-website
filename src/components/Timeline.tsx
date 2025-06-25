@@ -35,7 +35,7 @@ export function MobileTimeline() {
           </p>
           <div className="aspect-square">
             <Image
-              src="/shin-shin-apperal.png"
+              src="/shinshin-apparel.webp"
               alt="Shin Shin Apparels Ltd"
               width={500}
               height={500}
@@ -55,7 +55,7 @@ export function MobileTimeline() {
           </p>
           <div className="aspect-square">
             <Image
-              src="/organic-jeans.png"
+              src="/organic-jeans.webp"
               alt="Organic Jeans Ltd"
               width={500}
               height={500}
@@ -75,7 +75,7 @@ export function MobileTimeline() {
           </p>
           <div className="aspect-square">
             <Image
-              src="/vancot.png"
+              src="/vancot.webp"
               alt="Vancot Ltd"
               width={500}
               height={500}
@@ -95,7 +95,7 @@ export function MobileTimeline() {
           </p>
           <div className="aspect-square">
             <Image
-              src="/vancot.png"
+              src="/vancot.webp"
               alt="Khalifa Apparels Ltd"
               width={500}
               height={500}
@@ -116,7 +116,7 @@ export function MobileTimeline() {
           </p>
           <div className="aspect-square">
             <Image
-              src="/vancot.png"
+              src="/vancot.webp"
               alt="Saud Garments Industries Ltd"
               width={500}
               height={500}

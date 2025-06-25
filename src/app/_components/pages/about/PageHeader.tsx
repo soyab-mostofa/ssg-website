@@ -10,7 +10,7 @@ const PageHeader = ({
 }: {
   heading: string[]
   sub?: string
-  bgImage?: string
+  bgImage: string
 }) => {
   return (
     <div className="relative mx-auto h-[500px] w-full sm:h-[600px] md:h-[700px]">
@@ -32,12 +32,11 @@ const PageHeader = ({
       </div>
       <Image
         fill
-        src={bgImage ? bgImage : '/headers/about-header.png'}
+        src={bgImage}
         alt="about"
         className="origin-center bg-center object-cover"
         priority
       />
-      <div className="absolute inset-0 z-10 bg-gradient-to-br from-others-white/70 to-grayscale-black-500" />
     </div>
   )
 }
