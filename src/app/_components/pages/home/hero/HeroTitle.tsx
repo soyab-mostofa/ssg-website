@@ -1,7 +1,7 @@
 'use client'
 import React, { useState, useEffect } from 'react'
 import { motion } from 'motion/react'
-import AnimatedText from '@/app/_components/animated/animatedText'
+import HeroTextAnimation from '@/app/_components/animated/HeroTextAnimation'
 
 const HeroTitle = () => {
   const [isLoading, setIsLoading] = useState(true)
@@ -27,7 +27,7 @@ const HeroTitle = () => {
   }, [])
 
   return (
-    <div className="mx-auto flex min-h-[350px] max-w-[335px] flex-col items-stretch justify-center gap-4 md:mx-0 md:min-h-[252px] md:max-w-[687px] md:gap-6">
+    <div className="mx-auto flex min-h-[150] max-w-[335px] flex-col items-stretch justify-center gap-4 md:mx-0 md:min-h-[252px] md:max-w-[687px] md:gap-6">
       {isLoading ? (
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="space-x-2">
@@ -49,13 +49,13 @@ const HeroTitle = () => {
         </div>
       ) : showContent ? (
         <>
-          <AnimatedText
+          <HeroTextAnimation
             text={titleContent}
-            className="flex flex-wrap justify-center text-4xl font-bold text-others-white md:justify-start md:text-6xl md:leading-tight"
+            className="flex max-w-lg flex-wrap justify-center text-4xl font-bold text-others-white md:justify-start md:text-6xl md:leading-tight"
           />
-          <AnimatedText
+          <HeroTextAnimation
             text={descriptionContent}
-            className="text-white flex max-w-[649px] flex-wrap justify-center text-base leading-[1.4] text-others-white md:justify-start md:text-[20px]"
+            className="text-white flex max-w-[600px] flex-wrap justify-center text-base leading-[1.4] text-others-white md:justify-start md:text-[20px]"
             delay={0.9}
           />
         </>
