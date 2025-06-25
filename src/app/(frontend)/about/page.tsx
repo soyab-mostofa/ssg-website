@@ -14,11 +14,14 @@ const Page = () => {
         bgImage="/about/about-image.webp"
         heading={['About', 'Shin Shin Group']}
         sub="Discover Shin Shin Group's journey as a leading apparel conglomerate, committed to quality, innovation, and global excellence since 2007."
-      />
-      <FoundingStory />
+      />      <FoundingStory />
       <OurValues />
-      <InteractiveTimeline />
-      <MobileTimeline />
+      <div className="hidden md:block">
+        <InteractiveTimeline />
+      </div>
+      <div className="block md:hidden">
+        <MobileTimeline />
+      </div>
       {/* <OurAwards /> */}
     </section>
   )
