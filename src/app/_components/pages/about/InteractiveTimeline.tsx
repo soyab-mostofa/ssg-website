@@ -55,9 +55,9 @@ const TIMELINE_DATA: readonly TimelinePoint[] = [
 ] as const
 
 export default function Timeline() {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(2) // Default to Organic Jeans Ltd (2014)
   const [visiblePoints, setVisiblePoints] = useState<number[]>([])
-  const [popupEvent, setPopupEvent] = useState<TimelinePoint | null>(null)
+  const [popupEvent, setPopupEvent] = useState<TimelinePoint | null>(TIMELINE_DATA[2]) // Default to Organic Jeans Ltd
   const [popupPosition, setPopupPosition] = useState({ x: 0, y: 0 })
   const timelineRef = useRef<HTMLDivElement>(null)
 
@@ -83,9 +83,26 @@ export default function Timeline() {
     if (timelineRef.current) {
       observer.observe(timelineRef.current)
     }
-
     return () => observer.disconnect()
   }, [])
+
+  // Set default popup position for Organic Jeans Ltd (2014) after timeline loads
+  useEffect(() => {
+    if (timelineRef.current && visiblePoints.includes(2)) {
+      // Calculate position for Organic Jeans Ltd (index 2)
+      const timelineRect = timelineRef.current.getBoundingClientRect()
+      const organicJeansData = TIMELINE_DATA[2]
+
+      // Calculate the position of the timeline point
+      const pointX = timelineRect.left + (timelineRect.width * organicJeansData.position.x) / 100
+      const pointY = timelineRect.top + (timelineRect.height * organicJeansData.position.y) / 100
+
+      setPopupPosition({
+        x: pointX,
+        y: pointY - 20, // 20px gap above the point
+      })
+    }
+  }, [visiblePoints])
   const handleMouseEnter = (event: TimelinePoint, index: number, e: React.MouseEvent) => {
     setHoveredIndex(index)
     const rect = e.currentTarget.getBoundingClientRect()
