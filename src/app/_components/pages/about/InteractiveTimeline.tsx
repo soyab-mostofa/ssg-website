@@ -61,6 +61,21 @@ export default function Timeline() {
   const [popupPosition, setPopupPosition] = useState({ x: 0, y: 0 })
   const timelineRef = useRef<HTMLDivElement>(null)
 
+  const calculatePopupPosition = (event: TimelinePoint) => {
+    if (!timelineRef.current) return { x: 0, y: 0 }
+    
+    const timelineRect = timelineRef.current.getBoundingClientRect()
+    
+    // Calculate the absolute position of the timeline point
+    const pointX = timelineRect.left + (timelineRect.width * event.position.x) / 100
+    const pointY = timelineRect.top + (timelineRect.height * event.position.y) / 100
+    
+    return {
+      x: pointX,
+      y: pointY - 20, // 20px gap above the point
+    }
+  }
+
   // Sequential appearance animation
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -89,34 +104,35 @@ export default function Timeline() {
   // Set default popup position for Organic Jeans Ltd (2014) after timeline loads
   useEffect(() => {
     if (timelineRef.current && visiblePoints.includes(2)) {
-      // Calculate position for Organic Jeans Ltd (index 2)
-      const timelineRect = timelineRef.current.getBoundingClientRect()
-      const organicJeansData = TIMELINE_DATA[2]
-
-      // Calculate the position of the timeline point
-      const pointX = timelineRect.left + (timelineRect.width * organicJeansData.position.x) / 100
-      const pointY = timelineRect.top + (timelineRect.height * organicJeansData.position.y) / 100
-
-      setPopupPosition({
-        x: pointX,
-        y: pointY - 20, // 20px gap above the point
-      })
+      setPopupPosition(calculatePopupPosition(TIMELINE_DATA[2]))
     }
   }, [visiblePoints])
+
+  // Recalculate popup position on window resize and scroll to keep it sticky to the point
+  useEffect(() => {
+    const handlePositionUpdate = () => {
+      if (popupEvent) {
+        setPopupPosition(calculatePopupPosition(popupEvent))
+      }
+    }
+
+    window.addEventListener('resize', handlePositionUpdate)
+    window.addEventListener('scroll', handlePositionUpdate)
+    return () => {
+      window.removeEventListener('resize', handlePositionUpdate)
+      window.removeEventListener('scroll', handlePositionUpdate)
+    }
+  }, [popupEvent])
+
   const handleMouseEnter = (event: TimelinePoint, index: number, e: React.MouseEvent) => {
     setHoveredIndex(index)
-    const rect = e.currentTarget.getBoundingClientRect()
-
-    // Position popup above the timeline point with fixed positioning
     setPopupEvent(event)
-    setPopupPosition({
-      x: rect.left + rect.width / 2,
-      y: rect.top - 20, // 20px gap above the point (fixed positioning doesn't need scrollY)
-    })
+    setPopupPosition(calculatePopupPosition(event))
   }
   const handleMouseLeave = () => {
-    setHoveredIndex(null)
-    setPopupEvent(null)
+    // Don't reset the hovered state - keep the last hovered item persistent
+    // setHoveredIndex(null)
+    // setPopupEvent(null)
   }
 
   // Create SVG path for curved line
