@@ -39,7 +39,7 @@ const TIMELINE_DATA: readonly TimelinePoint[] = [
     year: 2007,
     x: 40,
     y: 320,
-    image: '/timeline/jeans-plus.webp',
+    image: '/jeans-plus.webp',
     description:
       'Jeans Plus Ltd established, marking the beginning of our journey in apparel manufacturing.',
   },
@@ -56,7 +56,7 @@ const TIMELINE_DATA: readonly TimelinePoint[] = [
     year: 2014,
     x: 320,
     y: 260,
-    image: '/organic.webp',
+    image: '/organic-jeans.webp',
     description: 'Organic Jeans Ltd launched, specializing in eco-friendly denim production.',
   },
   {

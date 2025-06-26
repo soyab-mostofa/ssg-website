@@ -5,6 +5,7 @@ import type React from 'react'
 import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import { Card, CardContent } from '@/components/ui/card'
+import styles from './InteractiveTimeline.module.css'
 
 interface TimelinePoint {
   yearText: string
@@ -19,7 +20,7 @@ const TIMELINE_DATA: readonly TimelinePoint[] = [
     yearText: 'Jeans Plus Ltd',
     year: 2007,
     position: { x: 8, y: 75 },
-    image: '/public/jeans-plus.webp',
+    image: '/jeans-plus.webp',
     description:
       'Jeans Plus Ltd established, marking the beginning of our journey in apparel manufacturing.',
   },
@@ -27,14 +28,14 @@ const TIMELINE_DATA: readonly TimelinePoint[] = [
     yearText: 'Shin Shin Apparels Ltd',
     year: 2009,
     position: { x: 25, y: 65 },
-    image: '/timeline/shinshin-apparel.webp',
+    image: '/shinshin-apparel.webp',
     description: 'Shin Shin Apparels Ltd established, focusing on quality and sustainability.',
   },
   {
     yearText: 'Organic Jeans Ltd',
     year: 2014,
     position: { x: 48, y: 55 },
-    image: '/timeline/organic.webp',
+    image: '/organic-jeans.webp',
     description: 'Organic Jeans Ltd launched, specializing in eco-friendly denim production.',
   },
   {
@@ -63,13 +64,13 @@ export default function Timeline() {
 
   const calculatePopupPosition = (event: TimelinePoint) => {
     if (!timelineRef.current) return { x: 0, y: 0 }
-    
+
     const timelineRect = timelineRef.current.getBoundingClientRect()
-    
+
     // Calculate the absolute position of the timeline point
     const pointX = timelineRect.left + (timelineRect.width * event.position.x) / 100
     const pointY = timelineRect.top + (timelineRect.height * event.position.y) / 100
-    
+
     return {
       x: pointX,
       y: pointY - 20, // 20px gap above the point
@@ -221,11 +222,10 @@ export default function Timeline() {
                 strokeWidth="1.2"
                 fill="none"
                 vectorEffect="non-scaling-stroke"
-                className="animate-pulse"
+                className={`animate-pulse ${styles.drawLineAnimation}`}
                 style={{
                   strokeDasharray: '2000',
                   strokeDashoffset: '0',
-                  animation: 'drawLine 1s ease-out forwards',
                 }}
               />
             )}
@@ -309,17 +309,7 @@ export default function Timeline() {
         )}
       </div>
 
-      {/* Custom CSS for line drawing animation */}
-      <style jsx>{`
-        @keyframes drawLine {
-          from {
-            stroke-dashoffset: 2000;
-          }
-          to {
-            stroke-dashoffset: 0;
-          }
-        }
-      `}</style>
+
     </div>
   )
 }
