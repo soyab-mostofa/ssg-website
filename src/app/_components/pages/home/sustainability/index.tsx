@@ -44,7 +44,7 @@ const SustainabilitySection = () => {
       headingWidth="687px"
       subBottom="Sustainability drives Shin Shin Group, from renewable energy and emission reductions to advanced water and waste management, shaping fashion’s greener future."
       chip="Sustainability"
-      className="relative min-h-[480px] overflow-hidden py-16 md:py-28"
+      className="relative min-h-[500px] overflow-hidden py-16 md:py-28"
       rightButton="Our Sustainability Efforts"
     >
       <div ref={containerRef}>

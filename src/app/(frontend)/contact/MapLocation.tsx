@@ -9,7 +9,7 @@ import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility
 import { Icon } from 'leaflet'
 
 const skater = new Icon({
-  iconUrl: '/logo.png',
+  iconUrl: '/main-logo.png',
   iconSize: [50, 50],
 })
 const DhakaMap = () => {

@@ -5,7 +5,30 @@ import SectionChip from '../../shared/SectionChip'
 import AnimateTextInView from '../../animated/animateTextInView'
 import TextFadeUp from '../../animated/TextFadeUp'
 
-// Move customers data outside component to prevent recreation on rerenders
+// Brand images data - arranged in specified order
+const BRAND_IMAGES = [
+  'H&M.png',
+  'Primark.png',
+  'Pull&Bear.png',
+  'Zara.png',
+  'Walmart.png',
+  'George.png',
+  'C&A.png',
+  'Bestseller.png',
+  'Jack & Jones.png',
+  'Selected Homme.png',
+  'Next.png',
+  'HEMA.png',
+  'Carrefour.png',
+  'Just Jeans.png',
+  "Sainsbury's.png",
+  'Nutmeg.png',
+  'Walt Disney.png',
+  'Zeco.png',
+  'New Look.png',
+  'Dunnes Stores.png',
+  'Lidl.png',
+] as const
 
 // Memoized customer logo component
 const CustomerLogo = memo(function CustomerLogo({ name, logo }: { name: string; logo: string }) {
@@ -45,13 +68,12 @@ export default function CustomersSection() {
       </div>{' '}
       {/* Logos Grid */}
       <div className="flex flex-wrap items-center justify-between">
-        {Array.from({ length: 27 }).map((_, i) => (
-          <CustomerLogo
-            key={`partner-${i + 1}`}
-            name={'partner name'}
-            logo={`/brands/brand-${i + 1}.png`}
-          />
-        ))}
+        {BRAND_IMAGES.map((brandImage) => {
+          // Extract brand name from filename (remove .png extension)
+          const brandName = brandImage.replace('.png', '')
+
+          return <CustomerLogo key={brandName} name={brandName} logo={`/brands/${brandImage}`} />
+        })}
       </div>
     </section>
   )
