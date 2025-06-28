@@ -33,7 +33,7 @@ const stories = [
   },
   {
     title: 'Employment for differently-abled persons',
-    image: '/impact/impact-5.png',
+    image: '/impact/impact-5.webp',
   },
   {
     title: 'Providing free sanitary napkins to female workers',
