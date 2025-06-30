@@ -15,7 +15,7 @@ export function MobileTimeline() {
           </p>
           <div className="aspect-square">
             <Image
-              src="/jeans-plus.png"
+              src="/jeans-plus.webp"
               alt="Jeans Plus Ltd"
               width={500}
               height={500}
@@ -75,28 +75,8 @@ export function MobileTimeline() {
           </p>
           <div className="aspect-square">
             <Image
-              src="/vancot.webp"
+              src="/timeline/vancot.webp"
               alt="Vancot Ltd"
-              width={500}
-              height={500}
-              className="h-full w-full rounded-lg object-cover"
-            />
-          </div>
-        </div>
-      ),
-    },
-    {
-      title: '2016',
-      eventName: 'Khalifa Apparels Ltd Launched',
-      content: (
-        <div>
-          <p className="dark:text-neutral-200 mb-4 text-xs font-normal text-grayscale-black-800 md:text-sm">
-            Khalifa Apparels Ltd launched, focusing on high-quality apparel manufacturing.
-          </p>
-          <div className="aspect-square">
-            <Image
-              src="/vancot.webp"
-              alt="Khalifa Apparels Ltd"
               width={500}
               height={500}
               className="h-full w-full rounded-lg object-cover"
@@ -116,7 +96,7 @@ export function MobileTimeline() {
           </p>
           <div className="aspect-square">
             <Image
-              src="/vancot.webp"
+              src="/timeline/saud.webp"
               alt="Saud Garments Industries Ltd"
               width={500}
               height={500}
