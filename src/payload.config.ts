@@ -21,6 +21,18 @@ export default buildConfig({
     importMap: {
       baseDir: path.resolve(dirname),
     },
+    components: {
+      afterLogin: ['/app/(payload)/admin/components/AfterLoginComponent'],
+      views: {
+        register: {
+          Component: '/app/(payload)/admin/components/RegisterView#RegisterView',
+          path: '/register',
+        },
+      },
+    },
+    routes: {
+      login: '/login',
+    },
   },
   collections: [Users, Media, SustainabilityReports, JobApplications, JobListings],
   editor: lexicalEditor(),
