@@ -36,7 +36,10 @@ export default buildConfig({
     vercelBlobStorage({
       enabled: true,
       collections: {
-        media: true,
+        media: {
+          disableLocalStorage: true,
+          prefix: 'media',
+        },
       },
       token: process.env.BLOB_READ_WRITE_TOKEN || '',
       cacheControlMaxAge: 365 * 24 * 60 * 60, // 1 year
