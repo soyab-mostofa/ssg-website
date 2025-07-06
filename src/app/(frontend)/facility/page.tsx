@@ -27,7 +27,7 @@ const factories: Factory[] = [
       'Chino Pants, Trousers, Jackets-Denim, Cargo Pant, Parachute bottom, School Uniforms, Top Bottom set (Knit Top/Bottom)',
   },
   {
-    image: '/jeans-plus.png',
+    image: '/jeans-plus.webp',
     name: 'Jeans Plus Ltd.',
     location: 'Plot# 398, Sreepur Bus Stand, Ganak Bari, Ashulia, Savar, Dhaka-1349, Bangladesh',
     capacity: '3.4 M Units/Month',
