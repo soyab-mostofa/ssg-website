@@ -3,6 +3,7 @@ import { DefaultTemplate } from '@payloadcms/next/templates'
 import React from 'react'
 import Image from 'next/image'
 import { RegisterForm } from './RegisterForm'
+import './register-styles.css'
 
 export function RegisterView(props: AdminViewProps) {
   const { initPageResult, params, searchParams } = props || {}
@@ -10,22 +11,22 @@ export function RegisterView(props: AdminViewProps) {
   // For unauthenticated registration page, render without DefaultTemplate
   if (!initPageResult) {
     return (
-      <div className="bg-gray-50 flex min-h-screen flex-col items-center justify-center px-4 py-12 sm:px-6 lg:px-8">
-        <div className="w-full max-w-md space-y-8">
-          <div>
-            <div className="flex justify-center">
+      <div className="payload-register-page">
+        <div className="payload-register-container">
+          <div className="payload-register-header">
+            <div className="payload-register-logo">
               <Image
-                className="h-12 w-auto"
+                className="payload-logo-image"
                 src="/main-logo.png"
                 alt="Shin Shin Group"
                 width={48}
                 height={48}
               />
             </div>
-            <h2 className="text-gray-900 mt-6 text-center text-3xl font-extrabold">
+            <h1 className="payload-register-title">
               Create your account
-            </h2>
-            <p className="text-gray-600 mt-2 text-center text-sm">
+            </h1>
+            <p className="payload-register-subtitle">
               Join the Shin Shin Group admin panel
             </p>
           </div>
@@ -48,22 +49,22 @@ export function RegisterView(props: AdminViewProps) {
       visibleEntities={initPageResult.visibleEntities}
     >
       <div className="gutter">
-        <div className="bg-gray-50 flex min-h-screen flex-col items-center justify-center px-4 py-12 sm:px-6 lg:px-8">
-          <div className="w-full max-w-md space-y-8">
-            <div>
-              <div className="flex justify-center">
+        <div className="payload-register-page">
+          <div className="payload-register-container">
+            <div className="payload-register-header">
+              <div className="payload-register-logo">
                 <Image
-                  className="h-12 w-auto"
+                  className="payload-logo-image"
                   src="/main-logo.png"
                   alt="Shin Shin Group"
                   width={48}
                   height={48}
                 />
               </div>
-              <h2 className="text-gray-900 mt-6 text-center text-3xl font-extrabold">
+              <h1 className="payload-register-title">
                 Create your account
-              </h2>
-              <p className="text-gray-600 mt-2 text-center text-sm">
+              </h1>
+              <p className="payload-register-subtitle">
                 Join the Shin Shin Group admin panel
               </p>
             </div>

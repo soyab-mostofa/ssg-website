@@ -1,6 +1,7 @@
 'use client'
+
 import React, { useState } from 'react'
-import Link from 'next/link'
+import { Button } from '@payloadcms/ui'
 import { registerAction } from '../actions/register'
 
 export function RegisterForm() {
@@ -27,30 +28,31 @@ export function RegisterForm() {
   }
 
   return (
-    <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-      {error && (
-        <div className="bg-red-50 rounded-md p-4">
-          <div className="text-red-700 text-sm">{error}</div>
-        </div>
-      )}
+    <div className="payload-form">
+      <form onSubmit={handleSubmit} className="payload-form">
+        {error && (
+          <div className="payload-error-message">
+            {error}
+          </div>
+        )}
 
-      <div className="space-y-4 rounded-md shadow-sm">
-        <div>
-          <label htmlFor="email-address" className="text-gray-700 mb-1 block text-sm font-medium">
+        <div className="payload-form-group">
+          <label htmlFor="email" className="payload-form-label">
             Email address
           </label>
           <input
-            id="email-address"
+            id="email"
             name="email"
             type="email"
             autoComplete="email"
             required
-            className="border-gray-300 placeholder-gray-500 text-gray-900 focus:ring-blue-500 focus:border-blue-500 relative block w-full appearance-none rounded-md border px-3 py-2 focus:z-10 focus:outline-none sm:text-sm"
-            placeholder="Enter your email address"
+            className="payload-form-input"
+            placeholder="Enter your email"
           />
         </div>
-        <div>
-          <label htmlFor="password" className="text-gray-700 mb-1 block text-sm font-medium">
+
+        <div className="payload-form-group">
+          <label htmlFor="password" className="payload-form-label">
             Password
           </label>
           <input
@@ -59,68 +61,63 @@ export function RegisterForm() {
             type="password"
             autoComplete="new-password"
             required
-            minLength={8}
-            className="border-gray-300 placeholder-gray-500 text-gray-900 focus:ring-blue-500 focus:border-blue-500 relative block w-full appearance-none rounded-md border px-3 py-2 focus:z-10 focus:outline-none sm:text-sm"
-            placeholder="Enter your password (min. 8 characters)"
+            className="payload-form-input"
+            placeholder="Create a password"
           />
         </div>
-        <div>
-          <label
-            htmlFor="confirm-password"
-            className="text-gray-700 mb-1 block text-sm font-medium"
-          >
+
+        <div className="payload-form-group">
+          <label htmlFor="confirmPassword" className="payload-form-label">
             Confirm Password
           </label>
           <input
-            id="confirm-password"
+            id="confirmPassword"
             name="confirmPassword"
             type="password"
             autoComplete="new-password"
             required
-            minLength={8}
-            className="border-gray-300 placeholder-gray-500 text-gray-900 focus:ring-blue-500 focus:border-blue-500 relative block w-full appearance-none rounded-md border px-3 py-2 focus:z-10 focus:outline-none sm:text-sm"
+            className="payload-form-input"
             placeholder="Confirm your password"
           />
         </div>
-      </div>
 
-      <div className="flex items-center">
-        <input
-          id="agree-terms"
-          name="agreeTerms"
-          type="checkbox"
-          className="text-blue-600 focus:ring-blue-500 border-gray-300 h-4 w-4 rounded"
-          required
-        />
-        <label htmlFor="agree-terms" className="text-gray-900 ml-2 block text-sm">
-          I agree to the{' '}
-          <Link href="/terms" className="text-blue-600 hover:text-blue-500" target="_blank">
-            terms and conditions
-          </Link>
-        </label>
-      </div>
+        <div className="payload-checkbox-group">
+          <input
+            id="agreeToTerms"
+            name="agreeToTerms"
+            type="checkbox"
+            required
+            className="payload-checkbox"
+          />
+          <label htmlFor="agreeToTerms" className="payload-checkbox-label">
+            I agree to the{' '}
+            <a href="/terms">
+              Terms and Conditions
+            </a>{' '}
+            and{' '}
+            <a href="/privacy">
+              Privacy Policy
+            </a>
+          </label>
+        </div>
 
-      <div>
-        <button
+        <Button
           type="submit"
           disabled={isLoading}
-          className="border-transparent text-white bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 group relative flex w-full justify-center rounded-md border px-4 py-2 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+          className="payload-submit-button"
         >
-          {isLoading ? 'Creating Account...' : 'Create Account'}
-        </button>
-      </div>
+          {isLoading ? (
+            <>
+              <div className="payload-spinner" />
+              Creating account...
+            </>
+          ) : (
+            'Create account'
+          )}
+        </Button>
 
-      <div className="text-center">
-        <p className="text-gray-600 text-sm">
-          Already have an account?{' '}
-          <Link
-            href="/admin/login"
-            className="text-blue-600 hover:text-blue-500 font-medium transition-colors duration-200"
-          >
-            Sign in here
-          </Link>
-        </p>
-      </div>
-    </form>
+
+      </form>
+    </div>
   )
 }
