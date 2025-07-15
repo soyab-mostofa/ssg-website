@@ -5,6 +5,8 @@ import Link from 'next/link'
 import { Squash as Hamburger } from 'hamburger-react'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
+import { SocialIcon } from 'react-social-icons'
+
 import { menuData } from './Menu'
 
 const MobileMenu = () => {
@@ -97,17 +99,28 @@ const MobileMenu = () => {
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: menuData.length * 0.15 + 0.3 }}
-                  className="mt-6"
+                  className="mt-8"
                 >
-                  <Link href={'/contact'} onClick={handleLinkClick} className="block">
-                    <span
-                      className={cn(
-                        'inline-flex items-center gap-2 rounded-[12px] bg-secondary-red-500 px-8 py-4 text-lg font-medium text-others-white transition-all duration-300 hover:scale-105 hover:bg-secondary-red-600',
-                      )}
-                    >
-                      Contact Us
-                    </span>
-                  </Link>
+                  <div className="flex justify-center">
+                     <Link
+                       href="https://www.facebook.com/shinshingroupbd"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       onClick={handleLinkClick}
+                       className="group relative overflow-hidden rounded-full p-2 transition-all duration-300 hover:scale-110 hover:bg-blue-600"
+                     >
+                     <SocialIcon url="https://www.facebook.com/shinshingroupbd" style={{ height: 28, width: 28 }} />
+                     </Link>
+                     <Link
+                       href="https://www.linkedin.com/company/shinshin-group"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       onClick={handleLinkClick}
+                       className="group relative overflow-hidden rounded-full p-2 transition-all duration-300 hover:scale-110 hover:bg-blue-700"
+                     >
+                     <SocialIcon url="https://www.linkedin.com/company/shinshin-group" style={{ height: 28, width: 28 }} />
+                     </Link>
+                   </div>
                 </motion.li>
               </motion.ul>
             </div>

@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils'
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
+import { SocialIcon } from 'react-social-icons'
 import MobileMenu from './MobileMenu'
 
 export interface MenuData {
@@ -139,6 +140,7 @@ export const menuData: MenuData[] = [
   { title: 'Sustainability', link: '/sustainability' },
   { title: 'Our facilities', link: '/facility' },
   { title: 'Careers', link: '/career' },
+  { title: 'Contact Us', link: '/contact' },
 ]
 
 export default function Menu() {
@@ -232,13 +234,23 @@ export default function Menu() {
             ))}
           </nav>
 
-          <div className="hidden sm:inline-block">
+          <div className="hidden sm:inline-flex">
             <Link
-              href="/contact"
-              className="flex w-full flex-row items-center justify-center gap-2 rounded-[12px] bg-secondary-red-500 px-4 py-3 text-sm text-others-white md:w-fit"
+              href="https://www.facebook.com/shinshingroupbd"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative overflow-hidden rounded-full p-1.5 transition-all duration-300 hover:scale-110 hover:bg-blue-600"
             >
-              Contact Us
-            </Link>{' '}
+             <SocialIcon url="https://www.facebook.com/shinshingroupbd" style={{ height: 24, width: 24 }} />
+            </Link>
+            <Link
+              href="https://www.linkedin.com/company/shinshin-group"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative overflow-hidden rounded-full p-1.5 transition-all duration-300 hover:scale-110 hover:bg-blue-700"
+            >
+             <SocialIcon url="https://www.linkedin.com/company/shinshin-group" style={{ height: 24, width: 24 }} />
+            </Link>
           </div>
           <MobileMenu />
         </div>
