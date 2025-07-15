@@ -151,7 +151,7 @@ export function ProductCarousel() {
           ))}
         </div>
       </div>
-      <div className="mt-8 flex justify-center">
+      <div className="mt-8 md:hidden flex justify-center">
         {CATEGORIES.map((_, index) => (
           <button
             key={index}

@@ -126,7 +126,6 @@ export const MenuLink = ({ href, children, isActive, onClick }: MenuLinkProps) =
           }}
           style={{
             originX: 0,
-            transformOrigin: 'left',
           }}
         />
       </span>
@@ -195,7 +194,7 @@ export default function Menu() {
   return (
     <motion.div
       className={cn(
-        'bg-white/95 fixed left-0 right-0 top-0 z-40 backdrop-blur-md transition-transform duration-300 ease-in-out',
+        'bg-others-white fixed left-0 right-0 top-0 z-40 transition-transform duration-300 ease-in-out',
         {
           'translate-y-0': isVisible,
           '-translate-y-full': !isVisible,
@@ -206,7 +205,7 @@ export default function Menu() {
       transition={{ duration: 0.3, ease: 'easeInOut' }}
     >
       <div className="container relative flex w-full">
-        <div className="menu-bar z-50 flex h-14 w-full items-center justify-between sm:h-24">
+        <div className="menu-bar z-50 flex h-16 w-full items-center justify-between sm:h-24">
           <div className="menu-logo text-grayscale-black-900">
             <Link href="/">
               <Image
@@ -214,7 +213,7 @@ export default function Menu() {
                 alt="logo"
                 width={50}
                 height={50}
-                className="size-8 md:size-16"
+                className="size-12 md:size-16"
               />
             </Link>
           </div>
