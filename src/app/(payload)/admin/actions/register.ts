@@ -7,7 +7,7 @@ export async function registerAction(formData: FormData) {
   const email = formData.get('email') as string
   const password = formData.get('password') as string
   const confirmPassword = formData.get('confirmPassword') as string
-  const agreeTerms = formData.get('agreeTerms') as string
+  const agreeToTerms = formData.get('agreeToTerms') as string
 
   // Basic validation
   if (!email || !password || !confirmPassword) {
@@ -18,7 +18,7 @@ export async function registerAction(formData: FormData) {
     return { error: 'Passwords do not match' }
   }
 
-  if (!agreeTerms) {
+  if (!agreeToTerms) {
     return { error: 'You must agree to the terms and conditions' }
   }
 
