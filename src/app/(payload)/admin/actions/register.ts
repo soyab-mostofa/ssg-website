@@ -1,9 +1,12 @@
 'use server'
 
 import { getPayload } from '@/lib/payload'
-import { redirect } from 'next/navigation'
 
-export async function registerAction(formData: FormData) {
+type RegisterResult = 
+  | { success: false; error: string }
+  | { success: true; message: string }
+
+export async function registerAction(formData: FormData): Promise<RegisterResult> {
   const email = formData.get('email') as string
   const password = formData.get('password') as string
   const confirmPassword = formData.get('confirmPassword') as string
@@ -11,19 +14,19 @@ export async function registerAction(formData: FormData) {
 
   // Basic validation
   if (!email || !password || !confirmPassword) {
-    return { error: 'All fields are required' }
+    return { success: false, error: 'All fields are required' }
   }
 
   if (password !== confirmPassword) {
-    return { error: 'Passwords do not match' }
+    return { success: false, error: 'Passwords do not match' }
   }
 
   if (!agreeToTerms) {
-    return { error: 'You must agree to the terms and conditions' }
+    return { success: false, error: 'You must agree to the terms and conditions' }
   }
 
   if (password.length < 8) {
-    return { error: 'Password must be at least 8 characters long' }
+    return { success: false, error: 'Password must be at least 8 characters long' }
   }
 
   try {
@@ -40,7 +43,7 @@ export async function registerAction(formData: FormData) {
     })
 
     if (existingUsers.docs.length > 0) {
-      return { error: 'User with this email already exists' }
+      return { success: false, error: 'User with this email already exists' }
     }
 
     // Create new user
@@ -54,10 +57,12 @@ export async function registerAction(formData: FormData) {
     })
 
     if (user) {
-      redirect('/admin/login?message=Account created successfully. Please log in.')
+      return { success: true, message: 'Account created successfully. Please log in.' }
     }
   } catch (error) {
     console.error('Registration error:', error)
-    return { error: 'Failed to create account. Please try again.' }
+    return { success: false, error: 'Failed to create account. Please try again.' }
   }
+
+  return { success: false, error: 'Failed to create account. Please try again.' }
 }

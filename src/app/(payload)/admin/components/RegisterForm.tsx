@@ -2,11 +2,13 @@
 
 import React, { useState } from 'react'
 import { Button } from '@payloadcms/ui'
+import { useRouter } from 'next/navigation'
 import { registerAction } from '../actions/register'
 
 export function RegisterForm() {
   const [error, setError] = useState<string>('')
   const [isLoading, setIsLoading] = useState(false)
+  const router = useRouter()
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -17,8 +19,11 @@ export function RegisterForm() {
 
     try {
       const result = await registerAction(formData)
-      if (result?.error) {
+      if (!result.success) {
         setError(result.error)
+      } else {
+        // Redirect to login page with success message
+        router.push('/admin/login?message=' + encodeURIComponent(result.message || 'Account created successfully. Please log in.'))
       }
     } catch (_err) {
       setError('An unexpected error occurred. Please try again.')
