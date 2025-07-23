@@ -107,7 +107,7 @@ const SustainabilitySection = () => {
                   }
                   className="mt-4"
                 >
-                  <h3 className="md:text-custom-30-semibold text-2xl font-semibold text-others-white">
+                  <h3 className="md:text-custom-30-semibold text-base font-semibold text-others-white md:text-2xl">
                     {item.description}
                   </h3>
                 </motion.div>
