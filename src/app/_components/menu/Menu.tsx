@@ -196,7 +196,7 @@ export default function Menu() {
   return (
     <motion.div
       className={cn(
-        'bg-others-white fixed left-0 right-0 top-0 z-40 transition-transform duration-300 ease-in-out',
+        'fixed left-0 right-0 top-0 z-40 bg-others-white transition-transform duration-300 ease-in-out',
         {
           'translate-y-0': isVisible,
           '-translate-y-full': !isVisible,
@@ -206,8 +206,8 @@ export default function Menu() {
       animate={{ y: isVisible ? 0 : -100 }}
       transition={{ duration: 0.3, ease: 'easeInOut' }}
     >
-      <div className="container relative flex w-full">
-        <div className="menu-bar z-50 flex h-16 w-full items-center justify-between sm:h-24">
+      <div className="container relative z-40 flex w-full">
+        <div className="z-[99] flex h-16 w-full items-center justify-between sm:h-24">
           <div className="menu-logo text-grayscale-black-900">
             <Link href="/">
               <Image
@@ -239,17 +239,23 @@ export default function Menu() {
               href="https://www.facebook.com/shinshingroupbd"
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative overflow-hidden rounded-full p-1.5 transition-all duration-300 hover:scale-110 hover:bg-blue-600"
+              className="hover:bg-blue-600 group relative overflow-hidden rounded-full p-1.5 transition-all duration-300 hover:scale-110"
             >
-             <SocialIcon url="https://www.facebook.com/shinshingroupbd" style={{ height: 24, width: 24 }} />
+              <SocialIcon
+                url="https://www.facebook.com/shinshingroupbd"
+                style={{ height: 24, width: 24 }}
+              />
             </Link>
             <Link
               href="https://www.linkedin.com/company/shinshin-group"
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative overflow-hidden rounded-full p-1.5 transition-all duration-300 hover:scale-110 hover:bg-blue-700"
+              className="hover:bg-blue-700 group relative overflow-hidden rounded-full p-1.5 transition-all duration-300 hover:scale-110"
             >
-             <SocialIcon url="https://www.linkedin.com/company/shinshin-group" style={{ height: 24, width: 24 }} />
+              <SocialIcon
+                url="https://www.linkedin.com/company/shinshin-group"
+                style={{ height: 24, width: 24 }}
+              />
             </Link>
           </div>
           <MobileMenu />

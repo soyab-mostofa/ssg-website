@@ -63,7 +63,7 @@ const SustainabilitySection = () => {
             {data.map((item, index) => (
               <CarouselItem
                 key={index}
-                className="relative flex w-full basis-80 flex-col pl-4 first:pl-9 sm:basis-[480px] sm:pl-8"
+                className="relative z-30 flex w-full basis-80 flex-col pl-4 first:pl-9 sm:basis-[480px] sm:pl-8"
               >
                 <motion.div
                   initial={{ width: '0%', height: '100%', opacity: 0 }}
@@ -82,7 +82,7 @@ const SustainabilitySection = () => {
                     }
                   }
                   transition={{ duration: 0.9, delay: index * 0.2 }}
-                  className="ms-auto h-full overflow-hidden rounded-2xl bg-others-white sm:h-[500px]"
+                  className="z-30 ms-auto h-full overflow-hidden rounded-2xl bg-others-white sm:h-[500px]"
                 >
                   {' '}
                   <Image
