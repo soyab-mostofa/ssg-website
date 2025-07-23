@@ -99,7 +99,9 @@ export default function Footer() {
                 <ul className="space-y-3">
                   <li>
                     <Link
-                      href="#"
+                      href="https://www.facebook.com/shinshingroupbd"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 text-others-white/70 transition-colors hover:text-others-white"
                     >
                       <Facebook size={20} />
@@ -108,7 +110,9 @@ export default function Footer() {
                   </li>
                   <li>
                     <Link
-                      href="#"
+                      href="https://www.linkedin.com/company/shinshin-group"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 text-others-white/70 transition-colors hover:text-others-white"
                     >
                       <Linkedin size={20} />
@@ -117,7 +121,9 @@ export default function Footer() {
                   </li>
                   <li>
                     <Link
-                      href="#"
+                      href="https://www.youtube.com/@shinshingroupbd"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 text-others-white/70 transition-colors hover:text-others-white"
                     >
                       <Youtube size={20} />

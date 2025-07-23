@@ -22,6 +22,7 @@
 .DS_Store
 *.pem
 .pnpm-store
+.deleted
 
 # debug
 npm-debug.log*

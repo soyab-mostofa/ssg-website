@@ -61,7 +61,7 @@ const FoundingStory = () => {
           <motion.div variants={fadeIn} className="grid grid-cols-2 gap-4">
             <div className="relative aspect-[1.27/1] w-full overflow-hidden rounded-xl">
               <Image
-                src="/about/about-1.JPG"
+                src="/about/about-1.webp"
                 alt="Shin Shin Group facility view 1"
                 fill
                 className="object-cover object-center"
@@ -83,7 +83,7 @@ const FoundingStory = () => {
 
         <motion.div variants={fadeIn} className="relative aspect-[0.97/1] w-full lg:aspect-auto">
           <Image
-            src="/about/about-4.JPG"
+            src="/about/about-4.webp"
             alt="Shin Shin Group main facility"
             fill
             sizes="(max-width: 1024px) 100vw, 50vw"
