@@ -1,12 +1,27 @@
 import type { AdminViewProps } from 'payload'
 import { DefaultTemplate } from '@payloadcms/next/templates'
-import React from 'react'
 import Image from 'next/image'
 import { RegisterForm } from './RegisterForm'
 import './register-styles.css'
 
-export function RegisterView(props: AdminViewProps) {
+async function resolveMaybePromise<T>(value: Promise<T> | T | undefined): Promise<T | undefined> {
+  return value instanceof Promise ? value : value
+}
+
+interface RegisterViewProps {
+  initPageResult?: AdminViewProps['initPageResult']
+  params?:
+    | Promise<{ [key: string]: string | string[] | undefined }>
+    | { [key: string]: string | string[] | undefined }
+  searchParams?:
+    | Promise<{ [key: string]: string | string[] | undefined }>
+    | { [key: string]: string | string[] | undefined }
+}
+
+export async function RegisterView(props: RegisterViewProps) {
   const { initPageResult, params, searchParams } = props || {}
+  const resolvedParams = await resolveMaybePromise(params)
+  const resolvedSearchParams = await resolveMaybePromise(searchParams)
 
   // For unauthenticated registration page, render without DefaultTemplate
   if (!initPageResult) {
@@ -23,12 +38,8 @@ export function RegisterView(props: AdminViewProps) {
                 height={48}
               />
             </div>
-            <h1 className="payload-register-title">
-              Create your account
-            </h1>
-            <p className="payload-register-subtitle">
-              Join the Shin Shin Group admin panel
-            </p>
+            <h1 className="payload-register-title">Create your account</h1>
+            <p className="payload-register-subtitle">Join the Shin Shin Group admin panel</p>
           </div>
           <RegisterForm />
         </div>
@@ -41,10 +52,10 @@ export function RegisterView(props: AdminViewProps) {
     <DefaultTemplate
       i18n={initPageResult.req.i18n}
       locale={initPageResult.locale}
-      params={params}
+      params={resolvedParams}
       payload={initPageResult.req.payload}
       permissions={initPageResult.permissions}
-      searchParams={searchParams}
+      searchParams={resolvedSearchParams}
       user={initPageResult.req.user || undefined}
       visibleEntities={initPageResult.visibleEntities}
     >
@@ -61,12 +72,8 @@ export function RegisterView(props: AdminViewProps) {
                   height={48}
                 />
               </div>
-              <h1 className="payload-register-title">
-                Create your account
-              </h1>
-              <p className="payload-register-subtitle">
-                Join the Shin Shin Group admin panel
-              </p>
+              <h1 className="payload-register-title">Create your account</h1>
+              <p className="payload-register-subtitle">Join the Shin Shin Group admin panel</p>
             </div>
             <RegisterForm />
           </div>

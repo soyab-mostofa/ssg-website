@@ -125,7 +125,7 @@ export default function Timeline() {
     }
   }, [popupEvent])
 
-  const handleMouseEnter = (event: TimelinePoint, index: number, e: React.MouseEvent) => {
+  const handleMouseEnter = (event: TimelinePoint, index: number, _e: React.MouseEvent) => {
     setHoveredIndex(index)
     setPopupEvent(event)
     setPopupPosition(calculatePopupPosition(event))
