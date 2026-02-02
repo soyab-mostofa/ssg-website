@@ -43,7 +43,8 @@ const sustainabilityReports: SustainabilityReportData[] = [
 export default function SustainabilityReport() {
   const [year, setYear] = useState('2024')
 
-  const currentReport = sustainabilityReports.find((report) => report.year === year) || sustainabilityReports[0]
+  const currentReport =
+    sustainabilityReports.find((report) => report.year === year) || sustainabilityReports[0]
 
   return (
     <div className="container py-16 md:py-24">
@@ -88,7 +89,9 @@ export default function SustainabilityReport() {
           <div className="relative flex flex-col gap-6">
             <div className="flex flex-col-reverse justify-between gap-6 sm:flex-row sm:gap-0">
               <div className="space-y-2">
-                <h2 className="text-3xl font-bold text-others-white sm:text-5xl">{currentReport.year}</h2>
+                <h2 className="text-3xl font-bold text-others-white sm:text-5xl">
+                  {currentReport.year}
+                </h2>
                 <h3 className="text-2xl font-bold text-others-white sm:text-3xl">
                   {currentReport.title}
                 </h3>
