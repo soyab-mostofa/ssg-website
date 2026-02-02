@@ -40,7 +40,7 @@
     "leaflet-defaulticon-compatibility": "^0.1.2",
     "lucide-react": "^0.469.0",
     "motion": "^11.17.0",
-    "next": "15.5.11",
+    "next": "15.1.0",
     "payload": "^3.47.0",
     "postcss": "^8.4.49",
     "react": "19.0.1",
