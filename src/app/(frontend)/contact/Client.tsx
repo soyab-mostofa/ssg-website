@@ -18,9 +18,10 @@ const Client = () => {
     <div>
       <PageHeader
         bgImage="/headers/contact-header.webp"
-        heading={['Get in Touch', 'With us']}
+        heading={['Get in Touch', 'With Us']}
         sub="Get in touch with Shin Shin Group. We're here to answer your inquiries and explore partnership opportunities. Reach out to our team today!"
       />
+      {/* TODO: Update hero image when asset is available */}
       <ContactInfo />
       <Map />
     </div>

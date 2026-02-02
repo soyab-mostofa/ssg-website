@@ -57,6 +57,7 @@ export default function CustomersSection() {
             className={'-mb-1 w-full pt-2 text-2xl font-bold md:text-5xl'}
             text="Trusted by Global Apparel Leaders"
           />
+          {/* TODO: Update buyers list */}
         </div>
 
         <div className="mt-auto h-full max-w-[584px] basis-1/2">

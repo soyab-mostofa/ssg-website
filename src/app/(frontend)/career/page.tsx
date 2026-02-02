@@ -1,12 +1,10 @@
 'use client'
 import SectionLayout from '@/app/_components/shared/SectionLayout'
 import Image from 'next/image'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import JobListings from './JobListings'
 import ApplicationForm from './ApplicationForm'
 import { motion } from 'motion/react'
-import { getOpenJobs } from '@/app/actions'
-import { JobListing } from '@/payload-types'
 import PageHeader from '@/app/_components/pages/about/PageHeader'
 
 interface CultureItem {
@@ -134,16 +132,6 @@ const EmployeeCard: React.FC<{ item: CultureItem; index: number }> = ({ item, in
 }
 
 const Page: React.FC = () => {
-  const [jobs, setJobs] = useState<JobListing[]>([])
-  useEffect(() => {
-    getData()
-  }, [])
-  const getData = async () => {
-    const res = await getOpenJobs()
-    console.log(res)
-    setJobs(res)
-  }
-
   return (
     <div className="space-y-12 sm:space-y-16 md:space-y-24">
       <motion.div initial="hidden" animate="visible" variants={fadeInUp}>
@@ -198,16 +186,14 @@ const Page: React.FC = () => {
           </motion.div>
         </SectionLayout>
       </motion.div>
-      {jobs.length > 0 && (
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-          variants={fadeInUp}
-        >
-          <JobListings jobs={jobs} />
-        </motion.div>
-      )}
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: '-100px' }}
+        variants={fadeInUp}
+      >
+        <JobListings />
+      </motion.div>
 
       <motion.div
         initial="hidden"

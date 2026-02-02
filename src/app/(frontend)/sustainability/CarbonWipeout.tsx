@@ -12,9 +12,10 @@ const CarbonWipeout = () => {
         <h3 className="text-3xl font-bold">Carbon Wipeout</h3>
         <p className="text-base font-normal">
           Shin Shin Group actively pursues a carbon-neutral future. By integrating solar power
-          systems, optimizing energy use, and transitioning to LED lighting, we have reduced
-          greenhouse gas emissions year-on-year. With ambitious goals to cut emissions by 10% across
-          all entities by 2028, we strive to set new standards for environmental responsibility.
+          systems, optimizing energy use, and using eco-friendly machinery, we have reduced
+          greenhouse gas emissions year-on-year. The Group has announced SBTi targets and is
+          committed to an ambitious GHG emission reduction goal of 42% (for Scope 1 & 2) by 2030 and
+          of 63% (for Scope 3) by 2035.
         </p>
       </div>
       <Carousel>

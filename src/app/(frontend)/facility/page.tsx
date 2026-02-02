@@ -14,6 +14,7 @@ interface Factory {
   location: string
   capacity: string
   productType: string
+  website?: string
 }
 
 const factories: Factory[] = [
@@ -48,6 +49,14 @@ const factories: Factory[] = [
     location: 'Plot# 18-20, Sector# 03, Karnaphuli EPZ, North Patenga, Chittagong-4204, Bangladesh',
     capacity: '5.5 M Units/Month',
     productType: 'Chino Pants, Trousers, Jackets-Denim, Cargo Pant, Parachute bottom',
+  },
+  {
+    image: '/suad-pic.webp',
+    name: 'Suad Garments Industries Ltd',
+    location: 'Plot: 137-146, Adamjee EPZ, Adamjee Nagar, Siddhirganj, Narayangonj, Bangladesh',
+    capacity: '1.0 M Units/Year',
+    productType: "Blazers, Jackets, Suits, Men's & Women's Formal Wear, Professional Workwear",
+    website: 'https://suadgroupbd.com/',
   },
 ]
 
@@ -141,11 +150,12 @@ const Page: React.FC = () => {
       <PageHeader
         bgImage="/headers/facilities-header.webp"
         heading={['Our', 'Facilities']}
-        sub="Explore our four state-of-the-art factories, equipped with advanced technology for high-quality, efficient, and sustainable apparel production"
+        sub="Explore our five state-of-the-art factories, equipped with advanced technology for high-quality, efficient, and sustainable apparel production"
       />
+      {/* TODO: Add Suad website link */}
       <div className="px-4 sm:px-6 md:px-8">
         <SectionLayout
-          subLeft="Shin Shin Group operates four state-of-the-art facilities across Bangladesh, specializing in cut-to-pack processes, sustainable practices, and innovative garment production, ensuring global compliance and superior quality."
+          subLeft="Shin Shin Group operates five state-of-the-art facilities across Bangladesh, specializing in cut-to-pack processes, sustainable practices, and innovative garment production, ensuring global compliance and superior quality."
           chip="Facilities"
           heading="Our Facilities at a Glance"
           headingWidth="481px"
@@ -206,6 +216,25 @@ const Page: React.FC = () => {
                         value={factory.productType}
                         index={2}
                       />
+                      {factory.website && (
+                        <motion.div
+                          className="flex items-center gap-2 sm:gap-3"
+                          variants={infoVariants}
+                          initial="hidden"
+                          whileInView="visible"
+                          viewport={{ once: true, margin: '-50px' }}
+                          custom={3}
+                        >
+                          <a
+                            href={factory.website}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-sm font-medium text-primary-blue-500 underline-offset-4 hover:underline sm:text-base"
+                          >
+                            Visit Website →
+                          </a>
+                        </motion.div>
+                      )}
                     </div>
                   </div>
                 </div>

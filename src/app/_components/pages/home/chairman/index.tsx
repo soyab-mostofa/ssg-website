@@ -12,6 +12,7 @@ const ChairmansThoughts = () => {
   return (
     <section className="bg-[#F6F6F6] py-14 md:py-28">
       <div className="container">
+        {/* TODO: Recheck At a glance figure (Mr. Sujan & Mr. Zahed- Final chairman sir) */}
         <div className="top-8">
           <SectionChip>CHAIRMAN&apos;S THOUGHTS</SectionChip>
           <DesktopQuote paragraph="Continuous improvement is not just our goal—it’s in our DNA. We strive to empower people, innovate responsibly, and lead with sustainability to become the global benchmark in apparel manufacturing." />
@@ -38,7 +39,7 @@ const ChairmansThoughts = () => {
                 className="relative h-[436px]"
               >
                 <Image
-                  src="/chairman.webp"
+                  src="/chairman-new.jpg"
                   alt="Chairman's Thought"
                   className="object-cover object-top"
                   fill

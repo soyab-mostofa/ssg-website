@@ -20,7 +20,7 @@ const TIMELINE_DATA: readonly TimelinePoint[] = [
     yearText: 'Jeans Plus Ltd',
     year: 2007,
     position: { x: 8, y: 75 },
-    image: '/jeans-plus.webp',
+    image: '/jeans-plus-new.jpg',
     description:
       'Jeans Plus Ltd established, marking the beginning of our journey in apparel manufacturing.',
   },
@@ -28,7 +28,7 @@ const TIMELINE_DATA: readonly TimelinePoint[] = [
     yearText: 'Shin Shin Apparels Ltd',
     year: 2009,
     position: { x: 25, y: 65 },
-    image: '/shinshin-apparel.webp',
+    image: '/shin-shin-apparels-new.jpg',
     description: 'Shin Shin Apparels Ltd established, focusing on quality and sustainability.',
   },
   {
@@ -308,8 +308,6 @@ export default function Timeline() {
           </div>
         )}
       </div>
-
-
     </div>
   )
 }

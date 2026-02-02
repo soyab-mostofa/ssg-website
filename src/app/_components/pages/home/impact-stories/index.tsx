@@ -16,45 +16,35 @@ import Autoplay from 'embla-carousel-autoplay'
 
 const stories = [
   {
-    title: "Scholarship for workers' children",
-    image: '/impact/impact-1.webp',
+    title: 'Created employment opportunities for people from indigenous communities',
+    image:
+      '/Impact stories/Created employment opportunities for people from indigenous communities.webp',
   },
   {
-    title: 'Free medical clinics for workers',
-    image: '/impact/impact-2.webp',
+    title: 'Fair price shops for workers & employees',
+    image: '/Impact stories/Fair price shops for workers & employees.webp',
   },
   {
-    title: 'Fair price shop for workers and employees',
-    image: '/impact/impact-3.png',
+    title: 'Free eye check-ups and distribution of free eye glasses',
+    image: '/Impact stories/Free eye check-ups and distribution of free eye glasses.webp',
   },
   {
-    title: "Daycare for workers' children",
-    image: '/impact/impact-4.webp',
+    title: 'Free medical clinic for workers',
+    image: '/Impact stories/Free medical clinic for workers.webp',
   },
   {
-    title: 'Employment for differently-abled persons',
-    image: '/impact/impact-5.webp',
+    title: 'Gainful employment for persons of short stature',
+    image: '/Impact stories/Gainful employment for persons of short stature.webp',
   },
   {
     title: 'Providing free sanitary napkins to female workers',
-    image: '/impact/impact-6.png',
+    image: '/Impact stories/Providing free sanitary napkins to female workers.webp',
   },
   {
-    title: 'Employment of third gender persons',
-    image: '/impact/impact-7.png',
+    title: "Regular awareness session for workers' health & hygiene",
+    image: '/Impact stories/Regular awareness session for workers_ health & hygiene.webp',
   },
-  {
-    title: 'Apps for workers to withdraw salary in advance',
-    image: '/impact/impact-8.webp',
-  },
-  {
-    title: 'Distribution of free eye-glasses among workers',
-    image: '/impact/impact-9.webp',
-  },
-].map((story) => ({
-  ...story,
-  image: `${story.image}?q=80&w=2070&auto=format&fit=crop`,
-}))
+]
 
 const StoryCard = memo(({ story, index }: { story: (typeof stories)[0]; index: number }) => {
   return (
