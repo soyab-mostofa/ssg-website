@@ -55,7 +55,8 @@ const factories: Factory[] = [
     name: 'Suad Garments Industries Ltd',
     location: 'Plot: 137-146, Adamjee EPZ, Adamjee Nagar, Siddhirganj, Narayangonj, Bangladesh',
     capacity: '1.0 M Units/Year',
-    productType: "Blazers, Jackets, Suits, Men's & Women's Formal Wear, Professional Workwear",
+    productType:
+      'Men’s Formal Wear, Women’s Formal Wear, Kids’ Wear, Over Coats, Waist Coats, School Dresses, Formal Office Dressesrkwear',
     website: 'https://suadgroupbd.com/',
   },
 ]

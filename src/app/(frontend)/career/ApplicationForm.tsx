@@ -56,9 +56,6 @@ export default function ApplicationForm() {
               className="text-3xl font-medium"
               delay={0.2}
             />
-            <p className="text-sm text-grayscale-black-400">
-              Cv will send to HR email: e-requitment@shinshingroup.com
-            </p>
             <form onSubmit={handleSubmit} className="mx-auto max-w-lg space-y-6 md:mx-0 md:me-auto">
               <div className="space-y-4">
                 <div className="space-y-2">

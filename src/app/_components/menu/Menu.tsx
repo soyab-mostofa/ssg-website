@@ -138,7 +138,7 @@ export const menuData: MenuData[] = [
   { title: 'Home', link: '/' },
   { title: 'About', link: '/about' },
   { title: 'Sustainability', link: '/sustainability' },
-  { title: 'Our facilities', link: '/facility' },
+  { title: 'Our Facilities', link: '/facility' },
   { title: 'Careers', link: '/career' },
   { title: 'Contact Us', link: '/contact' },
 ]
