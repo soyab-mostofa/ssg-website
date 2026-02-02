@@ -21,19 +21,22 @@ interface SustainabilityReportData {
   year: string
   title: string
   pdfPath: string
+  coverImage: string
 }
 
-// Static sustainability reports data
+// Static sustainability reports data with cover images
 const sustainabilityReports: SustainabilityReportData[] = [
   {
     year: '2023',
     title: 'Sustainability Report 2023',
     pdfPath: '/Sustainability Report 2023.pdf',
+    coverImage: '/sustain-report-2023.png',
   },
   {
     year: '2024',
     title: 'Sustainability Report 2024',
     pdfPath: '/Sustainability Report 2024.pdf',
+    coverImage: '/Sustainability Report 2024.png',
   },
 ]
 
@@ -93,8 +96,8 @@ export default function SustainabilityReport() {
 
               <div className="border-white/10 relative mx-auto aspect-[140/175] h-80 max-w-[240px] overflow-hidden rounded border-4 sm:mx-0 sm:ms-auto sm:h-[175px]">
                 <Image
-                  src="/sustain-report.png"
-                  alt="Sustainability Report Cover"
+                  src={currentReport.coverImage}
+                  alt={`${currentReport.title} Cover`}
                   fill
                   className="object-cover"
                 />
