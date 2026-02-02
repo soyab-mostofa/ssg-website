@@ -56,7 +56,7 @@ const factories: Factory[] = [
     location: 'Plot: 137-146, Adamjee EPZ, Adamjee Nagar, Siddhirganj, Narayangonj, Bangladesh',
     capacity: '1.0 M Units/Year',
     productType:
-      'Men’s Formal Wear, Women’s Formal Wear, Kids’ Wear, Over Coats, Waist Coats, School Dresses, Formal Office Dressesrkwear',
+      'Men’s Formal Wear, Women’s Formal Wear, Kids’ Formal Wear, Over Coats, Waist Coats, School Dresses, Formal Office Dressesrkwear',
     website: 'https://suadgroupbd.com/',
   },
 ]
